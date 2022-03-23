@@ -13,6 +13,7 @@
 		2228D89F27EB448500AF7FFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2228D89D27EB448500AF7FFC /* LaunchScreen.storyboard */; };
 		2228D8A827EB481C00AF7FFC /* ApiConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D8A727EB481C00AF7FFC /* ApiConfiguration.swift */; };
 		2228D8AA27EB48AA00AF7FFC /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D8A927EB48AA00AF7FFC /* ApiEndPoints.swift */; };
+		2228D8AC27EB503B00AF7FFC /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D8AB27EB503B00AF7FFC /* ApiClient.swift */; };
 		6F50C0E5C09E870B565B42B9 /* Pods_myTunes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D419A544DE6A2EF6987932 /* Pods_myTunes.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		2228D8A027EB448500AF7FFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2228D8A727EB481C00AF7FFC /* ApiConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfiguration.swift; sourceTree = "<group>"; };
 		2228D8A927EB48AA00AF7FFC /* ApiEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
+		2228D8AB27EB503B00AF7FFC /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		4EFBF8CA024002BF2A23A4E6 /* Pods-myTunes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTunes.debug.xcconfig"; path = "Target Support Files/Pods-myTunes/Pods-myTunes.debug.xcconfig"; sourceTree = "<group>"; };
 		54B7A23B48D73885BEB31FC7 /* Pods-myTunes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTunes.release.xcconfig"; path = "Target Support Files/Pods-myTunes/Pods-myTunes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 			children = (
 				2228D8A727EB481C00AF7FFC /* ApiConfiguration.swift */,
 				2228D8A927EB48AA00AF7FFC /* ApiEndPoints.swift */,
+				2228D8AB27EB503B00AF7FFC /* ApiClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				2228D89527EB448200AF7FFC /* SceneDelegate.swift in Sources */,
 				2228D8A827EB481C00AF7FFC /* ApiConfiguration.swift in Sources */,
 				2228D8AA27EB48AA00AF7FFC /* ApiEndPoints.swift in Sources */,
+				2228D8AC27EB503B00AF7FFC /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
