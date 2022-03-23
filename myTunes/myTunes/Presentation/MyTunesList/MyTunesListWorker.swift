@@ -12,12 +12,18 @@
 
 import UIKit
 
-class MyTunesListWorker {
-    func doSomeWork() {
-        
-    }
-//    
-//    func doSomeOtherWork() {
-//
-//    }
+protocol MyTunesListWorkingLogic: AnyObject {
+    func getMyTunesList(params: [String: Any], completion: @escaping ((Result<[ListResponse], Error>) -> Void))
 }
+
+final class MyTunesListWorker: MyTunesListWorkingLogic {
+    //use case
+    func getMyTunesList(params: [String: Any], completion: @escaping ((Result<[ListResponse], Error>) -> Void)) {
+        ApiClient.request(ApiEndPoint.list(params: params)) {(_ result: Result<[ListResponse], Error>) in
+            completion(result)
+        }
+    }
+}
+
+
+

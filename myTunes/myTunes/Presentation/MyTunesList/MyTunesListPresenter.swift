@@ -12,22 +12,11 @@
 
 import UIKit
 
-protocol MyTunesListPresentationLogic {
-    func presentSomething(response: MyTunesList.Something.Response)
+protocol MyTunesListPresentationLogic: AnyObject {
+  
 }
 
-class MyTunesListPresenter: MyTunesListPresentationLogic {
+final class MyTunesListPresenter: MyTunesListPresentationLogic {
     weak var viewController: MyTunesListDisplayLogic?
 
-    // MARK: Parse and calc respnse from MyTunesListInteractor and send simple view model to MyTunesListViewController to be displayed
-
-    func presentSomething(response: MyTunesList.Something.Response) {
-        let viewModel = MyTunesList.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
-    }
-//
-//    func presentSomethingElse(response: MyTunesList.SomethingElse.Response) {
-//        let viewModel = MyTunesList.SomethingElse.ViewModel()
-//        viewController?.displaySomethingElse(viewModel: viewModel)
-//    }
 }

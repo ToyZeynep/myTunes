@@ -12,33 +12,33 @@
 
 import UIKit
 
-protocol MyTunesListDisplayLogic: class
+protocol MyTunesListDisplayLogic: AnyObject
 {
-    func displaySomething(viewModel: MyTunesList.Something.ViewModel)
-//    func displaySomethingElse(viewModel: MyTunesList.SomethingElse.ViewModel)
+    func displaySomething(viewModel: MyTunesList.Fetch.ViewModel)
+
 }
 
-class MyTunesListViewController: UIViewController, MyTunesListDisplayLogic {
+final class MyTunesListViewController: UIViewController {
     var interactor: MyTunesListBusinessLogic?
-    var router: (NSObjectProtocol & MyTunesListRoutingLogic & MyTunesListDataPassing)?
-
+    var router: ( MyTunesListRoutingLogic & MyTunesListDataPassing)?
+    
     // MARK: Object lifecycle
-
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-
-    // MARK: - Setup Clean Code Design Pattern 
-
+    
+    // MARK: - Setup Clean Code Design Pattern
+    
     private func setup() {
         let viewController = self
-        let interactor = MyTunesListInteractor()
+        let interactor = MyTunesListInteractor(worker: MyTunesListWorker())
         let presenter = MyTunesListPresenter()
         let router = MyTunesListRouter()
         viewController.interactor = interactor
@@ -48,57 +48,18 @@ class MyTunesListViewController: UIViewController, MyTunesListDisplayLogic {
         router.viewController = viewController
         router.dataStore = interactor
     }
-
-    // MARK: - Routing
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-
+    
     // MARK: - View lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
-//        doSomethingElse()
+        
     }
     
-    //MARK: - receive events from UI
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-//
-//    @IBAction func someButtonTapped(_ sender: Any) {
-//
-//    }
-//
-//    @IBAction func otherButtonTapped(_ sender: Any) {
-//
-//    }
-    
-    // MARK: - request data from MyTunesListInteractor
-
-    func doSomething() {
-        let request = MyTunesList.Something.Request()
-        interactor?.doSomething(request: request)
+}
+// MARK: - display view model from MyTunesListPresenter
+extension MyTunesListViewController: MyTunesListDisplayLogic{
+    func displaySomething(viewModel: MyTunesList.Fetch.ViewModel) {
+        
     }
-//
-//    func doSomethingElse() {
-//        let request = MyTunesList.SomethingElse.Request()
-//        interactor?.doSomethingElse(request: request)
-//    }
-
-    // MARK: - display view model from MyTunesListPresenter
-
-    func displaySomething(viewModel: MyTunesList.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
-    }
-//
-//    func displaySomethingElse(viewModel: MyTunesList.SomethingElse.ViewModel) {
-//        // do sometingElse with viewModel
-//    }
 }

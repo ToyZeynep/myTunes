@@ -16,13 +16,9 @@ enum MyTunesList
 {
     // MARK: Use cases
 
-    enum Something
+    enum Fetch
     {
-        struct Request
-        {
-
-        }
-
+    
         struct Response
         {
 
@@ -33,22 +29,4 @@ enum MyTunesList
 
         }
     }
-    
-//    enum SomethingElse
-//    {
-//        struct Request
-//        {
-//
-//        }
-//
-//        struct Response
-//        {
-//
-//        }
-//
-//        struct ViewModel
-//        {
-//
-//        }
-//    }
 }
