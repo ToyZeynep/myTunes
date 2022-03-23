@@ -21,12 +21,30 @@ enum MyTunesList
     
         struct Response
         {
-
+            var myTunesList: [ListResponse]
         }
 
         struct ViewModel
         {
-
+            var myTunesList: [MyTunesList.Fetch.ViewModel.MyTunes]
+            
+            struct MyTunes {
+                
+            let wrapperType : String?
+            let kind : String?
+            let artistId : Int?
+            let artistName : String?
+            let collectionName : String?
+            let trackName : String?
+            let artworkUrl30 : String?
+            let artworkUrl60 : String?
+            let artworkUrl100 : String?
+            let releaseDate : String?
+            let country : String?
+            let primaryGenreName : String?
+            
+                
+            }
         }
     }
 }
