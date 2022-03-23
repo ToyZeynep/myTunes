@@ -21,7 +21,7 @@ enum MyTunesList
     
         struct Response
         {
-            var myTunesList: [ListResponse]
+            var myTunesList: [Results]
         }
 
         struct ViewModel

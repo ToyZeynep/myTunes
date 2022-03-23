@@ -13,10 +13,18 @@
 import UIKit
 
 protocol MyTunesListPresentationLogic: AnyObject {
-  
+    func presentMyTunesList(response: MyTunesList.Fetch.Response)
 }
 
 final class MyTunesListPresenter: MyTunesListPresentationLogic {
     weak var viewController: MyTunesListDisplayLogic?
 
+    func presentMyTunesList(response: MyTunesList.Fetch.Response) {
+        var myTunesList: [MyTunesList.Fetch.ViewModel.MyTunes] = []
+        response.myTunesList.forEach {
+            myTunesList.append(MyTunesList.Fetch.ViewModel.MyTunes(wrapperType: $0.wrapperType, kind: $0.kind, artistId: $0.artistId, artistName: $0.artistName, collectionName: $0.collectionName, trackName: $0.trackName, artworkUrl30: $0.artworkUrl30, artworkUrl60: $0.artworkUrl60, artworkUrl100: $0.artworkUrl100, releaseDate: $0.releaseDate, country: $0.country, primaryGenreName: $0.primaryGenreName))
+        }
+        ///doldurduğumuz listeyi viewController a parametre olarak gönderiyoruz
+        viewController?.displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel(myTunesList: myTunesList))
+    }
 }

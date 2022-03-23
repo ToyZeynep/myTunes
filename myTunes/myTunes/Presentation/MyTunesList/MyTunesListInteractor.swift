@@ -13,15 +13,15 @@
 import UIKit
 
 protocol MyTunesListBusinessLogic: AnyObject {
-
+    func fetchMyTunesList()
 }
 
 protocol MyTunesListDataStore {
-    var myTunesList: [ListResponse]? { get set }
+    var myTunesList: [Results]? { get set }
 }
 
 final class MyTunesListInteractor: MyTunesListBusinessLogic, MyTunesListDataStore {
-    var myTunesList: [ListResponse]?
+    var myTunesList: [Results]?
     var presenter: MyTunesListPresentationLogic?
     var worker: MyTunesListWorkingLogic
     
@@ -29,17 +29,19 @@ final class MyTunesListInteractor: MyTunesListBusinessLogic, MyTunesListDataStor
         self.worker = worker
     }
     
-    func fetchMyTunesList(params: [String: Any] ){
+    func fetchMyTunesList(){
         ///2. Adım
+        var params = [String: Any]()
+        params["term"] = "jack+johnson"
         self.worker.getMyTunesList(params: params) {[weak self] result in
             switch result {
             case .success(let response):
-                self?.myTunesList = response
+                self?.myTunesList = response.results
                 guard let myTunesList = self?.myTunesList else { return }
                 ///gelen response'u oluşturduğumuz listeye aktarıyoruz ve parametre olarak presenter a gönderiyoruz
                 self?.presenter?.presentMyTunesList(response:  MyTunesList.Fetch.Response( myTunesList: myTunesList))
             case .failure(let error):
-                self?.presenter?.presentAlert(title: "Error", message: error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
     }

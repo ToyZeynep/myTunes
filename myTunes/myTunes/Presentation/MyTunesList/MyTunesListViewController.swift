@@ -14,7 +14,7 @@ import UIKit
 
 protocol MyTunesListDisplayLogic: AnyObject
 {
-    func displaySomething(viewModel: MyTunesList.Fetch.ViewModel)
+    func displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel)
 
 }
 
@@ -53,13 +53,13 @@ final class MyTunesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        interactor?.fetchMyTunesList()
     }
     
 }
 // MARK: - display view model from MyTunesListPresenter
 extension MyTunesListViewController: MyTunesListDisplayLogic{
-    func displaySomething(viewModel: MyTunesList.Fetch.ViewModel) {
+    func displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel) {
         
     }
 }
