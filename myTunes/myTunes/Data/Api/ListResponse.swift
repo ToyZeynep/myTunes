@@ -21,5 +21,4 @@ struct ListResponse: Codable {
         resultCount = try values.decodeIfPresent(Int.self, forKey: .resultCount)
         results = try values.decodeIfPresent([Results].self, forKey: .results)
     }
-
 }
