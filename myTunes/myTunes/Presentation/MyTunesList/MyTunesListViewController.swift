@@ -69,6 +69,17 @@ final class MyTunesListViewController: UIViewController {
     
     // MARK: - View lifecycle
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        self.title = "MyTunesList"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemBlue]
+       
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         myTunesCollectionView.collectionViewLayout = gridFlowLayout
