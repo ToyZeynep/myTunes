@@ -210,12 +210,12 @@
 		2238A60F27EC8CDC00AE4EF0 /* MyTunesDetails */ = {
 			isa = PBXGroup;
 			children = (
+				2238A61427EC8D8100AE4EF0 /* MyTunesDetailsViewController.swift */,
+				2238A61527EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift */,
 				2238A61027EC8D8100AE4EF0 /* MyTunesDetailsPresenter.swift */,
 				2238A61127EC8D8100AE4EF0 /* MyTunesDetailsWorker.swift */,
 				2238A61227EC8D8100AE4EF0 /* MyTunesDetailsRouter.swift */,
 				2238A61327EC8D8100AE4EF0 /* MyTunesDetailsModels.swift */,
-				2238A61427EC8D8100AE4EF0 /* MyTunesDetailsViewController.swift */,
-				2238A61527EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift */,
 				2238A61C27ECA04900AE4EF0 /* MyTunesDetails.storyboard */,
 			);
 			path = MyTunesDetails;

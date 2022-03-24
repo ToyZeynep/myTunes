@@ -13,10 +13,16 @@
 import UIKit
 
 protocol MyTunesDetailsPresentationLogic: AnyObject {
-    
+    func presentMyTunesDetails(response: MyTunesDetails.Fetch.Response)
 }
 
 final class MyTunesDetailsPresenter: MyTunesDetailsPresentationLogic {
     weak var viewController: MyTunesDetailsDisplayLogic?
-
+    
+    func presentMyTunesDetails(response: MyTunesDetails.Fetch.Response) {
+        
+        viewController?.displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel(wrapperType: response.myTune?.wrapperType , kind: response.myTune?.kind, artistName: response.myTune?.artistName, collectionName: response.myTune?.collectionName, trackName: response.myTune?.trackName, artworkUrl100: response.myTune?.artworkUrl100, releaseDate: response.myTune?.releaseDate, country: response.myTune?.country, primaryGenreName: response.myTune?.primaryGenreName, artistViewUrl: response.myTune?.artistViewUrl, collectionViewUrl: response.myTune?.collectionViewUrl, trackViewUrl: response.myTune?.trackViewUrl
+            )
+        )
+    }
 }

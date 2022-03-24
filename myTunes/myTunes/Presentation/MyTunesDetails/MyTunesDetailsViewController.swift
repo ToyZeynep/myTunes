@@ -14,14 +14,14 @@ import UIKit
 
 protocol MyTunesDetailsDisplayLogic: AnyObject
 {
-    func displayMyTunesDetails(viewModel: MyTunesDetails.Something.ViewModel)
+    func displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel)
 
 }
 
 final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDisplayLogic {
     var interactor: MyTunesDetailsBusinessLogic?
     var router: ( MyTunesDetailsRoutingLogic & MyTunesDetailsDataPassing)?
-    var viewModel: MyTunesDetails.Something.ViewModel?
+    var viewModel: MyTunesDetails.Fetch.ViewModel?
     // MARK: Object lifecycle
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -53,13 +53,13 @@ final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDispla
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        interactor?.fetchMyTunesDetails()
     }
     
 }
     // MARK: - display view model from MyTunesDetailsPresenter
     extension MyTunesDetailsViewController{
-    func displayMyTunesDetails(viewModel: MyTunesDetails.Something.ViewModel) {
+    func displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel) {
         self.viewModel = viewModel
     }
 

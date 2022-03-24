@@ -15,22 +15,32 @@ import UIKit
 enum MyTunesDetails
 {
   
-
-    enum Something
+    enum Fetch
     {
-        struct Request
-        {
-
-        }
-
+       
         struct Response
         {
-
+       var myTune: Results?
         }
 
         struct ViewModel
         {
 
+            var wrapperType : String?
+            var kind : String?
+            var artistId : Int?
+            var artistName : String?
+            var collectionName : String?
+            var trackName : String?
+            var artworkUrl30 : String?
+            var artworkUrl60 : String?
+            var artworkUrl100 : String?
+            var releaseDate : String?
+            var country : String?
+            var primaryGenreName : String?
+            var artistViewUrl : String?
+            var collectionViewUrl : String?
+            var trackViewUrl : String?
         }
     }
 }

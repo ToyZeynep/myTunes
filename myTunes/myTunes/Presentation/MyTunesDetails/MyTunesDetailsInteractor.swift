@@ -13,7 +13,7 @@
 import UIKit
 
 protocol MyTunesDetailsBusinessLogic: AnyObject {
-   
+    func fetchMyTunesDetails() 
 }
 
 protocol MyTunesDetailsDataStore:AnyObject {
@@ -28,5 +28,9 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
 
     init(worker: MyTunesDetailsWorkingLogic) {
         self.worker = worker
+    }
+    
+    func fetchMyTunesDetails() {
+        self.presenter?.presentMyTunesDetails(response:.init(myTune: myTune))
     }
 }
