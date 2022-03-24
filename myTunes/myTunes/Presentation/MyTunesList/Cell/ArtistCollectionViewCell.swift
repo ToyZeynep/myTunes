@@ -23,7 +23,7 @@ class ArtistCollectionViewCell: UICollectionViewCell {
         contentView.frame = contentView.frame.inset(by: margins)
         contentView.layer.cornerRadius = 8
         contentView.backgroundColor = UIColor.white
-        contentView.layer.borderColor = UIColor.purple.cgColor
+        contentView.layer.borderColor = UIColor.gray.cgColor
         contentView.layer.borderWidth = 1
         contentView.clipsToBounds = true
         

@@ -23,5 +23,4 @@ protocol MyTunesListDataPassing: AnyObject {
 final class MyTunesListRouter:  MyTunesListRoutingLogic, MyTunesListDataPassing {
     weak var viewController: MyTunesListViewController?
     var dataStore: MyTunesListDataStore?
-
 }
