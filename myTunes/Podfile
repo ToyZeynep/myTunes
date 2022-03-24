@@ -10,5 +10,6 @@ target 'myTunes' do
   pod 'Kingfisher', '~> 7.0'
   pod 'SwiftGifOrigin', '~> 1.7.0'
   pod 'SnackBar.swift'
+  pod 'McPicker', '~> 3.0.0'
 
 end

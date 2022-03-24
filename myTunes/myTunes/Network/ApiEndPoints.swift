@@ -22,7 +22,7 @@ enum ApiEndPoint: APIConfiguration {
     var path: String {
         switch self {
         case .list:
-            return "search?"
+            return "search"
         }
     }
     
@@ -37,7 +37,7 @@ enum ApiEndPoint: APIConfiguration {
         //: https://itunes.apple.com/search?term=jack+johnson&limit=25
         let url = try "https://itunes.apple.com/".asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        
+        print(urlRequest)
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
         

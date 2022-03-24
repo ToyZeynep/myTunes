@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="artistCell" id="gTV-IL-0wX" customClass="ArtistCollectionViewCell" customModule="myTunes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="215" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="215" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdh-03-lci">
+                        <rect key="frame" x="0.0" y="40" width="215" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCu-IW-3xS">
+                        <rect key="frame" x="0.0" y="81" width="215" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.12549019610000001" green="0.58823529409999997" blue="0.83553233790000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpb-dZ-KLG">
+                        <rect key="frame" x="0.0" y="122" width="215" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="pdh-03-lci" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="010-57-ymu"/>
+                <constraint firstItem="uCu-IW-3xS" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="3nw-xz-uma"/>
+                <constraint firstItem="uCu-IW-3xS" firstAttribute="top" secondItem="pdh-03-lci" secondAttribute="bottom" constant="20" id="Lzk-3G-n2U"/>
+                <constraint firstItem="pdh-03-lci" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="40" id="NA1-rY-G8U"/>
+                <constraint firstItem="pdh-03-lci" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Q4Q-KV-sXj"/>
+                <constraint firstAttribute="trailing" secondItem="wpb-dZ-KLG" secondAttribute="trailing" id="QS2-st-Yd7"/>
+                <constraint firstItem="uCu-IW-3xS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Uc6-1l-XZf"/>
+                <constraint firstItem="wpb-dZ-KLG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eMK-4P-I7f"/>
+                <constraint firstAttribute="trailing" secondItem="uCu-IW-3xS" secondAttribute="trailing" id="mGT-84-qnt"/>
+                <constraint firstItem="wpb-dZ-KLG" firstAttribute="top" secondItem="uCu-IW-3xS" secondAttribute="bottom" constant="20" id="pUB-S1-zFm"/>
+                <constraint firstAttribute="trailing" secondItem="pdh-03-lci" secondAttribute="trailing" id="peo-sA-Xe5"/>
+            </constraints>
+            <size key="customSize" width="215" height="300"/>
+            <connections>
+                <outlet property="artistNameLabel" destination="pdh-03-lci" id="Xw6-aR-7rI"/>
+                <outlet property="artistViewUrl" destination="uCu-IW-3xS" id="ofl-kQ-lvI"/>
+                <outlet property="wrapperTypeLabel" destination="wpb-dZ-KLG" id="kwf-d0-fiD"/>
+            </connections>
+            <point key="canvasLocation" x="160.1449275362319" y="43.526785714285715"/>
+        </collectionViewCell>
+    </objects>
+</document>
