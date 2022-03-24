@@ -1,23 +1,19 @@
 //
-//  MyTunesCollectionViewCell.swift
+//  ArtistCollectionViewCell.swift
 //  myTunes
 //
-//  Created by MacOS on 23.03.2022.
+//  Created by MacOS on 24.03.2022.
 //
 
 import UIKit
 
-class MyTunesCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var wrapperType: UILabel!
-    @IBOutlet weak var kind: UILabel!
-    @IBOutlet weak var trackName: UILabel!
-    @IBOutlet weak var artistname: UILabel!
-    @IBOutlet weak var artWorkImageView: UIImageView!
+class ArtistCollectionViewCell: UICollectionViewCell {
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         let margins = UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)

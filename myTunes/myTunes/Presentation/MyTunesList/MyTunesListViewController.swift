@@ -12,6 +12,7 @@
 
 import UIKit
 import Kingfisher
+import McPicker
 
 protocol MyTunesListDisplayLogic: AnyObject
 {
@@ -25,8 +26,18 @@ final class MyTunesListViewController: UIViewController {
     var router: ( MyTunesListRoutingLogic & MyTunesListDataPassing)?
     var viewModel: MyTunesList.Fetch.ViewModel?
     var gridFlowLayout = GridFlowLayout()
+    let filter : [String] = [ "movie", "podcast", "music", "musicVideo", "audiobook", "shortFilm", "tvShow" , "software", "ebook", "artist"]
     @IBOutlet weak var myTunesSearchBar: UISearchBar!
     @IBOutlet weak var myTunesCollectionView: UICollectionView!
+    @IBOutlet weak var selectKindButton: UIButton!
+    
+    var params = [String:Any](){
+        didSet{
+            interactor?.fetchMyTunesList(params: params)
+        }
+    }
+    
+    
     
     
     // MARK: Object lifecycle
@@ -61,9 +72,56 @@ final class MyTunesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myTunesCollectionView.collectionViewLayout = gridFlowLayout
-        let nib = UINib(nibName: "MyTunesCollectionViewCell", bundle: nil)
-        myTunesCollectionView.register(nib, forCellWithReuseIdentifier: "myTunesCell")
+        let nibTr = UINib(nibName: "TrackCollectionViewCell", bundle: nil)
+        myTunesCollectionView.register(nibTr, forCellWithReuseIdentifier: "trackCell")
+        let nibCl = UINib(nibName: "CollectionCollectionViewCell", bundle: nil)
+        myTunesCollectionView.register(nibCl, forCellWithReuseIdentifier: "collectionCell")
+        let nibAr = UINib(nibName: "ArtistCollectionViewCell", bundle: nil)
+        myTunesCollectionView.register(nibAr, forCellWithReuseIdentifier: "artistCell")
     }
+    
+    @IBAction func selectKindButton(_ sender: Any) {
+        showPicker(selectKindButton, list: filter )
+    }
+    func showPicker(_ sender: UIButton, list: [String]){
+        McPicker.showAsPopover(data:[list], fromViewController: self, sourceView: sender, doneHandler:{ [weak self] (selections: [Int : String]) -> Void in
+            if let name = selections[0] {
+                
+                switch name {
+                    
+                case "movie":
+                    self?.params["entity"] = "album"
+                    
+                case "podcast":
+                    self?.params["entity"] = "podcast"
+                    
+                case "music":
+                    self?.params["entity"] = "musicArtist"
+                    
+                case "musicVideo":
+                    self?.params["entity"] = "musicVideo"
+                    
+                case "audiobook":
+                    self?.params["entity"] = "audiobook"
+                    
+                case "shortFilm":
+                    self?.params["entity"] = "shortFilmArtist"
+                    
+                case "tvShow":
+                    self?.params["entity"] = "tvShow"
+                    
+                case "software":
+                    self?.params["entity"] = "software"
+                    
+                case "ebook":
+                    self?.params["entity"] = "ebook"
+                    
+                default:
+                    break
+                }
+            }
+        }
+        )}
 }
 
 extension MyTunesListViewController: MyTunesListDisplayLogic{
@@ -82,14 +140,29 @@ extension MyTunesListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myTunesCell", for: indexPath) as! MyTunesCollectionViewCell
+        let trackCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trackCell", for: indexPath) as! TrackCollectionViewCell
+        let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionCollectionViewCell
+        let artistCell = collectionView.dequeueReusableCell(withReuseIdentifier: "artistCell", for: indexPath) as! ArtistCollectionViewCell
         let model = self.viewModel?.myTunesList[indexPath.item]
-        cell.artistname.text = model?.artistName
-        cell.trackName.text = model?.trackName
-        cell.wrapperType.text = model?.wrapperType
-        cell.kind.text = model?.kind
-        cell.artWorkImageView.kf.setImage(with: URL(string: (model?.artworkUrl60)!))
-        return cell
+        switch model?.wrapperType {
+        case "track":
+            trackCell.artistname.text = model?.artistName
+            trackCell.trackName.text = model?.trackName
+            trackCell.wrapperType.text = model?.wrapperType
+            trackCell.kind.text = model?.kind
+            trackCell.artWorkImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
+            return trackCell
+        case "artist":
+            
+            return artistCell
+        case "collection":
+            collectionCell.collectionName.text = model?.collectionName
+            collectionCell.wrapperType.text = model?.wrapperType
+            collectionCell.collectionImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
+            return collectionCell
+        default:
+            return trackCell
+        }
     }
 }
 
@@ -100,7 +173,7 @@ extension MyTunesListViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(MyTunesListViewController.reload), object: nil)
-        self.perform(#selector(MyTunesListViewController.reload), with: nil, afterDelay: 0.7)
+        self.perform(#selector(MyTunesListViewController.reload), with: nil, afterDelay: 1)
     }
     
     @objc func reload() {
@@ -115,9 +188,9 @@ extension MyTunesListViewController : UISearchBarDelegate {
     }
     
     func search(searchText: String){
-        var params = [String: Any]()
-        params["term"] = searchText
-        interactor?.fetchMyTunesList(params: params)
+        self.params["limit"] = "10"
+        self.params["term"] = searchText
+        print(params)
     }
 }
 
