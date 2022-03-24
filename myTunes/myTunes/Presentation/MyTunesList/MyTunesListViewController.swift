@@ -26,7 +26,7 @@ final class MyTunesListViewController: UIViewController {
     var router: ( MyTunesListRoutingLogic & MyTunesListDataPassing)?
     var viewModel: MyTunesList.Fetch.ViewModel?
     var gridFlowLayout = GridFlowLayout()
-    let filter : [String] = [ "movie", "podcast", "music", "musicVideo", "audiobook", "shortFilm", "tvShow" , "software", "ebook", "artist"]
+    let filter : [String] = [ "movie", "podcast", "music", "musicVideo", "audiobook", "shortFilm", "tvShow" , "software", "ebook", "all"]
     @IBOutlet weak var myTunesSearchBar: UISearchBar!
     @IBOutlet weak var myTunesCollectionView: UICollectionView!
     @IBOutlet weak var selectKindButton: UIButton!
@@ -99,32 +99,34 @@ final class MyTunesListViewController: UIViewController {
             if let name = selections[0] {
                 switch name {
                 case "movie":
-                    self?.params["entity"] = "album"
+                    self?.params["media"] = "movie"
                     
                 case "podcast":
-                    self?.params["entity"] = "podcast"
+                    self?.params["media"] = "podcast"
                     
                 case "music":
-                    self?.params["entity"] = "musicArtist"
+                    self?.params["media"] = "music"
                     
                 case "musicVideo":
-                    self?.params["entity"] = "musicVideo"
+                    self?.params["media"] = "musicVideo"
                     
                 case "audiobook":
-                    self?.params["entity"] = "audiobook"
+                    self?.params["media"] = "audiobook"
                     
                 case "shortFilm":
-                    self?.params["entity"] = "shortFilmArtist"
+                    self?.params["media"] = "shortFilm"
                     
                 case "tvShow":
-                    self?.params["entity"] = "tvShow"
+                    self?.params["media"] = "tvShow"
                     
                 case "software":
-                    self?.params["entity"] = "software"
+                    self?.params["media"] = "software"
                     
                 case "ebook":
-                    self?.params["entity"] = "ebook"
+                    self?.params["media"] = "ebook"
                     
+                case "all":
+                    self?.params["media"] = "all"
                 default:
                     break
                 }
