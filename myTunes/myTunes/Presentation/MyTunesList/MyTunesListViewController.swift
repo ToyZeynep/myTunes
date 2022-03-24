@@ -131,7 +131,7 @@ extension MyTunesListViewController: MyTunesListDisplayLogic{
 }
 
 
-extension MyTunesListViewController: UICollectionViewDataSource {
+extension MyTunesListViewController: UICollectionViewDataSource , UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.myTunesList.count ?? 0
@@ -179,6 +179,10 @@ extension MyTunesListViewController: UICollectionViewDataSource {
         default:
             return trackCell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        router?.routeToDetails(index: indexPath.row)
     }
 }
 

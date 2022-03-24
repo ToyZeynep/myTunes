@@ -17,10 +17,12 @@ protocol MyTunesDetailsBusinessLogic: AnyObject {
 }
 
 protocol MyTunesDetailsDataStore:AnyObject {
-    
+    var myTune: Results? { get set }
 }
 
 final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetailsDataStore {
+    var myTune: Results?
+    
     var presenter: MyTunesDetailsPresentationLogic?
     var worker: MyTunesDetailsWorkingLogic?
 

@@ -12,8 +12,8 @@
 
 import UIKit
 
-@objc protocol MyTunesListRoutingLogic: AnyObject {
-
+protocol MyTunesListRoutingLogic: AnyObject {
+    func routeToDetails(index: Int)
 }
 
 protocol MyTunesListDataPassing: AnyObject {
@@ -23,4 +23,13 @@ protocol MyTunesListDataPassing: AnyObject {
 final class MyTunesListRouter:  MyTunesListRoutingLogic, MyTunesListDataPassing {
     weak var viewController: MyTunesListViewController?
     var dataStore: MyTunesListDataStore?
+    
+    func routeToDetails(index: Int) {
+        let storyBoard = UIStoryboard(name: "MyTunesDetails", bundle: nil)
+        let destVC: MyTunesDetailsViewController = storyBoard.instantiateViewController(identifier: "MyTunesDetails")
+        let myTune = dataStore?.myTunesList?[index]
+        destVC.router?.dataStore?.myTune = myTune
+        destVC.modalPresentationStyle = .fullScreen
+        viewController?.navigationController?.pushViewController(destVC, animated: true)
+    }
 }
