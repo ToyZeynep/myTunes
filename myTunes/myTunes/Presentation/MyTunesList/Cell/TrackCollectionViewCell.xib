@@ -19,7 +19,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbS-9N-Ykt">
                         <rect key="frame" x="0.0" y="151" width="237" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.12549019610000001" green="0.58823529409999997" blue="0.83553233790000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTo-kz-NRF">
@@ -69,9 +69,9 @@
             <size key="customSize" width="237" height="250"/>
             <connections>
                 <outlet property="artWorkImageView" destination="qoq-9i-su2" id="MQV-Po-sjP"/>
-                <outlet property="artistname" destination="BbS-9N-Ykt" id="i7X-QV-c20"/>
                 <outlet property="kind" destination="h0l-26-DDH" id="1wt-eW-935"/>
                 <outlet property="trackName" destination="lTo-kz-NRF" id="hsz-p7-x4F"/>
+                <outlet property="trackViewUrl" destination="BbS-9N-Ykt" id="i7X-QV-c20"/>
                 <outlet property="wrapperType" destination="LmC-3M-xZ7" id="yqU-3D-OMW"/>
             </connections>
             <point key="canvasLocation" x="45.652173913043484" y="30.133928571428569"/>

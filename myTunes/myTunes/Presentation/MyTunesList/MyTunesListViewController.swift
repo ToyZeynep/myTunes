@@ -86,9 +86,7 @@ final class MyTunesListViewController: UIViewController {
     func showPicker(_ sender: UIButton, list: [String]){
         McPicker.showAsPopover(data:[list], fromViewController: self, sourceView: sender, doneHandler:{ [weak self] (selections: [Int : String]) -> Void in
             if let name = selections[0] {
-                
                 switch name {
-                    
                 case "movie":
                     self?.params["entity"] = "album"
                     
@@ -143,23 +141,41 @@ extension MyTunesListViewController: UICollectionViewDataSource {
         let trackCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trackCell", for: indexPath) as! TrackCollectionViewCell
         let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionCollectionViewCell
         let artistCell = collectionView.dequeueReusableCell(withReuseIdentifier: "artistCell", for: indexPath) as! ArtistCollectionViewCell
+        
         let model = self.viewModel?.myTunesList[indexPath.item]
+        
         switch model?.wrapperType {
         case "track":
-            trackCell.artistname.text = model?.artistName
+            trackCell.trackViewUrl.text = "View on iTunes Store"
             trackCell.trackName.text = model?.trackName
             trackCell.wrapperType.text = model?.wrapperType
             trackCell.kind.text = model?.kind
             trackCell.artWorkImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
+            trackCell.trackViewUrl.addTapGesture {
+                if let url = URL(string: (model?.trackViewUrl)!) {
+                    UIApplication.shared.open(url)
+                }
+            }
             return trackCell
         case "artist":
-            
+            artistCell.artistNameLabel.text = model?.artistName
+            artistCell.artistViewUrl.text = "View on iTunes Store"
+            artistCell.wrapperTypeLabel.text = model?.wrapperType
             return artistCell
+            
         case "collection":
+        
+            collectionCell.viewUrl.text = "View on iTunes Store"
             collectionCell.collectionName.text = model?.collectionName
             collectionCell.wrapperType.text = model?.wrapperType
             collectionCell.collectionImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
+            collectionCell.viewUrl.addTapGesture {
+                if let url = URL(string: (model?.collectionViewUrl)!) {
+                    UIApplication.shared.open(url)
+                }
+            }
             return collectionCell
+            
         default:
             return trackCell
         }
@@ -188,7 +204,7 @@ extension MyTunesListViewController : UISearchBarDelegate {
     }
     
     func search(searchText: String){
-        self.params["limit"] = "10"
+        self.params["limit"] = "50"
         self.params["term"] = searchText
         print(params)
     }

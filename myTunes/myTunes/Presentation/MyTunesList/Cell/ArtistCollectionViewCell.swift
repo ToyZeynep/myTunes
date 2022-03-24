@@ -9,6 +9,9 @@ import UIKit
 
 class ArtistCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var wrapperTypeLabel: UILabel!
+    @IBOutlet weak var artistViewUrl: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

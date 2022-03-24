@@ -11,7 +11,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var wrapperType: UILabel!
     @IBOutlet weak var kind: UILabel!
     @IBOutlet weak var trackName: UILabel!
-    @IBOutlet weak var artistname: UILabel!
+    @IBOutlet weak var trackViewUrl: UILabel!
     @IBOutlet weak var artWorkImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -42,7 +42,10 @@ enum MyTunesList
                 var releaseDate : String?
                 var country : String?
                 var primaryGenreName : String?
-                
+                var artistViewUrl : String?
+                var collectionViewUrl : String?
+                var trackViewUrl : String?
+              
             }
         }
     }
