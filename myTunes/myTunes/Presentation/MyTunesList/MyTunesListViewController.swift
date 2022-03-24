@@ -131,16 +131,16 @@ extension MyTunesListViewController: MyTunesListDisplayLogic{
 }
 
 
-extension MyTunesListViewController: UICollectionViewDataSource {
+extension MyTunesListViewController: UICollectionViewDataSource , UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.myTunesList.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let trackCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trackCell", for: indexPath) as! TrackCollectionViewCell
-        let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionCollectionViewCell
-        let artistCell = collectionView.dequeueReusableCell(withReuseIdentifier: "artistCell", for: indexPath) as! ArtistCollectionViewCell
+        guard let trackCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trackCell", for: indexPath) as! TrackCollectionViewCell? else {return UICollectionViewCell()}
+        guard let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionCollectionViewCell? else {return UICollectionViewCell()}
+        guard let artistCell = collectionView.dequeueReusableCell(withReuseIdentifier: "artistCell", for: indexPath) as! ArtistCollectionViewCell? else {return UICollectionViewCell()}
         
         let model = self.viewModel?.myTunesList[indexPath.item]
         
@@ -179,6 +179,10 @@ extension MyTunesListViewController: UICollectionViewDataSource {
         default:
             return trackCell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        router?.routeToDetails(index: indexPath.item)
     }
 }
 
