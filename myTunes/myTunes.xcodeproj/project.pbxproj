@@ -26,6 +26,12 @@
 		2228D8D827EB9FD600AF7FFC /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D8D627EB9FD600AF7FFC /* TrackCollectionViewCell.swift */; };
 		2228D8D927EB9FD600AF7FFC /* TrackCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2228D8D727EB9FD600AF7FFC /* TrackCollectionViewCell.xib */; };
 		2228D8DC27EBA01E00AF7FFC /* GridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D8DB27EBA01E00AF7FFC /* GridFlowLayout.swift */; };
+		2238A61627EC8D8100AE4EF0 /* MyTunesDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A61027EC8D8100AE4EF0 /* MyTunesDetailsPresenter.swift */; };
+		2238A61727EC8D8100AE4EF0 /* MyTunesDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A61127EC8D8100AE4EF0 /* MyTunesDetailsWorker.swift */; };
+		2238A61827EC8D8100AE4EF0 /* MyTunesDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A61227EC8D8100AE4EF0 /* MyTunesDetailsRouter.swift */; };
+		2238A61927EC8D8100AE4EF0 /* MyTunesDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A61327EC8D8100AE4EF0 /* MyTunesDetailsModels.swift */; };
+		2238A61A27EC8D8100AE4EF0 /* MyTunesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A61427EC8D8100AE4EF0 /* MyTunesDetailsViewController.swift */; };
+		2238A61B27EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A61527EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift */; };
 		22F56D4227EC565F0041891D /* CollectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F56D4027EC565F0041891D /* CollectionCollectionViewCell.swift */; };
 		22F56D4327EC565F0041891D /* CollectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22F56D4127EC565F0041891D /* CollectionCollectionViewCell.xib */; };
 		22F56D4627EC566F0041891D /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F56D4427EC566F0041891D /* ArtistCollectionViewCell.swift */; };
@@ -57,6 +63,12 @@
 		2228D8D627EB9FD600AF7FFC /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		2228D8D727EB9FD600AF7FFC /* TrackCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCollectionViewCell.xib; sourceTree = "<group>"; };
 		2228D8DB27EBA01E00AF7FFC /* GridFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridFlowLayout.swift; sourceTree = "<group>"; };
+		2238A61027EC8D8100AE4EF0 /* MyTunesDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesDetailsPresenter.swift; sourceTree = "<group>"; };
+		2238A61127EC8D8100AE4EF0 /* MyTunesDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesDetailsWorker.swift; sourceTree = "<group>"; };
+		2238A61227EC8D8100AE4EF0 /* MyTunesDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesDetailsRouter.swift; sourceTree = "<group>"; };
+		2238A61327EC8D8100AE4EF0 /* MyTunesDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesDetailsModels.swift; sourceTree = "<group>"; };
+		2238A61427EC8D8100AE4EF0 /* MyTunesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesDetailsViewController.swift; sourceTree = "<group>"; };
+		2238A61527EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesDetailsInteractor.swift; sourceTree = "<group>"; };
 		22F56D4027EC565F0041891D /* CollectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		22F56D4127EC565F0041891D /* CollectionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionCollectionViewCell.xib; sourceTree = "<group>"; };
 		22F56D4427EC566F0041891D /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -150,6 +162,7 @@
 		2228D8B427EB6CD600AF7FFC /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2238A60F27EC8CDC00AE4EF0 /* MyTunesDetails */,
 				2228D8C227EB6D4A00AF7FFC /* MyTunesList */,
 			);
 			path = Presentation;
@@ -190,6 +203,19 @@
 				22F56D4827EC62680041891D /* ViewExtension.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		2238A60F27EC8CDC00AE4EF0 /* MyTunesDetails */ = {
+			isa = PBXGroup;
+			children = (
+				2238A61027EC8D8100AE4EF0 /* MyTunesDetailsPresenter.swift */,
+				2238A61127EC8D8100AE4EF0 /* MyTunesDetailsWorker.swift */,
+				2238A61227EC8D8100AE4EF0 /* MyTunesDetailsRouter.swift */,
+				2238A61327EC8D8100AE4EF0 /* MyTunesDetailsModels.swift */,
+				2238A61427EC8D8100AE4EF0 /* MyTunesDetailsViewController.swift */,
+				2238A61527EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift */,
+			);
+			path = MyTunesDetails;
 			sourceTree = "<group>";
 		};
 		8506CAE8F131D0B07455C6DA /* Pods */ = {
@@ -329,18 +355,24 @@
 			files = (
 				22F56D4927EC62680041891D /* ViewExtension.swift in Sources */,
 				22F56D4227EC565F0041891D /* CollectionCollectionViewCell.swift in Sources */,
+				2238A61827EC8D8100AE4EF0 /* MyTunesDetailsRouter.swift in Sources */,
 				2228D8D827EB9FD600AF7FFC /* TrackCollectionViewCell.swift in Sources */,
 				2228D89327EB448200AF7FFC /* AppDelegate.swift in Sources */,
 				2228D89527EB448200AF7FFC /* SceneDelegate.swift in Sources */,
+				2238A61A27EC8D8100AE4EF0 /* MyTunesDetailsViewController.swift in Sources */,
+				2238A61B27EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift in Sources */,
 				2228D8CC27EB6D7200AF7FFC /* MyTunesListModels.swift in Sources */,
 				2228D8A827EB481C00AF7FFC /* ApiConfiguration.swift in Sources */,
 				2228D8CE27EB6D7200AF7FFC /* MyTunesListInteractor.swift in Sources */,
 				2228D8B327EB51BA00AF7FFC /* Results.swift in Sources */,
+				2238A61927EC8D8100AE4EF0 /* MyTunesDetailsModels.swift in Sources */,
 				2228D8AA27EB48AA00AF7FFC /* ApiEndPoints.swift in Sources */,
 				22F56D4627EC566F0041891D /* ArtistCollectionViewCell.swift in Sources */,
 				2228D8B127EB512E00AF7FFC /* ListResponse.swift in Sources */,
 				2228D8C927EB6D7200AF7FFC /* MyTunesListPresenter.swift in Sources */,
 				2228D8AC27EB503B00AF7FFC /* ApiClient.swift in Sources */,
+				2238A61727EC8D8100AE4EF0 /* MyTunesDetailsWorker.swift in Sources */,
+				2238A61627EC8D8100AE4EF0 /* MyTunesDetailsPresenter.swift in Sources */,
 				2228D8CB27EB6D7200AF7FFC /* MyTunesListRouter.swift in Sources */,
 				2228D8DC27EBA01E00AF7FFC /* GridFlowLayout.swift in Sources */,
 				2228D8CD27EB6D7200AF7FFC /* MyTunesListViewController.swift in Sources */,
