@@ -22,6 +22,9 @@ protocol MyTunesDetailsDataStore:AnyObject {
 
 final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetailsDataStore {
     var presenter: MyTunesDetailsPresentationLogic?
-    var worker: MyTunesDetailsWorker?
+    var worker: MyTunesDetailsWorkingLogic?
 
+    init(worker: MyTunesDetailsWorkingLogic) {
+        self.worker = worker
+    }
 }

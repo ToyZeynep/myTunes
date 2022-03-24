@@ -21,7 +21,7 @@ protocol MyTunesDetailsDisplayLogic: AnyObject
 final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDisplayLogic {
     var interactor: MyTunesDetailsBusinessLogic?
     var router: ( MyTunesDetailsRoutingLogic & MyTunesDetailsDataPassing)?
-
+    var viewModel: MyTunesDetails.Something.ViewModel?
     // MARK: Object lifecycle
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -38,7 +38,7 @@ final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDispla
 
     private func setup() {
         let viewController = self
-        let interactor = MyTunesDetailsInteractor()
+        let interactor = MyTunesDetailsInteractor(worker: MyTunesDetailsWorker())
         let presenter = MyTunesDetailsPresenter()
         let router = MyTunesDetailsRouter()
         viewController.interactor = interactor
@@ -60,7 +60,7 @@ final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDispla
     // MARK: - display view model from MyTunesDetailsPresenter
     extension MyTunesDetailsViewController{
     func displayMyTunesDetails(viewModel: MyTunesDetails.Something.ViewModel) {
-       
+        self.viewModel = viewModel
     }
 
 }
