@@ -23,6 +23,9 @@
 		2228D8CD27EB6D7200AF7FFC /* MyTunesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D8C727EB6D7200AF7FFC /* MyTunesListViewController.swift */; };
 		2228D8CE27EB6D7200AF7FFC /* MyTunesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D8C827EB6D7200AF7FFC /* MyTunesListInteractor.swift */; };
 		2228D8D027EB6D9100AF7FFC /* MyTunesList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2228D8CF27EB6D9100AF7FFC /* MyTunesList.storyboard */; };
+		2228D8D827EB9FD600AF7FFC /* MyTunesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D8D627EB9FD600AF7FFC /* MyTunesCollectionViewCell.swift */; };
+		2228D8D927EB9FD600AF7FFC /* MyTunesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2228D8D727EB9FD600AF7FFC /* MyTunesCollectionViewCell.xib */; };
+		2228D8DC27EBA01E00AF7FFC /* GridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D8DB27EBA01E00AF7FFC /* GridFlowLayout.swift */; };
 		6F50C0E5C09E870B565B42B9 /* Pods_myTunes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D419A544DE6A2EF6987932 /* Pods_myTunes.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,9 @@
 		2228D8C727EB6D7200AF7FFC /* MyTunesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesListViewController.swift; sourceTree = "<group>"; };
 		2228D8C827EB6D7200AF7FFC /* MyTunesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesListInteractor.swift; sourceTree = "<group>"; };
 		2228D8CF27EB6D9100AF7FFC /* MyTunesList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyTunesList.storyboard; sourceTree = "<group>"; };
+		2228D8D627EB9FD600AF7FFC /* MyTunesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesCollectionViewCell.swift; sourceTree = "<group>"; };
+		2228D8D727EB9FD600AF7FFC /* MyTunesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTunesCollectionViewCell.xib; sourceTree = "<group>"; };
+		2228D8DB27EBA01E00AF7FFC /* GridFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridFlowLayout.swift; sourceTree = "<group>"; };
 		4EFBF8CA024002BF2A23A4E6 /* Pods-myTunes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTunes.debug.xcconfig"; path = "Target Support Files/Pods-myTunes/Pods-myTunes.debug.xcconfig"; sourceTree = "<group>"; };
 		54B7A23B48D73885BEB31FC7 /* Pods-myTunes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTunes.release.xcconfig"; path = "Target Support Files/Pods-myTunes/Pods-myTunes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +89,7 @@
 		2228D89127EB448200AF7FFC /* myTunes */ = {
 			isa = PBXGroup;
 			children = (
+				2228D8DA27EBA00700AF7FFC /* Util */,
 				2228D8B427EB6CD600AF7FFC /* Presentation */,
 				2228D8AD27EB50F400AF7FFC /* Data */,
 				2228D8A627EB47FF00AF7FFC /* Network */,
@@ -141,15 +148,33 @@
 		2228D8C227EB6D4A00AF7FFC /* MyTunesList */ = {
 			isa = PBXGroup;
 			children = (
+				2228D8D127EB994800AF7FFC /* Cell */,
+				2228D8C727EB6D7200AF7FFC /* MyTunesListViewController.swift */,
 				2228D8C327EB6D7200AF7FFC /* MyTunesListPresenter.swift */,
 				2228D8C427EB6D7200AF7FFC /* MyTunesListWorker.swift */,
 				2228D8C527EB6D7200AF7FFC /* MyTunesListRouter.swift */,
 				2228D8C627EB6D7200AF7FFC /* MyTunesListModels.swift */,
-				2228D8C727EB6D7200AF7FFC /* MyTunesListViewController.swift */,
 				2228D8C827EB6D7200AF7FFC /* MyTunesListInteractor.swift */,
 				2228D8CF27EB6D9100AF7FFC /* MyTunesList.storyboard */,
 			);
 			path = MyTunesList;
+			sourceTree = "<group>";
+		};
+		2228D8D127EB994800AF7FFC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2228D8D627EB9FD600AF7FFC /* MyTunesCollectionViewCell.swift */,
+				2228D8D727EB9FD600AF7FFC /* MyTunesCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2228D8DA27EBA00700AF7FFC /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2228D8DB27EBA01E00AF7FFC /* GridFlowLayout.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		8506CAE8F131D0B07455C6DA /* Pods */ = {
@@ -231,6 +256,7 @@
 			files = (
 				2228D89F27EB448500AF7FFC /* LaunchScreen.storyboard in Resources */,
 				2228D8D027EB6D9100AF7FFC /* MyTunesList.storyboard in Resources */,
+				2228D8D927EB9FD600AF7FFC /* MyTunesCollectionViewCell.xib in Resources */,
 				2228D89C27EB448500AF7FFC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2228D8D827EB9FD600AF7FFC /* MyTunesCollectionViewCell.swift in Sources */,
 				2228D89327EB448200AF7FFC /* AppDelegate.swift in Sources */,
 				2228D89527EB448200AF7FFC /* SceneDelegate.swift in Sources */,
 				2228D8CC27EB6D7200AF7FFC /* MyTunesListModels.swift in Sources */,
@@ -295,6 +322,7 @@
 				2228D8C927EB6D7200AF7FFC /* MyTunesListPresenter.swift in Sources */,
 				2228D8AC27EB503B00AF7FFC /* ApiClient.swift in Sources */,
 				2228D8CB27EB6D7200AF7FFC /* MyTunesListRouter.swift in Sources */,
+				2228D8DC27EBA01E00AF7FFC /* GridFlowLayout.swift in Sources */,
 				2228D8CD27EB6D7200AF7FFC /* MyTunesListViewController.swift in Sources */,
 				2228D8CA27EB6D7200AF7FFC /* MyTunesListWorker.swift in Sources */,
 			);

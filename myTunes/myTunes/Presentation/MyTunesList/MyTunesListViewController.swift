@@ -11,16 +11,23 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol MyTunesListDisplayLogic: AnyObject
 {
     func displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel)
-
+    
 }
 
 final class MyTunesListViewController: UIViewController {
+    
     var interactor: MyTunesListBusinessLogic?
     var router: ( MyTunesListRoutingLogic & MyTunesListDataPassing)?
+    var viewModel: MyTunesList.Fetch.ViewModel?
+    var gridFlowLayout = GridFlowLayout()
+    @IBOutlet weak var myTunesSearchBar: UISearchBar!
+    @IBOutlet weak var myTunesCollectionView: UICollectionView!
+    
     
     // MARK: Object lifecycle
     
@@ -53,13 +60,64 @@ final class MyTunesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.fetchMyTunesList()
+        myTunesCollectionView.collectionViewLayout = gridFlowLayout
+        let nib = UINib(nibName: "MyTunesCollectionViewCell", bundle: nil)
+        myTunesCollectionView.register(nib, forCellWithReuseIdentifier: "myTunesCell")
+    }
+}
+
+extension MyTunesListViewController: MyTunesListDisplayLogic{
+    func displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel)
+    {
+        self.viewModel = viewModel
+        myTunesCollectionView.reloadData()
+    }
+}
+
+
+extension MyTunesListViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.myTunesList.count ?? 0
     }
     
-}
-// MARK: - display view model from MyTunesListPresenter
-extension MyTunesListViewController: MyTunesListDisplayLogic{
-    func displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel) {
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myTunesCell", for: indexPath) as! MyTunesCollectionViewCell
+        let model = self.viewModel?.myTunesList[indexPath.item]
+        cell.artistname.text = model?.artistName
+        cell.trackName.text = model?.trackName
+        cell.wrapperType.text = model?.wrapperType
+        cell.kind.text = model?.kind
+        cell.artWorkImageView.kf.setImage(with: URL(string: (model?.artworkUrl60)!))
+        return cell
     }
 }
+
+
+// MARK: - SearchBar Delegate
+
+extension MyTunesListViewController : UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(MyTunesListViewController.reload), object: nil)
+        self.perform(#selector(MyTunesListViewController.reload), with: nil, afterDelay: 0.7)
+    }
+    
+    @objc func reload() {
+        guard let searchText = myTunesSearchBar.text else { return }
+        
+        if searchText == "" {
+            self.viewModel?.myTunesList.removeAll()
+            myTunesCollectionView.reloadData()
+        } else {
+            search(searchText: searchText)
+        }
+    }
+    
+    func search(searchText: String){
+        var params = [String: Any]()
+        params["term"] = searchText
+        interactor?.fetchMyTunesList(params: params)
+    }
+}
+

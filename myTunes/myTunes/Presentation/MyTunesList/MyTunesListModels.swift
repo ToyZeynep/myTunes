@@ -15,34 +15,33 @@ import UIKit
 enum MyTunesList
 {
     // MARK: Use cases
-
+    
     enum Fetch
     {
-    
+        
         struct Response
         {
             var myTunesList: [Results]
         }
-
+        
         struct ViewModel
         {
             var myTunesList: [MyTunesList.Fetch.ViewModel.MyTunes]
             
             struct MyTunes {
                 
-            let wrapperType : String?
-            let kind : String?
-            let artistId : Int?
-            let artistName : String?
-            let collectionName : String?
-            let trackName : String?
-            let artworkUrl30 : String?
-            let artworkUrl60 : String?
-            let artworkUrl100 : String?
-            let releaseDate : String?
-            let country : String?
-            let primaryGenreName : String?
-            
+                var wrapperType : String?
+                var kind : String?
+                var artistId : Int?
+                var artistName : String?
+                var collectionName : String?
+                var trackName : String?
+                var artworkUrl30 : String?
+                var artworkUrl60 : String?
+                var artworkUrl100 : String?
+                var releaseDate : String?
+                var country : String?
+                var primaryGenreName : String?
                 
             }
         }
