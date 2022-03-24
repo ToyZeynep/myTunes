@@ -12,43 +12,16 @@
 
 import UIKit
 
-@objc protocol MyTunesDetailsRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+protocol MyTunesDetailsRoutingLogic: AnyObject {
+   
 }
 
-protocol MyTunesDetailsDataPassing {
+protocol MyTunesDetailsDataPassing: AnyObject {
     var dataStore: MyTunesDetailsDataStore? { get }
 }
 
-class MyTunesDetailsRouter: NSObject, MyTunesDetailsRoutingLogic, MyTunesDetailsDataPassing {
+final class MyTunesDetailsRouter:MyTunesDetailsRoutingLogic, MyTunesDetailsDataPassing {
     weak var viewController: MyTunesDetailsViewController?
     var dataStore: MyTunesDetailsDataStore?
 
-// MARK: Routing (navigating to other screens)
-
-//func routeToSomewhere(segue: UIStoryboardSegue?) {
-//    if let segue = segue {
-//        let destinationVC = segue.destination as! SomewhereViewController
-//        var destinationDS = destinationVC.router!.dataStore!
-//        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//    } else {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-//        var destinationDS = destinationVC.router!.dataStore!
-//        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//        navigateToSomewhere(source: viewController!, destination: destinationVC)
-//    }
-//}
-
-// MARK: Navigation to other screen
-
-//func navigateToSomewhere(source: MyTunesDetailsViewController, destination: SomewhereViewController) {
-//    source.show(destination, sender: nil)
-//}
-
-// MARK: Passing data to other screen
-
-//    func passDataToSomewhere(source: MyTunesDetailsDataStore, destination: inout SomewhereDataStore) {
-//        destination.name = source.name
-//    }
 }

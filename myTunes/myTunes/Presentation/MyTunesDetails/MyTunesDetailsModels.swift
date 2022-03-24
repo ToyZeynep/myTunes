@@ -14,7 +14,7 @@ import UIKit
 
 enum MyTunesDetails
 {
-    // MARK: Use cases
+  
 
     enum Something
     {
@@ -33,22 +33,4 @@ enum MyTunesDetails
 
         }
     }
-    
-//    enum SomethingElse
-//    {
-//        struct Request
-//        {
-//
-//        }
-//
-//        struct Response
-//        {
-//
-//        }
-//
-//        struct ViewModel
-//        {
-//
-//        }
-//    }
 }

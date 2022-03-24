@@ -12,12 +12,12 @@
 
 import UIKit
 
-class MyTunesDetailsWorker {
-    func doSomeWork() {
-        
-    }
-//    
-//    func doSomeOtherWork() {
-//
-//    }
+
+protocol MyTunesDetailsWorkingLogic: AnyObject {
+    
+}
+
+final class MyTunesDetailsWorker: MyTunesDetailsWorkingLogic {
+  
+    
 }

@@ -12,15 +12,15 @@
 
 import UIKit
 
-protocol MyTunesDetailsDisplayLogic: class
+protocol MyTunesDetailsDisplayLogic: AnyObject
 {
-    func displaySomething(viewModel: MyTunesDetails.Something.ViewModel)
-//    func displaySomethingElse(viewModel: MyTunesDetails.SomethingElse.ViewModel)
+    func displayMyTunesDetails(viewModel: MyTunesDetails.Something.ViewModel)
+
 }
 
-class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDisplayLogic {
+final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDisplayLogic {
     var interactor: MyTunesDetailsBusinessLogic?
-    var router: (NSObjectProtocol & MyTunesDetailsRoutingLogic & MyTunesDetailsDataPassing)?
+    var router: ( MyTunesDetailsRoutingLogic & MyTunesDetailsDataPassing)?
 
     // MARK: Object lifecycle
 
@@ -49,56 +49,18 @@ class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDisplayLogic
         router.dataStore = interactor
     }
 
-    // MARK: - Routing
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-
     // MARK: - View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
-//        doSomethingElse()
+    
     }
     
-    //MARK: - receive events from UI
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-//
-//    @IBAction func someButtonTapped(_ sender: Any) {
-//
-//    }
-//
-//    @IBAction func otherButtonTapped(_ sender: Any) {
-//
-//    }
-    
-    // MARK: - request data from MyTunesDetailsInteractor
-
-    func doSomething() {
-        let request = MyTunesDetails.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-//
-//    func doSomethingElse() {
-//        let request = MyTunesDetails.SomethingElse.Request()
-//        interactor?.doSomethingElse(request: request)
-//    }
-
+}
     // MARK: - display view model from MyTunesDetailsPresenter
-
-    func displaySomething(viewModel: MyTunesDetails.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    extension MyTunesDetailsViewController{
+    func displayMyTunesDetails(viewModel: MyTunesDetails.Something.ViewModel) {
+       
     }
-//
-//    func displaySomethingElse(viewModel: MyTunesDetails.SomethingElse.ViewModel) {
-//        // do sometingElse with viewModel
-//    }
+
 }

@@ -12,35 +12,16 @@
 
 import UIKit
 
-protocol MyTunesDetailsBusinessLogic {
-    func doSomething(request: MyTunesDetails.Something.Request)
-//    func doSomethingElse(request: MyTunesDetails.SomethingElse.Request)
+protocol MyTunesDetailsBusinessLogic: AnyObject {
+   
 }
 
-protocol MyTunesDetailsDataStore {
-    //var name: String { get set }
+protocol MyTunesDetailsDataStore:AnyObject {
+    
 }
 
-class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetailsDataStore {
+final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetailsDataStore {
     var presenter: MyTunesDetailsPresentationLogic?
     var worker: MyTunesDetailsWorker?
-    //var name: String = ""
 
-    // MARK: Do something (and send response to MyTunesDetailsPresenter)
-
-    func doSomething(request: MyTunesDetails.Something.Request) {
-        worker = MyTunesDetailsWorker()
-        worker?.doSomeWork()
-
-        let response = MyTunesDetails.Something.Response()
-        presenter?.presentSomething(response: response)
-    }
-//
-//    func doSomethingElse(request: MyTunesDetails.SomethingElse.Request) {
-//        worker = MyTunesDetailsWorker()
-//        worker?.doSomeOtherWork()
-//
-//        let response = MyTunesDetails.SomethingElse.Response()
-//        presenter?.presentSomethingElse(response: response)
-//    }
 }
