@@ -31,7 +31,7 @@ extension UIView {
     
     func dropShadow() {
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.purple.cgColor
+        self.layer.borderColor = UIColor.clear.cgColor
         self.layer.cornerRadius = 10
         self.layer.shadowColor = UIColor.gray.cgColor
         self.layer.shadowOpacity = 1

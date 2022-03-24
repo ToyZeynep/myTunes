@@ -11,8 +11,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var wrapperType: UILabel!
     @IBOutlet weak var kind: UILabel!
     @IBOutlet weak var trackName: UILabel!
-    @IBOutlet weak var trackViewUrl: UILabel!
-    @IBOutlet weak var artWorkImageView: UIImageView!
+     @IBOutlet weak var artWorkImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -24,9 +23,8 @@ class TrackCollectionViewCell: UICollectionViewCell {
         contentView.frame = contentView.frame.inset(by: margins)
         contentView.layer.cornerRadius = 8
         contentView.backgroundColor = UIColor.white
-        contentView.layer.borderColor = UIColor.gray.cgColor
+        contentView.layer.borderColor = UIColor.systemMint.cgColor
         contentView.layer.borderWidth = 1
         contentView.clipsToBounds = true
-        
     }
 }

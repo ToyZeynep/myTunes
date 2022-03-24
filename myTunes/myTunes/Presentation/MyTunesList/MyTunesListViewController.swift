@@ -26,7 +26,7 @@ final class MyTunesListViewController: UIViewController {
     var router: ( MyTunesListRoutingLogic & MyTunesListDataPassing)?
     var viewModel: MyTunesList.Fetch.ViewModel?
     var gridFlowLayout = GridFlowLayout()
-    let filter : [String] = [ "movie", "podcast", "music", "musicVideo", "audiobook", "shortFilm", "tvShow" , "software", "ebook", "all"]
+    let filter : [String] = [Media.movie.rawValue, Media.podcast.rawValue, Media.music.rawValue, Media.musicVideo.rawValue, Media.audiobook.rawValue, Media.shortFilm.rawValue, Media.tvShow.rawValue , Media.software.rawValue, Media.ebook.rawValue, Media.all.rawValue]
     @IBOutlet weak var myTunesSearchBar: UISearchBar!
     @IBOutlet weak var myTunesCollectionView: UICollectionView!
     @IBOutlet weak var selectKindButton: UIButton!
@@ -36,9 +36,6 @@ final class MyTunesListViewController: UIViewController {
             interactor?.fetchMyTunesList(params: params)
         }
     }
-    
-    
-    
     
     // MARK: Object lifecycle
     
@@ -75,13 +72,14 @@ final class MyTunesListViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.navigationController?.navigationBar.backgroundColor = .clear
         self.title = "MyTunesList"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemBlue]
-       
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectKindButton.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        selectKindButton.tintColor = .systemMint
         myTunesCollectionView.collectionViewLayout = gridFlowLayout
         let nibTr = UINib(nibName: "TrackCollectionViewCell", bundle: nil)
         myTunesCollectionView.register(nibTr, forCellWithReuseIdentifier: "trackCell")
@@ -91,42 +89,63 @@ final class MyTunesListViewController: UIViewController {
         myTunesCollectionView.register(nibAr, forCellWithReuseIdentifier: "artistCell")
     }
     
+    @IBAction func wrapperTypeSegmentedController(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex{
+        case 1:
+            var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
+            for task in (self.viewModel?.myTunesList)! {
+                let str = task.wrapperType
+                if str!.contains("artist"){
+                    filteredData.append(task)
+                }
+            }
+            self.viewModel?.myTunesList.removeAll()
+            self.viewModel?.myTunesList.append(contentsOf: filteredData)
+            self.myTunesCollectionView.reloadData()
+            
+        default:
+            break
+    }
+    }
     @IBAction func selectKindButton(_ sender: Any) {
         showPicker(selectKindButton, list: filter )
     }
     func showPicker(_ sender: UIButton, list: [String]){
         McPicker.showAsPopover(data:[list], fromViewController: self, sourceView: sender, doneHandler:{ [weak self] (selections: [Int : String]) -> Void in
             if let name = selections[0] {
+                
                 switch name {
-                case "movie":
-                    self?.params["media"] = "movie"
+                case  Media.movie.rawValue:
+                    self?.params["media"] =  Media.movie.rawValue
                     
-                case "podcast":
-                    self?.params["media"] = "podcast"
+                case Media.podcast.rawValue:
+                    self?.params["media"] = Media.podcast.rawValue
                     
-                case "music":
-                    self?.params["media"] = "music"
+                case Media.music.rawValue:
+                    self?.params["media"] = Media.music.rawValue
                     
-                case "musicVideo":
-                    self?.params["media"] = "musicVideo"
+                case  Media.musicVideo.rawValue:
+                    self?.params["media"] =  Media.musicVideo.rawValue
                     
-                case "audiobook":
-                    self?.params["media"] = "audiobook"
+                case Media.audiobook.rawValue:
+                    self?.params["media"] = Media.audiobook.rawValue
                     
-                case "shortFilm":
-                    self?.params["media"] = "shortFilm"
+                case Media.shortFilm.rawValue:
+                    self?.params["media"] = Media.shortFilm.rawValue
                     
-                case "tvShow":
-                    self?.params["media"] = "tvShow"
+                case Media.tvShow.rawValue:
+                    self?.params["media"] = Media.tvShow.rawValue
                     
-                case "software":
-                    self?.params["media"] = "software"
+                case Media.software.rawValue:
+                    self?.params["media"] = Media.software.rawValue
                     
-                case "ebook":
-                    self?.params["media"] = "ebook"
+                case Media.ebook.rawValue:
+                    self?.params["media"] = Media.ebook.rawValue
                     
-                case "all":
-                    self?.params["media"] = "all"
+                case  Media.all.rawValue:
+                    self?.params["media"] =  Media.all.rawValue
+                    
                 default:
                     break
                 }
@@ -139,6 +158,7 @@ extension MyTunesListViewController: MyTunesListDisplayLogic{
     func displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel)
     {
         self.viewModel = viewModel
+        
         myTunesCollectionView.reloadData()
     }
 }
@@ -158,35 +178,29 @@ extension MyTunesListViewController: UICollectionViewDataSource , UICollectionVi
         let model = self.viewModel?.myTunesList[indexPath.item]
         
         switch model?.wrapperType {
-        case "track":
-            trackCell.trackViewUrl.text = "View on iTunes Store"
+        case WrapperType.track.rawValue:
+            
             trackCell.trackName.text = model?.trackName
             trackCell.wrapperType.text = model?.wrapperType
             trackCell.kind.text = model?.kind
             trackCell.artWorkImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
-            trackCell.trackViewUrl.addTapGesture {
-                if let url = URL(string: (model?.trackViewUrl)!) {
-                    UIApplication.shared.open(url)
-                }
-            }
+            
             return trackCell
-        case "artist":
+            
+        case WrapperType.artist.rawValue:
+            
             artistCell.artistNameLabel.text = model?.artistName
-            artistCell.artistViewUrl.text = "View on iTunes Store"
+            artistCell.country.text = model?.country
             artistCell.wrapperTypeLabel.text = model?.wrapperType
             return artistCell
             
-        case "collection":
-        
-            collectionCell.viewUrl.text = "View on iTunes Store"
+        case WrapperType.collection.rawValue:
+            
+            collectionCell.country.text = model?.country
             collectionCell.collectionName.text = model?.collectionName
             collectionCell.wrapperType.text = model?.wrapperType
             collectionCell.collectionImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
-            collectionCell.viewUrl.addTapGesture {
-                if let url = URL(string: (model?.collectionViewUrl)!) {
-                    UIApplication.shared.open(url)
-                }
-            }
+            
             return collectionCell
             
         default:
@@ -221,7 +235,7 @@ extension MyTunesListViewController : UISearchBarDelegate {
     }
     
     func search(searchText: String){
-        self.params["limit"] = "50"
+        self.params["limit"] = "25"
         self.params["term"] = searchText
         print(params)
     }

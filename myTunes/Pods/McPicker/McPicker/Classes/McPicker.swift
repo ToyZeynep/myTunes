@@ -48,14 +48,14 @@ open class McPicker: UIView {
             }
         }
     }
-    public var toolbarDoneButtonColor: UIColor? {
+    public var toolbarDoneButtonColor: UIColor? = .cyan {
         didSet {
             applyToolbarButtonItemsSettings(withAction: #selector(McPicker.done)) { (barButtonItem) in
                 barButtonItem.tintColor = toolbarDoneButtonColor
             }
         }
     }
-    public var toolbarCancelButtonColor: UIColor? {
+    public var toolbarCancelButtonColor: UIColor? = .cyan {
         didSet {
             applyToolbarButtonItemsSettings(withAction: #selector(McPicker.cancel)) { (barButtonItem) in
                 barButtonItem.tintColor = toolbarCancelButtonColor
@@ -101,7 +101,7 @@ open class McPicker: UIView {
     public typealias SelectionChangedHandler = ((_ selections: [Int:String], _ componentThatChanged: Int) -> Void)
 
     internal var popOverContentSize: CGSize {
-        return CGSize(width: Constant.pickerHeight + Constant.toolBarHeight, height: Constant.pickerHeight + Constant.toolBarHeight)
+        return CGSize(width: 200, height: Constant.pickerHeight + Constant.toolBarHeight)
     }
     internal var _backgroundColorAlpha: CGFloat {
         return self.backgroundColorAlpha ?? Constant.backgroundColorAlpha
@@ -121,8 +121,8 @@ open class McPicker: UIView {
     }
     internal enum Constant {
         static let backgroundColorAlpha: CGFloat =  0.75
-        static let pickerHeight: CGFloat = 216.0
-        static let toolBarHeight: CGFloat = 44.0
+        static let pickerHeight: CGFloat = 220.0
+        static let toolBarHeight: CGFloat = 45.0
         static let animationSpeed: TimeInterval = 0.25
         static let barButtonFixedSpacePadding: CGFloat = 0.02
     }

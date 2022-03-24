@@ -9,7 +9,7 @@ import UIKit
 
 class CollectionCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var viewUrl: UILabel!
+    @IBOutlet weak var country: UILabel!
     @IBOutlet weak var wrapperType: UILabel!
     @IBOutlet weak var collectionName: UILabel!
     @IBOutlet weak var collectionImageView: UIImageView!
@@ -24,10 +24,10 @@ class CollectionCollectionViewCell: UICollectionViewCell {
         contentView.frame = contentView.frame.inset(by: margins)
         contentView.layer.cornerRadius = 8
         contentView.backgroundColor = UIColor.white
-        contentView.layer.borderColor = UIColor.gray.cgColor
+        contentView.layer.borderColor = UIColor.systemMint.cgColor
         contentView.layer.borderWidth = 1
         contentView.clipsToBounds = true
-        
+      
     }
 
 }

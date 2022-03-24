@@ -62,14 +62,14 @@ final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDispla
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.tintColor = .systemBlue
+        self.navigationController?.navigationBar.tintColor = .systemMint
         self.navigationController?.navigationBar.backgroundColor = .clear
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor?.fetchMyTunesDetails()
-        self.title = "Details"
+        self.title = "MyTunesDetails"
     }
 }
 
@@ -78,21 +78,23 @@ extension MyTunesDetailsViewController{
     func displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel) {
         self.viewModel = viewModel
         detailsView.dropViewShadow()
-       
+        linkLabel.tintColor = .systemMint
         
         switch viewModel.wrapperType {
-        case "artist":
+        case WrapperType.artist.rawValue:
+            
             nameLabel.text = viewModel.artistName
             linkLabel.text = "View on iTunes Store"
+            detailsLabel.text = viewModel.wrapperType
             primaryGenreLabel.text = viewModel.primaryGenreName
             linkLabel.addTapGesture {
                 if let url = URL(string: (viewModel.artistViewUrl)!) {
                     UIApplication.shared.open(url)
                 }
             }
-            detailsLabel.text = viewModel.wrapperType
+           
+        case WrapperType.collection.rawValue:
             
-        case "collection":
             nameLabel.text = viewModel.collectionName
             linkLabel.text = "View on iTunes Store"
             primaryGenreLabel.text = viewModel.primaryGenreName
@@ -105,7 +107,7 @@ extension MyTunesDetailsViewController{
                 }
             }
             
-        case "track":
+        case WrapperType.track.rawValue:
             nameLabel.text = viewModel.trackName
             linkLabel.text = "View on iTunes Store"
             primaryGenreLabel.text = viewModel.primaryGenreName

@@ -34,6 +34,7 @@
 		2238A61B27EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A61527EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift */; };
 		2238A61D27ECA04900AE4EF0 /* MyTunesDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2238A61C27ECA04900AE4EF0 /* MyTunesDetails.storyboard */; };
 		2238A61F27ECD00100AE4EF0 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A61E27ECD00100AE4EF0 /* DateExtension.swift */; };
+		2238A62127ECF42B00AE4EF0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A62027ECF42B00AE4EF0 /* Constants.swift */; };
 		22F56D4227EC565F0041891D /* CollectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F56D4027EC565F0041891D /* CollectionCollectionViewCell.swift */; };
 		22F56D4327EC565F0041891D /* CollectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22F56D4127EC565F0041891D /* CollectionCollectionViewCell.xib */; };
 		22F56D4627EC566F0041891D /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F56D4427EC566F0041891D /* ArtistCollectionViewCell.swift */; };
@@ -73,6 +74,7 @@
 		2238A61527EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTunesDetailsInteractor.swift; sourceTree = "<group>"; };
 		2238A61C27ECA04900AE4EF0 /* MyTunesDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyTunesDetails.storyboard; sourceTree = "<group>"; };
 		2238A61E27ECD00100AE4EF0 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		2238A62027ECF42B00AE4EF0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		22F56D4027EC565F0041891D /* CollectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		22F56D4127EC565F0041891D /* CollectionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionCollectionViewCell.xib; sourceTree = "<group>"; };
 		22F56D4427EC566F0041891D /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -166,8 +168,8 @@
 		2228D8B427EB6CD600AF7FFC /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				2238A60F27EC8CDC00AE4EF0 /* MyTunesDetails */,
 				2228D8C227EB6D4A00AF7FFC /* MyTunesList */,
+				2238A60F27EC8CDC00AE4EF0 /* MyTunesDetails */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -206,6 +208,7 @@
 				2228D8DB27EBA01E00AF7FFC /* GridFlowLayout.swift */,
 				22F56D4827EC62680041891D /* ViewExtension.swift */,
 				2238A61E27ECD00100AE4EF0 /* DateExtension.swift */,
+				2238A62027ECF42B00AE4EF0 /* Constants.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				2228D89327EB448200AF7FFC /* AppDelegate.swift in Sources */,
 				2228D89527EB448200AF7FFC /* SceneDelegate.swift in Sources */,
 				2238A61A27EC8D8100AE4EF0 /* MyTunesDetailsViewController.swift in Sources */,
+				2238A62127ECF42B00AE4EF0 /* Constants.swift in Sources */,
 				2238A61B27EC8D8100AE4EF0 /* MyTunesDetailsInteractor.swift in Sources */,
 				2228D8CC27EB6D7200AF7FFC /* MyTunesListModels.swift in Sources */,
 				2228D8A827EB481C00AF7FFC /* ApiConfiguration.swift in Sources */,

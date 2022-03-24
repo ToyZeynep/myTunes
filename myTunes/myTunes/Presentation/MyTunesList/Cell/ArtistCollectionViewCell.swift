@@ -10,7 +10,7 @@ import UIKit
 class ArtistCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var wrapperTypeLabel: UILabel!
-    @IBOutlet weak var artistViewUrl: UILabel!
+    @IBOutlet weak var country: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,9 +23,9 @@ class ArtistCollectionViewCell: UICollectionViewCell {
         contentView.frame = contentView.frame.inset(by: margins)
         contentView.layer.cornerRadius = 8
         contentView.backgroundColor = UIColor.white
-        contentView.layer.borderColor = UIColor.gray.cgColor
+        contentView.layer.borderColor = UIColor.systemMint.cgColor
         contentView.layer.borderWidth = 1
         contentView.clipsToBounds = true
-        
+        country.tintColor = .systemMint
     }
 }
