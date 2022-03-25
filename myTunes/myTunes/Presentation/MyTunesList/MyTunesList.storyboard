@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmI-Sa-T0K">
-                                <rect key="frame" x="354" y="88" width="50" height="50"/>
+                                <rect key="frame" x="364" y="88" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3pH-5Q-NWu"/>
                                     <constraint firstAttribute="width" constant="50" id="OkT-oK-ZsS"/>
@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="K3Q-V8-Ge7">
-                                <rect key="frame" x="0.0" y="88" width="340" height="50"/>
+                                <rect key="frame" x="0.0" y="88" width="364" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="IRn-i9-kAS"/>
                                 </constraints>
@@ -92,8 +92,8 @@
                             <constraint firstItem="NmI-Sa-T0K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="77h-7r-oy6"/>
                             <constraint firstItem="K3Q-V8-Ge7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="BRK-Hp-ijk"/>
                             <constraint firstItem="q3z-GV-RKy" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Hmr-ID-CEQ"/>
-                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="leading" secondItem="K3Q-V8-Ge7" secondAttribute="trailing" constant="14" id="Iyg-Tj-nQ5"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NmI-Sa-T0K" secondAttribute="trailing" constant="10" id="NBx-SK-Z0L"/>
+                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="leading" secondItem="K3Q-V8-Ge7" secondAttribute="trailing" id="Mix-uj-yMo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NmI-Sa-T0K" secondAttribute="trailing" id="NBx-SK-Z0L"/>
                             <constraint firstItem="56l-OE-aTC" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="QAw-9a-MOy"/>
                             <constraint firstItem="56l-OE-aTC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="R0M-VJ-jaE"/>
                             <constraint firstItem="q3z-GV-RKy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RQr-8e-sJg"/>
