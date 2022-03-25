@@ -41,6 +41,7 @@
 		22F56D4727EC566F0041891D /* ArtistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22F56D4527EC566F0041891D /* ArtistCollectionViewCell.xib */; };
 		22F56D4927EC62680041891D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F56D4827EC62680041891D /* ViewExtension.swift */; };
 		22F6A09827EDAF5000C3524B /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F6A09727EDAF5000C3524B /* ImageViewExtension.swift */; };
+		22F6A09E27EE347700C3524B /* myTunes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22F6A09C27EE347700C3524B /* myTunes.xcdatamodeld */; };
 		6F50C0E5C09E870B565B42B9 /* Pods_myTunes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D419A544DE6A2EF6987932 /* Pods_myTunes.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		22F56D4527EC566F0041891D /* ArtistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistCollectionViewCell.xib; sourceTree = "<group>"; };
 		22F56D4827EC62680041891D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		22F6A09727EDAF5000C3524B /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		22F6A09D27EE347700C3524B /* FavoriteTunes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteTunes.xcdatamodel; sourceTree = "<group>"; };
 		4EFBF8CA024002BF2A23A4E6 /* Pods-myTunes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTunes.debug.xcconfig"; path = "Target Support Files/Pods-myTunes/Pods-myTunes.debug.xcconfig"; sourceTree = "<group>"; };
 		54B7A23B48D73885BEB31FC7 /* Pods-myTunes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTunes.release.xcconfig"; path = "Target Support Files/Pods-myTunes/Pods-myTunes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +130,7 @@
 				2228D89B27EB448500AF7FFC /* Assets.xcassets */,
 				2228D89D27EB448500AF7FFC /* LaunchScreen.storyboard */,
 				2228D8A027EB448500AF7FFC /* Info.plist */,
+				22F6A09C27EE347700C3524B /* myTunes.xcdatamodeld */,
 			);
 			path = myTunes;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				2238A61627EC8D8100AE4EF0 /* MyTunesDetailsPresenter.swift in Sources */,
 				2228D8CB27EB6D7200AF7FFC /* MyTunesListRouter.swift in Sources */,
 				2228D8DC27EBA01E00AF7FFC /* GridFlowLayout.swift in Sources */,
+				22F6A09E27EE347700C3524B /* myTunes.xcdatamodeld in Sources */,
 				2228D8CD27EB6D7200AF7FFC /* MyTunesListViewController.swift in Sources */,
 				2228D8CA27EB6D7200AF7FFC /* MyTunesListWorker.swift in Sources */,
 			);
@@ -606,6 +610,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		22F6A09C27EE347700C3524B /* myTunes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22F6A09D27EE347700C3524B /* FavoriteTunes.xcdatamodel */,
+			);
+			currentVersion = 22F6A09D27EE347700C3524B /* FavoriteTunes.xcdatamodel */;
+			path = myTunes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2228D88727EB448200AF7FFC /* Project object */;
 }

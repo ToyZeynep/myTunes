@@ -14,10 +14,60 @@ import UIKit
 
 
 protocol MyTunesDetailsWorkingLogic: AnyObject {
-    
+
+    func addTune(wrapperType: String? , kind: String? , artistName: String?, collectionName: String?, trackName: String?, artworkUrl100: String? , releaseDate: String? , country: String? , primaryGenreName: String? , artistViewUrl: String?, collectionViewUrl: String?, trackViewUrl: String?)
 }
 
 final class MyTunesDetailsWorker: MyTunesDetailsWorkingLogic {
   
+    
+    func addTune(wrapperType: String? , kind: String? , artistName: String?, collectionName: String?, trackName: String?, artworkUrl100: String? , releaseDate: String? , country: String? , primaryGenreName: String? , artistViewUrl: String?, collectionViewUrl: String?, trackViewUrl: String?) {
+        
+        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        var myTune = Tunes(context: managedContext)
+        myTune.wrapperType = wrapperType
+        myTune.kind = kind
+        myTune.artistName = artistName
+        myTune.collectionName = collectionName
+        myTune.trackName = trackName
+        myTune.artworkUrl100 = artworkUrl100
+        myTune.releaseDate = releaseDate
+        myTune.country = country
+        myTune.primaryGenreName = primaryGenreName
+        myTune.artistViewUrl = artistViewUrl
+        myTune.collectionViewUrl = collectionViewUrl
+        myTune.trackViewUrl = trackViewUrl
+        
+        do {
+            try managedContext.save()
+            print("saved")
+        }catch{
+            print("error")
+        }
+    }
+    
+    
+    func removeTune(object: Tunes) {
+        let  managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        print(object.primaryGenreName as Any)
+        managedContext.delete(object)
+        do {
+            try managedContext.save()
+            print("saved")
+        } catch {
+            print("error")
+        }
+    }
+    
+    func getFavoriteTuneList(completion: @escaping ((Result<[Tunes], Error>) -> Void)) {
+        
+        do {
+            let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            var models = try managedContext.fetch(Tunes.fetchRequest())
+            completion(.success(models))
+        } catch {
+            completion(.failure(error))
+        }
+    }
     
 }

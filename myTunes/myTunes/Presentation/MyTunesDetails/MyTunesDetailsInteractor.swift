@@ -33,4 +33,9 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
     func fetchMyTunesDetails() {
         self.presenter?.presentMyTunesDetails(response:.init(myTune: myTune))
     }
+    
+    func addTuneToFavorites(index: Int) {
+       
+        worker?.addTune(wrapperType: myTune?.wrapperType, kind: myTune?.kind, artistName: myTune?.artistName, collectionName: myTune?.collectionName, trackName: myTune?.trackName, artworkUrl100: myTune?.artworkUrl100, releaseDate: myTune?.releaseDate, country: myTune?.country, primaryGenreName: myTune?.primaryGenreName, artistViewUrl: myTune?.artistViewUrl, collectionViewUrl: myTune?.collectionViewUrl, trackViewUrl: myTune?.trackViewUrl)
+    }
 }
