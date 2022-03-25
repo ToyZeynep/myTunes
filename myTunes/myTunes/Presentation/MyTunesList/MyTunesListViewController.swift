@@ -230,26 +230,15 @@ extension MyTunesListViewController: UICollectionViewDataSource , UICollectionVi
         switch model.wrapperType {
             
         case WrapperType.track.rawValue:
-           
-            trackCell.trackName.text = model.trackName
-            trackCell.wrapperType.text = model.wrapperType
-            trackCell.kind.text = model.kind
-            trackCell.artWorkImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
+            trackCell.configure(model: model)
             return trackCell
             
         case WrapperType.artist.rawValue:
-            
-            artistCell.artistNameLabel.text = model.artistName
-            artistCell.country.text = model.country
-            artistCell.wrapperTypeLabel.text = model.wrapperType
+            artistCell.configure(model: model)
             return artistCell
             
         case WrapperType.collection.rawValue:
-            
-            collectionCell.country.text = model.country
-            collectionCell.collectionName.text = model.collectionName
-            collectionCell.wrapperType.text = model.wrapperType
-            collectionCell.collectionImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
+            collectionCell.configure(model: model)
             return collectionCell
             
         default:

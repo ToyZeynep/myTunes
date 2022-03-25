@@ -28,4 +28,10 @@ class ArtistCollectionViewCell: UICollectionViewCell {
         contentView.clipsToBounds = true
         country.tintColor = .systemMint
     }
+    
+    func configure(model: MyTunesList.Fetch.ViewModel.MyTunes){
+       artistNameLabel.text = model.artistName
+       country.text = model.country
+       wrapperTypeLabel.text = model.wrapperType
+    }
 }
