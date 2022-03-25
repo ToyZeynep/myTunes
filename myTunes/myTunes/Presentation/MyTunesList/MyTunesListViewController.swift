@@ -27,13 +27,23 @@ final class MyTunesListViewController: UIViewController {
     var viewModel: MyTunesList.Fetch.ViewModel?
     var gridFlowLayout = GridFlowLayout()
     let filter : [String] = [Media.movie.rawValue, Media.podcast.rawValue, Media.music.rawValue, Media.musicVideo.rawValue, Media.audiobook.rawValue, Media.shortFilm.rawValue, Media.tvShow.rawValue , Media.software.rawValue, Media.ebook.rawValue, Media.all.rawValue]
+    var trackList = [MyTunesList.Fetch.ViewModel.MyTunes]()
+    var collectionList = [MyTunesList.Fetch.ViewModel.MyTunes]()
+    var artistList = [MyTunesList.Fetch.ViewModel.MyTunes]()
+    var myTunesList : [MyTunesList.Fetch.ViewModel.MyTunes] = []
     @IBOutlet weak var myTunesSearchBar: UISearchBar!
     @IBOutlet weak var myTunesCollectionView: UICollectionView!
     @IBOutlet weak var selectKindButton: UIButton!
+    @IBOutlet weak var wrapperTypeSegmentedController: UISegmentedControl!
     
     var params = [String:Any](){
         didSet{
-            interactor?.fetchMyTunesList(params: params)
+            if myTunesSearchBar.text != ""{
+                interactor?.fetchMyTunesList(params: params)
+                wrapperTypeSegmentedController.selectedSegmentIndex = 0
+            }else {
+                
+            }
         }
     }
     
@@ -91,34 +101,75 @@ final class MyTunesListViewController: UIViewController {
     
     @IBAction func wrapperTypeSegmentedController(_ sender: UISegmentedControl) {
         
-        switch sender.selectedSegmentIndex{
-        case 1:
-            var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
-            for task in (self.viewModel?.myTunesList)! {
-                let str = task.wrapperType
-                if str!.contains("artist"){
-                    filteredData.append(task)
+        if self.viewModel?.myTunesList != nil{
+            switch sender.selectedSegmentIndex{
+            case 0:
+                self.myTunesList = self.viewModel!.myTunesList
+                guard let searchText = myTunesSearchBar.text else { return }
+                self.params["term"] = searchText
+                
+            case 1:
+                self.myTunesList = viewModel!.myTunesList
+                var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
+                for tunes in (self.myTunesList) {
+                    let wrapperType = tunes.wrapperType
+                    if wrapperType!.contains("track"){
+                        filteredData.append(tunes)
+                    }
                 }
-            }
-            self.viewModel?.myTunesList.removeAll()
-            self.viewModel?.myTunesList.append(contentsOf: filteredData)
-            self.myTunesCollectionView.reloadData()
+                self.myTunesList.removeAll()
+                self.myTunesList.append(contentsOf: filteredData)
+                self.myTunesCollectionView.reloadData()
             
-        default:
-            break
+            case 2:
+                self.myTunesList = viewModel!.myTunesList
+                var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
+                for tunes in (self.myTunesList) {
+                    let wrapperType = tunes.wrapperType
+                    if wrapperType!.contains("artist"){
+                        filteredData.append(tunes)
+                    }
+                }
+                
+                self.myTunesList.removeAll()
+                self.myTunesList.append(contentsOf: filteredData)
+                self.myTunesCollectionView.reloadData()
+                
+                
+            case 3:
+                self.myTunesList = viewModel!.myTunesList
+                var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
+                for tunes in (self.viewModel?.myTunesList)! {
+                    let wrapperType = tunes.wrapperType
+                    if wrapperType!.contains("collection"){
+                        filteredData.append(tunes)
+                    }
+                }
+                self.myTunesList.removeAll()
+                self.myTunesList.append(contentsOf: filteredData)
+                self.myTunesCollectionView.reloadData()
+               
+            default:
+                break
+            }
+        }else {
+            
+        }
     }
-    }
+    
     @IBAction func selectKindButton(_ sender: Any) {
         showPicker(selectKindButton, list: filter )
     }
+    
     func showPicker(_ sender: UIButton, list: [String]){
         McPicker.showAsPopover(data:[list], fromViewController: self, sourceView: sender, doneHandler:{ [weak self] (selections: [Int : String]) -> Void in
             if let name = selections[0] {
                 
                 switch name {
+                                       
                 case  Media.movie.rawValue:
-                    self?.params["media"] =  Media.movie.rawValue
-                    
+                    self?.params["media"] = Media.movie.rawValue
+                   
                 case Media.podcast.rawValue:
                     self?.params["media"] = Media.podcast.rawValue
                     
@@ -158,16 +209,15 @@ extension MyTunesListViewController: MyTunesListDisplayLogic{
     func displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel)
     {
         self.viewModel = viewModel
-        
+        self.myTunesList = viewModel.myTunesList
         myTunesCollectionView.reloadData()
     }
 }
 
-
 extension MyTunesListViewController: UICollectionViewDataSource , UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.myTunesList.count ?? 0
+        return myTunesList.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -175,32 +225,31 @@ extension MyTunesListViewController: UICollectionViewDataSource , UICollectionVi
         guard let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionCollectionViewCell? else {return UICollectionViewCell()}
         guard let artistCell = collectionView.dequeueReusableCell(withReuseIdentifier: "artistCell", for: indexPath) as! ArtistCollectionViewCell? else {return UICollectionViewCell()}
         
-        let model = self.viewModel?.myTunesList[indexPath.item]
+        let model = self.myTunesList[indexPath.item]
         
-        switch model?.wrapperType {
+        switch model.wrapperType {
+            
         case WrapperType.track.rawValue:
-            
-            trackCell.trackName.text = model?.trackName
-            trackCell.wrapperType.text = model?.wrapperType
-            trackCell.kind.text = model?.kind
-            trackCell.artWorkImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
-            
+           
+            trackCell.trackName.text = model.trackName
+            trackCell.wrapperType.text = model.wrapperType
+            trackCell.kind.text = model.kind
+            trackCell.artWorkImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
             return trackCell
             
         case WrapperType.artist.rawValue:
             
-            artistCell.artistNameLabel.text = model?.artistName
-            artistCell.country.text = model?.country
-            artistCell.wrapperTypeLabel.text = model?.wrapperType
+            artistCell.artistNameLabel.text = model.artistName
+            artistCell.country.text = model.country
+            artistCell.wrapperTypeLabel.text = model.wrapperType
             return artistCell
             
         case WrapperType.collection.rawValue:
             
-            collectionCell.country.text = model?.country
-            collectionCell.collectionName.text = model?.collectionName
-            collectionCell.wrapperType.text = model?.wrapperType
-            collectionCell.collectionImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
-            
+            collectionCell.country.text = model.country
+            collectionCell.collectionName.text = model.collectionName
+            collectionCell.wrapperType.text = model.wrapperType
+            collectionCell.collectionImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
             return collectionCell
             
         default:
@@ -212,7 +261,6 @@ extension MyTunesListViewController: UICollectionViewDataSource , UICollectionVi
         router?.routeToDetails(index: indexPath.item)
     }
 }
-
 
 // MARK: - SearchBar Delegate
 
@@ -227,6 +275,8 @@ extension MyTunesListViewController : UISearchBarDelegate {
         guard let searchText = myTunesSearchBar.text else { return }
         
         if searchText == "" {
+            params.removeAll()
+            wrapperTypeSegmentedController.selectedSegmentIndex = 0
             self.viewModel?.myTunesList.removeAll()
             myTunesCollectionView.reloadData()
         } else {
@@ -235,8 +285,9 @@ extension MyTunesListViewController : UISearchBarDelegate {
     }
     
     func search(searchText: String){
-        self.params["limit"] = "25"
-        self.params["term"] = searchText
+        params.removeAll()
+        params["limit"] = "25"
+        params["term"] = searchText
         print(params)
     }
 }

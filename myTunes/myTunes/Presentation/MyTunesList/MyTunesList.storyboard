@@ -44,6 +44,7 @@
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q3z-GV-RKy">
                                 <rect key="frame" x="0.0" y="143" width="414" height="41"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Usr-bu-Jhf"/>
                                 </constraints>
@@ -53,6 +54,8 @@
                                     <segment title="Artist"/>
                                     <segment title="Collection"/>
                                 </segments>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" red="0.26853772999999997" green="0.83979541059999996" blue="0.82396727800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="wrapperTypeSegmentedController:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Kng-fR-lsC"/>
                                 </connections>
@@ -104,6 +107,7 @@
                         <outlet property="myTunesCollectionView" destination="56l-OE-aTC" id="8wJ-UN-Imt"/>
                         <outlet property="myTunesSearchBar" destination="K3Q-V8-Ge7" id="kCD-26-kyf"/>
                         <outlet property="selectKindButton" destination="NmI-Sa-T0K" id="Df8-aT-FWF"/>
+                        <outlet property="wrapperTypeSegmentedController" destination="q3z-GV-RKy" id="n6R-aL-qwU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
