@@ -26,12 +26,14 @@ class TrackCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.systemMint.cgColor
         contentView.layer.borderWidth = 1
         contentView.clipsToBounds = true
+        artWorkImageView.layer.cornerRadius = 8
     }
    
     func configure(model: MyTunesList.Fetch.ViewModel.MyTunes){
         trackName.text = model.trackName
         wrapperType.text = model.wrapperType
         kind.text = model.kind
+        
         artWorkImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
     }
 }

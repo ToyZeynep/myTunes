@@ -26,7 +26,6 @@ class ArtistCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.systemMint.cgColor
         contentView.layer.borderWidth = 1
         contentView.clipsToBounds = true
-        country.tintColor = .systemMint
     }
     
     func configure(model: MyTunesList.Fetch.ViewModel.MyTunes){

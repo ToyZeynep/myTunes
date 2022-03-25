@@ -113,7 +113,7 @@ final class MyTunesListViewController: UIViewController {
                 var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
                 for tunes in (self.myTunesList) {
                     let wrapperType = tunes.wrapperType
-                    if wrapperType!.contains("track"){
+                    if wrapperType!.contains(WrapperType.track.rawValue){
                         filteredData.append(tunes)
                     }
                 }
@@ -126,11 +126,10 @@ final class MyTunesListViewController: UIViewController {
                 var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
                 for tunes in (self.myTunesList) {
                     let wrapperType = tunes.wrapperType
-                    if wrapperType!.contains("artist"){
+                    if wrapperType!.contains(WrapperType.artist.rawValue){
                         filteredData.append(tunes)
                     }
                 }
-                
                 self.myTunesList.removeAll()
                 self.myTunesList.append(contentsOf: filteredData)
                 self.myTunesCollectionView.reloadData()
@@ -141,7 +140,7 @@ final class MyTunesListViewController: UIViewController {
                 var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
                 for tunes in (self.viewModel?.myTunesList)! {
                     let wrapperType = tunes.wrapperType
-                    if wrapperType!.contains("collection"){
+                    if wrapperType!.contains(WrapperType.collection.rawValue){
                         filteredData.append(tunes)
                     }
                 }

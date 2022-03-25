@@ -27,7 +27,7 @@ class CollectionCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.systemMint.cgColor
         contentView.layer.borderWidth = 1
         contentView.clipsToBounds = true
-      
+        collectionImageView.layer.cornerRadius = 8
     }
 
     func configure(model: MyTunesList.Fetch.ViewModel.MyTunes){
