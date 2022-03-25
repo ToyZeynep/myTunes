@@ -13,7 +13,8 @@
 import UIKit
 
 protocol MyTunesDetailsBusinessLogic: AnyObject {
-    func fetchMyTunesDetails() 
+    func fetchMyTunesDetails()
+    func addTuneToFavorites() 
 }
 
 protocol MyTunesDetailsDataStore:AnyObject {
@@ -34,8 +35,8 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
         self.presenter?.presentMyTunesDetails(response:.init(myTune: myTune))
     }
     
-    func addTuneToFavorites(index: Int) {
+    func addTuneToFavorites() {
        
-        worker?.addTune(wrapperType: myTune?.wrapperType, kind: myTune?.kind, artistName: myTune?.artistName, collectionName: myTune?.collectionName, trackName: myTune?.trackName, artworkUrl100: myTune?.artworkUrl100, releaseDate: myTune?.releaseDate, country: myTune?.country, primaryGenreName: myTune?.primaryGenreName, artistViewUrl: myTune?.artistViewUrl, collectionViewUrl: myTune?.collectionViewUrl, trackViewUrl: myTune?.trackViewUrl)
+        worker?.addTune(wrapperType: myTune?.wrapperType, artistId : Int16(truncatingIfNeeded: myTune?.artistId ?? 0) , collectionId : Int16(truncatingIfNeeded: myTune?.collectionId ?? 0) , trackId : Int16(truncatingIfNeeded: myTune?.trackId ?? 0) ,  kind: myTune?.kind, artistName: myTune?.artistName, collectionName: myTune?.collectionName, trackName: myTune?.trackName, artworkUrl100: myTune?.artworkUrl100, releaseDate: myTune?.releaseDate, country: myTune?.country, primaryGenreName: myTune?.primaryGenreName, artistViewUrl: myTune?.artistViewUrl, collectionViewUrl: myTune?.collectionViewUrl, trackViewUrl: myTune?.trackViewUrl)
     }
 }

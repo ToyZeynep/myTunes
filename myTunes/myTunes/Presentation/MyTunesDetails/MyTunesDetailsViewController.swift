@@ -30,7 +30,7 @@ final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDispla
     @IBOutlet weak var linkLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var primaryGenreLabel: UILabel!
-    
+    @IBOutlet weak var addToFavorites: UIButton!
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -70,6 +70,10 @@ final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDispla
         super.viewDidLoad()
         interactor?.fetchMyTunesDetails()
         self.title = "MyTunesDetails"
+    }
+    
+    @IBAction func addToFavoritesButton(_ sender: Any) {
+        interactor?.addTuneToFavorites()
     }
 }
 

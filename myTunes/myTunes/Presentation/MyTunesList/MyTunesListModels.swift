@@ -33,6 +33,8 @@ enum MyTunesList
                 var wrapperType : String?
                 var kind : String?
                 var artistId : Int?
+                var collectionId : Int?
+                var trackId : Int?
                 var artistName : String?
                 var collectionName : String?
                 var trackName : String?

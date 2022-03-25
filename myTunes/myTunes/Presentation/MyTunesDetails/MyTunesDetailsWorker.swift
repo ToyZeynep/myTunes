@@ -15,16 +15,18 @@ import UIKit
 
 protocol MyTunesDetailsWorkingLogic: AnyObject {
 
-    func addTune(wrapperType: String? , kind: String? , artistName: String?, collectionName: String?, trackName: String?, artworkUrl100: String? , releaseDate: String? , country: String? , primaryGenreName: String? , artistViewUrl: String?, collectionViewUrl: String?, trackViewUrl: String?)
+    func addTune(wrapperType: String? , artistId : Int16 , collectionId : Int16 , trackId : Int16 , kind: String? , artistName: String?, collectionName: String?, trackName: String?, artworkUrl100: String? , releaseDate: String? , country: String? , primaryGenreName: String? , artistViewUrl: String?, collectionViewUrl: String?, trackViewUrl: String?)
 }
 
 final class MyTunesDetailsWorker: MyTunesDetailsWorkingLogic {
   
-    
-    func addTune(wrapperType: String? , kind: String? , artistName: String?, collectionName: String?, trackName: String?, artworkUrl100: String? , releaseDate: String? , country: String? , primaryGenreName: String? , artistViewUrl: String?, collectionViewUrl: String?, trackViewUrl: String?) {
+    func addTune(wrapperType: String? ,  artistId : Int16 , collectionId : Int16 , trackId : Int16 , kind: String? , artistName: String?, collectionName: String?, trackName: String?, artworkUrl100: String? , releaseDate: String? , country: String? , primaryGenreName: String? , artistViewUrl: String?, collectionViewUrl: String?, trackViewUrl: String?) {
         
         let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         var myTune = Tunes(context: managedContext)
+        myTune.trackId = trackId
+        myTune.collectionId = collectionId
+        myTune.artistId = artistId
         myTune.wrapperType = wrapperType
         myTune.kind = kind
         myTune.artistName = artistName
@@ -69,5 +71,4 @@ final class MyTunesDetailsWorker: MyTunesDetailsWorkingLogic {
             completion(.failure(error))
         }
     }
-    
 }
