@@ -16,7 +16,7 @@ import Kingfisher
 protocol MyTunesDetailsDisplayLogic: AnyObject
 {
     func displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel)
-    
+    func shakeView()
 }
 
 final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDisplayLogic {
@@ -68,6 +68,7 @@ final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDispla
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor?.fetchTunesList()
         interactor?.fetchMyTunesDetails()
         self.title = "MyTunesDetails"
     }
@@ -79,6 +80,9 @@ final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDispla
 
 // MARK: - display view model from MyTunesDetailsPresenter
 extension MyTunesDetailsViewController{
+    func shakeView(){
+        view.shake()
+    }
     func displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel) {
         self.viewModel = viewModel
         detailsView.dropViewShadow()

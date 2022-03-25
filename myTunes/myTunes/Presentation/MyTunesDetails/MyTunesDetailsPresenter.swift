@@ -14,10 +14,12 @@ import UIKit
 
 protocol MyTunesDetailsPresentationLogic: AnyObject {
     func presentMyTunesDetails(response: MyTunesDetails.Fetch.Response)
+    func shakeView()
 }
 
 final class MyTunesDetailsPresenter: MyTunesDetailsPresentationLogic {
     weak var viewController: MyTunesDetailsDisplayLogic?
+    
     
     func presentMyTunesDetails(response: MyTunesDetails.Fetch.Response) {
         
@@ -25,4 +27,8 @@ final class MyTunesDetailsPresenter: MyTunesDetailsPresentationLogic {
             )
         )
     }
+    func shakeView(){
+        viewController?.shakeView()
+    }
+
 }
