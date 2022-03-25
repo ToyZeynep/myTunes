@@ -16,20 +16,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="215" height="300"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zxi-ps-vYc">
+                        <rect key="frame" x="-12.5" y="0.0" width="240" height="300"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="300" id="Z7W-iT-oBm"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdh-03-lci">
-                        <rect key="frame" x="0.0" y="40" width="215" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="0.0" y="70" width="215" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCu-IW-3xS">
-                        <rect key="frame" x="0.0" y="60" width="215" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="0.0" y="90" width="215" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpb-dZ-KLG">
-                        <rect key="frame" x="0.0" y="80" width="215" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="0.0" y="110" width="215" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -40,22 +46,26 @@
                 <constraint firstItem="pdh-03-lci" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="010-57-ymu"/>
                 <constraint firstItem="uCu-IW-3xS" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="3nw-xz-uma"/>
                 <constraint firstItem="uCu-IW-3xS" firstAttribute="top" secondItem="pdh-03-lci" secondAttribute="bottom" constant="20" id="Lzk-3G-n2U"/>
-                <constraint firstItem="pdh-03-lci" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="40" id="NA1-rY-G8U"/>
+                <constraint firstItem="pdh-03-lci" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="70" id="NA1-rY-G8U"/>
                 <constraint firstItem="pdh-03-lci" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Q4Q-KV-sXj"/>
                 <constraint firstAttribute="trailing" secondItem="wpb-dZ-KLG" secondAttribute="trailing" id="QS2-st-Yd7"/>
                 <constraint firstItem="uCu-IW-3xS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Uc6-1l-XZf"/>
+                <constraint firstItem="Zxi-ps-vYc" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="1.11628" id="XBl-PL-Kn4"/>
+                <constraint firstItem="Zxi-ps-vYc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eCy-Xr-BbQ"/>
                 <constraint firstItem="wpb-dZ-KLG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eMK-4P-I7f"/>
                 <constraint firstAttribute="trailing" secondItem="uCu-IW-3xS" secondAttribute="trailing" id="mGT-84-qnt"/>
                 <constraint firstItem="wpb-dZ-KLG" firstAttribute="top" secondItem="uCu-IW-3xS" secondAttribute="bottom" constant="20" id="pUB-S1-zFm"/>
                 <constraint firstAttribute="trailing" secondItem="pdh-03-lci" secondAttribute="trailing" id="peo-sA-Xe5"/>
+                <constraint firstItem="Zxi-ps-vYc" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="qcd-Q1-Zu7"/>
             </constraints>
             <size key="customSize" width="215" height="300"/>
             <connections>
+                <outlet property="artistImageVirew" destination="Zxi-ps-vYc" id="KZX-3a-guZ"/>
                 <outlet property="artistNameLabel" destination="pdh-03-lci" id="Xw6-aR-7rI"/>
-                <outlet property="country" destination="uCu-IW-3xS" id="ofl-kQ-lvI"/>
+                <outlet property="primaryGenreName" destination="uCu-IW-3xS" id="ofl-kQ-lvI"/>
                 <outlet property="wrapperTypeLabel" destination="wpb-dZ-KLG" id="kwf-d0-fiD"/>
             </connections>
-            <point key="canvasLocation" x="160.1449275362319" y="43.526785714285715"/>
+            <point key="canvasLocation" x="-457.24637681159425" y="-13.392857142857142"/>
         </collectionViewCell>
     </objects>
 </document>

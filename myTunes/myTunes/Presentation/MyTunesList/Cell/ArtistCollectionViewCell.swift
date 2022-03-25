@@ -9,8 +9,9 @@ import UIKit
 
 class ArtistCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var artistImageVirew: UIImageView!
     @IBOutlet weak var wrapperTypeLabel: UILabel!
-    @IBOutlet weak var country: UILabel!
+    @IBOutlet weak var primaryGenreName: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +31,8 @@ class ArtistCollectionViewCell: UICollectionViewCell {
     
     func configure(model: MyTunesList.Fetch.ViewModel.MyTunes){
        artistNameLabel.text = model.artistName
-       country.text = model.country
+       primaryGenreName.text = model.primaryGenreName
        wrapperTypeLabel.text = model.wrapperType
+        artistImageVirew.image = UIImage(named: "artist")
     }
 }

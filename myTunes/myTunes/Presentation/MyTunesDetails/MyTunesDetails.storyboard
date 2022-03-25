@@ -34,30 +34,30 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgi-ie-IxU">
                                         <rect key="frame" x="177" y="350" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eta-xa-sIm">
-                                        <rect key="frame" x="177" y="385" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <rect key="frame" x="177" y="733" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <color key="textColor" red="0.31308114529999997" green="0.84791415930000003" blue="0.83572602269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qND-T4-8uP">
-                                        <rect key="frame" x="177" y="420" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <rect key="frame" x="177" y="370" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
-                                    <constraint firstItem="Eta-xa-sIm" firstAttribute="top" secondItem="wgi-ie-IxU" secondAttribute="bottom" constant="35" id="1JQ-9r-ffu"/>
+                                    <constraint firstItem="qND-T4-8uP" firstAttribute="top" secondItem="wgi-ie-IxU" secondAttribute="bottom" constant="20" id="1DA-V4-wxe"/>
+                                    <constraint firstAttribute="bottom" secondItem="Eta-xa-sIm" secondAttribute="bottom" constant="35" id="AeT-Jp-SkF"/>
                                     <constraint firstItem="tuR-9v-dwY" firstAttribute="width" secondItem="paE-Ym-CcW" secondAttribute="width" id="XD8-sC-VEX"/>
                                     <constraint firstItem="GlJ-Y6-MWW" firstAttribute="top" secondItem="paE-Ym-CcW" secondAttribute="top" constant="15" id="kgy-Ig-xXY"/>
                                     <constraint firstItem="wgi-ie-IxU" firstAttribute="top" secondItem="tuR-9v-dwY" secondAttribute="bottom" constant="35" id="lUL-xQ-34d"/>
-                                    <constraint firstItem="qND-T4-8uP" firstAttribute="top" secondItem="Eta-xa-sIm" secondAttribute="bottom" constant="35" id="s2n-Rk-WW4"/>
                                     <constraint firstItem="tuR-9v-dwY" firstAttribute="top" secondItem="GlJ-Y6-MWW" secondAttribute="bottom" constant="50" id="u2n-Xf-r6g"/>
                                 </constraints>
                             </view>
@@ -68,12 +68,12 @@
                             <constraint firstItem="paE-Ym-CcW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="CEx-4Q-OQw"/>
                             <constraint firstItem="GlJ-Y6-MWW" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="DXd-zq-Ul9"/>
                             <constraint firstItem="tuR-9v-dwY" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="DyX-eT-mMg"/>
-                            <constraint firstItem="qND-T4-8uP" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="INq-ih-iL5"/>
+                            <constraint firstItem="qND-T4-8uP" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Ogi-Xj-USD"/>
                             <constraint firstItem="wgi-ie-IxU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="TCl-n1-j6F"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="paE-Ym-CcW" secondAttribute="bottom" constant="30" id="abU-gE-g1c"/>
+                            <constraint firstItem="Eta-xa-sIm" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="iGK-2q-cDM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="paE-Ym-CcW" secondAttribute="trailing" constant="30" id="l3S-Tp-xRb"/>
                             <constraint firstItem="paE-Ym-CcW" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="tkr-Na-nNT"/>
-                            <constraint firstItem="Eta-xa-sIm" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="xSD-SA-jx1"/>
                         </constraints>
                     </view>
                     <connections>

@@ -11,5 +11,5 @@ target 'myTunes' do
   pod 'SwiftGifOrigin', '~> 1.7.0'
   pod 'SnackBar.swift'
   pod 'McPicker', '~> 3.0.0'
-
+  pod 'RealmSwift'
 end

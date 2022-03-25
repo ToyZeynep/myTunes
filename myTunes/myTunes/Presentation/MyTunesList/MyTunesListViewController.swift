@@ -167,7 +167,7 @@ final class MyTunesListViewController: UIViewController {
                 switch name {
                                        
                 case  Media.movie.rawValue:
-                    self?.params["media"] = Media.movie.rawValue
+                    self?.params["entity"] = "musicArtist"
                    
                 case Media.podcast.rawValue:
                     self?.params["media"] = Media.podcast.rawValue
