@@ -79,7 +79,7 @@ extension MyTunesDetailsViewController{
         self.viewModel = viewModel
         detailsView.dropViewShadow()
         linkLabel.tintColor = .systemMint
-        
+        detailsImageView.layer.cornerRadius = 8
         switch viewModel.wrapperType {
         case WrapperType.artist.rawValue:
             
