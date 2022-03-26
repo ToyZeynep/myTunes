@@ -20,6 +20,7 @@ enum MyTunesDetails
         struct Response
         {
             var myTune: Results?
+            var tune: Tunes?
         }
         
         struct ViewModel

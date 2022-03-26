@@ -25,7 +25,6 @@ protocol MyTunesDetailsDataStore:AnyObject {
 
 final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetailsDataStore {
     var tune: Tunes?
-    
     var myTune: Results?
     var tunes : [Tunes] = []
     var presenter: MyTunesDetailsPresentationLogic?
@@ -35,7 +34,13 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
         self.worker = worker
     }
     
+    func fetchTuneFromFavorite(){
+        fetchTunesList()
+    
+    }
+    
     func fetchMyTunesDetails() {
+        self.presenter?.presentMyTunesDetails(response: .init(tune: tune))
         self.presenter?.presentMyTunesDetails(response:.init(myTune: myTune))
     }
     
@@ -51,6 +56,9 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
     }
     
     func addTuneToFavorites() {
+        if myTune == nil {
+            presenter?.alert(message:  "Already Favorited" , title: "Wait a Second")
+        }else{
         fetchTunesList()
         switch myTune?.wrapperType{
             
@@ -89,6 +97,7 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
         default:
             break
         }
+    }
     }
     
     func addTune(){

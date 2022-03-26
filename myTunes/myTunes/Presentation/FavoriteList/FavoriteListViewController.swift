@@ -145,6 +145,10 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        router?.routeToDetails(index: indexPath.item)
+    }
+    
     func remove(index: Int){
         self.favoritesList.remove(at: index)
         favoritesCollectionView.reloadData()

@@ -29,7 +29,8 @@ class FavoriteListRouter: FavoriteListRoutingLogic, FavoriteListDataPassing {
     func routeToDetails(index: Int) {
         let storyBoard = UIStoryboard(name: "MyTunesDetails", bundle: nil)
         let destVC: MyTunesDetailsViewController = storyBoard.instantiateViewController(identifier: "MyTunesDetails")
-        let myTune = dataStore?.favoriteList?[index]
+        let mytune = dataStore?.favoriteList?[index]
+        destVC.router?.dataStore?.tune = mytune
         destVC.modalPresentationStyle = .fullScreen
         viewController?.navigationController?.pushViewController(destVC, animated: true)
     }
