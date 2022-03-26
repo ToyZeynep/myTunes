@@ -62,16 +62,17 @@ final class FavoriteListViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
         self.navigationController?.navigationBar.tintColor = UIColor.systemMint
         let image = UIImage(named: "delete")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image , style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image , style: .plain, target: self, action: #selector(removeAll))
         navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 3, left: 3, bottom: -4, right: -3)
 
     }
     
-    @objc func addTapped(){
+    @objc func removeAll(){
       
         self.interactor?.removeFavoriteList()
         self.interactor?.fetchFavoriteList()
-      
+        AppSnackBar.make(in: self.view, message: "remove favorite list ", duration: .custom(1.0)).show()
+       
     }
 
     override func viewDidLoad() {

@@ -18,7 +18,7 @@ protocol MyTunesDetailsDisplayLogic: AnyObject
     func displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel)
     func shakeView()
     func snackBar(message: String)
-    func message(message: String)
+
 }
 
 final class MyTunesDetailsViewController: UIViewController {
@@ -86,9 +86,6 @@ extension MyTunesDetailsViewController:  MyTunesDetailsDisplayLogic {
         AppSnackBar.make(in: self.view, message: "\(message) add  to favorites ", duration: .custom(1.0)).show()
     }
     
-    func message(message: String) {
-        AppSnackBar.make(in: self.view, message: "\(message) add  to favorites ", duration: .custom(1.0)).show()
-    }
     
     func shakeView(){
         view.shake()

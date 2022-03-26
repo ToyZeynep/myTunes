@@ -42,7 +42,7 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
             case .success(let response):
                 self?.tunes = response
             case .failure(let error):
-                print("error")
+                print("error: ", error)
             }
         }
     }
@@ -50,35 +50,35 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
     func addTuneToFavorites() {
         fetchTunesList()
         switch myTune?.wrapperType{
-        case "track":
+        case WrapperType.track.rawValue:
             
             if  tunes.contains(where: {$0.trackId == Int16(truncatingIfNeeded: (myTune?.trackId)!) }){
                 presenter?.shakeView()
-                presenter?.alert(message:  "\(String(describing: myTune?.trackName))")
+                presenter?.alert(message:  "\(String(describing: myTune?.trackName ?? ""))")
                 
             }else{
                 addTune()
-                presenter?.snackBar(message: "\(String(describing: myTune?.trackName))")
+                presenter?.snackBar(message: "\(String(describing: myTune?.trackName ?? ""))")
             }
-        case "collection":
+        case WrapperType.collection.rawValue:
             
             if tunes.contains(where: {$0.collectionId == Int16(truncatingIfNeeded:(myTune?.collectionId)!) }){
                 presenter?.shakeView()
-                presenter?.alert(message:  "\(String(describing: myTune?.collectionName!))")
+                presenter?.alert(message:  "\(String(describing: myTune?.collectionName ?? ""))")
                 
             }else{
                 addTune()
-                presenter?.snackBar(message: "\(String(describing: myTune?.collectionName))")
+                presenter?.snackBar(message: "\(String(describing: myTune?.collectionName ?? ""))")
             }
             
-        case "artist":
+        case WrapperType.artist.rawValue:
             
             if tunes.contains(where: {$0.artistId == Int16(truncatingIfNeeded:(myTune?.artistId)!) }){
                 presenter?.shakeView()
-                presenter?.alert(message:  "\(String(describing: myTune?.artistName))")
+                presenter?.alert(message:  "\(String(describing: myTune?.artistName ?? ""))")
             }else{
                 addTune()
-                presenter?.snackBar(message: "\(String(describing: myTune?.artistName))")
+                presenter?.snackBar(message: "\(String(describing: myTune?.artistName ?? ""))")
             }
         default:
             break
