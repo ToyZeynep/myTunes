@@ -85,8 +85,7 @@ extension MyTunesDetailsViewController:  MyTunesDetailsDisplayLogic {
     func snackBar(message: String) {
         AppSnackBar.make(in: self.view, message: "\(message) add  to favorites ", duration: .custom(1.0)).show()
     }
-    
-    
+
     func shakeView(){
         view.shake()
     }
