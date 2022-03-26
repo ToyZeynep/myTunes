@@ -14,7 +14,7 @@ import Foundation
 import UIKit
 
 protocol FavoriteListBusinessLogic: AnyObject {
-    
+    func fetchFavoriteList()
 }
 
 protocol FavoriteListDataStore: AnyObject {
@@ -25,8 +25,28 @@ final class FavoriteListInteractor: FavoriteListBusinessLogic, FavoriteListDataS
     var favoriteList: [Tunes]?
     var presenter: FavoriteListPresentationLogic?
     var worker: FavoriteListWorkingLogic?
- 
     init(worker: FavoriteListWorkingLogic) {
         self.worker = worker
+    }
+    
+    func fetchFavoriteList() {
+        worker?.getFavoriteTunesList() { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.favoriteList = response
+                guard let favoriteList = self?.favoriteList else { return }
+                self?.presenter?.presentFavoriteList(response: FavoriteList.Fetch.Response(favoriteList:favoriteList))
+            case .failure(let error):
+                self?.presenter?.presentAlert(title: "Error", message: "\(error)")
+            }
+        }
+    }
+    
+    func removeFavorite(index: Int) {
+        worker?.removeFavorite(object: (favoriteList?[index])!)
+    }
+    
+    func removeFavoriteList(){
+        worker?.removeFavoriteList()
     }
 }

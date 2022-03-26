@@ -122,11 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				2225360127EED9A80074C8F8 /* FavoriteListViewController.swift */,
-				222535FD27EED9A80074C8F8 /* FavoriteListPresenter.swift */,
+				2225360227EED9A80074C8F8 /* FavoriteListInteractor.swift */,
 				222535FE27EED9A80074C8F8 /* FavoriteListWorker.swift */,
+				222535FD27EED9A80074C8F8 /* FavoriteListPresenter.swift */,
 				222535FF27EED9A80074C8F8 /* FavoriteListRouter.swift */,
 				2225360027EED9A80074C8F8 /* FavoriteListModels.swift */,
-				2225360227EED9A80074C8F8 /* FavoriteListInteractor.swift */,
 				2225360B27EEDD560074C8F8 /* FavoriteList.storyboard */,
 			);
 			path = FavoriteList;

@@ -14,11 +14,56 @@ import UIKit
 import CoreData
 
 protocol FavoriteListWorkingLogic: AnyObject {
-
+    func removeFavoriteList() 
+    func removeFavorite(object: Tunes)
+    func getFavoriteTunesList(completion: @escaping ((Result<[Tunes], Error>) -> Void))
 }
 
 final class FavoriteListWorker: FavoriteListWorkingLogic {
     
+    func removeFavorite(object: Tunes) {
+        let  managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        print(object.primaryGenreName as Any)
+        managedContext.delete(object)
+        do {
+            try managedContext.save()
+            print("saved")
+        } catch {
+            print("error")
+        }
+    }
+
+    func getFavoriteTunesList(completion: @escaping ((Result<[Tunes], Error>) -> Void)) {
+        
+        do {
+            let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            var models = try managedContext.fetch(Tunes.fetchRequest())
+            completion(.success(models))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    func removeFavoriteList() {
+        let request = NSFetchRequest<Tunes>(entityName: "Tunes")
+        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            if let items = try managedContext.fetch(request) as? [Tunes] {
+                for item in items {
+                    managedContext.delete(item)
+                }
+            }
+        } catch {
+            print("Error executing a fetch request: \(error)")
+        }
+        
+        do {
+            try managedContext.save()
+            print("saved")
+        } catch {
+            print("error")
+        }
+    }
 }
 
 
