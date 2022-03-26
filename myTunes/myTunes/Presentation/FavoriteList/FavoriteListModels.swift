@@ -47,7 +47,7 @@ enum FavoriteList
                 var artistViewUrl : String?
                 var collectionViewUrl : String?
                 var trackViewUrl : String?
-              
+                
             }
         }
     }

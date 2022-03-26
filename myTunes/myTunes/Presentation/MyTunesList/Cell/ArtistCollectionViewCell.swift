@@ -8,15 +8,15 @@
 import UIKit
 
 class ArtistCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var artistImageVirew: UIImageView!
     @IBOutlet weak var wrapperTypeLabel: UILabel!
     @IBOutlet weak var primaryGenreName: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func layoutSubviews() {
@@ -31,12 +31,12 @@ class ArtistCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(model: MyTunesList.Fetch.ViewModel.MyTunes){
-       artistNameLabel.text = model.artistName
-       primaryGenreName.text = model.primaryGenreName
-       wrapperTypeLabel.text = model.wrapperType
-       artistImageVirew.image = UIImage(named: "artist")
-       favoriteButton.isUserInteractionEnabled = false
-       favoriteButton.isHidden = true
+        artistNameLabel.text = model.artistName
+        primaryGenreName.text = model.primaryGenreName
+        wrapperTypeLabel.text = model.wrapperType
+        artistImageVirew.image = UIImage(named: "artist")
+        favoriteButton.isUserInteractionEnabled = false
+        favoriteButton.isHidden = true
     }
     
     func configureFavorites(model: FavoriteList.Fetch.ViewModel.MyTunes){

@@ -10,8 +10,6 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol MyTunesListBusinessLogic: AnyObject {
     func fetchMyTunesList(params: [String: Any])
 }

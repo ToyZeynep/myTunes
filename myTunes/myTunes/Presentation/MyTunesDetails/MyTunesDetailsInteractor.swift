@@ -10,7 +10,7 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+
 
 protocol MyTunesDetailsBusinessLogic: AnyObject {
     func fetchMyTunesDetails()
@@ -20,19 +20,27 @@ protocol MyTunesDetailsBusinessLogic: AnyObject {
 
 protocol MyTunesDetailsDataStore:AnyObject {
     var myTune: Results? { get set }
+    var tune: Tunes? { get set }
 }
 
 final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetailsDataStore {
+    var tune: Tunes?
     var myTune: Results?
     var tunes : [Tunes] = []
     var presenter: MyTunesDetailsPresentationLogic?
     var worker: MyTunesDetailsWorkingLogic?
-    var id: Int16?
+    
     init(worker: MyTunesDetailsWorkingLogic) {
         self.worker = worker
     }
     
+    func fetchTuneFromFavorite(){
+        fetchTunesList()
+    
+    }
+    
     func fetchMyTunesDetails() {
+        self.presenter?.presentMyTunesDetails(response: .init(tune: tune))
         self.presenter?.presentMyTunesDetails(response:.init(myTune: myTune))
     }
     
@@ -48,23 +56,28 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
     }
     
     func addTuneToFavorites() {
+        if myTune == nil {
+            presenter?.alert(message:  "Already Favorited" , title: "Wait a Second")
+        }else{
         fetchTunesList()
         switch myTune?.wrapperType{
+            
         case WrapperType.track.rawValue:
             
             if  tunes.contains(where: {$0.trackId == Int16(truncatingIfNeeded: (myTune?.trackId)!) }){
                 presenter?.shakeView()
-                presenter?.alert(message:  "\(String(describing: myTune?.trackName ?? ""))")
+                presenter?.alert(message:  "\(String(describing: myTune?.trackName ?? "")) is already favorited" , title: "Wait a Second")
                 
             }else{
                 addTune()
                 presenter?.snackBar(message: "\(String(describing: myTune?.trackName ?? ""))")
             }
+            
         case WrapperType.collection.rawValue:
             
             if tunes.contains(where: {$0.collectionId == Int16(truncatingIfNeeded:(myTune?.collectionId)!) }){
                 presenter?.shakeView()
-                presenter?.alert(message:  "\(String(describing: myTune?.collectionName ?? ""))")
+                presenter?.alert(message:  "\(String(describing: myTune?.collectionName ?? ""))  is already favorited", title: "Wait a Second")
                 
             }else{
                 addTune()
@@ -75,14 +88,16 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
             
             if tunes.contains(where: {$0.artistId == Int16(truncatingIfNeeded:(myTune?.artistId)!) }){
                 presenter?.shakeView()
-                presenter?.alert(message:  "\(String(describing: myTune?.artistName ?? ""))")
+                presenter?.alert(message:  "\(String(describing: myTune?.artistName ?? ""))  is already favorited" , title: "Wait a Second")
             }else{
                 addTune()
                 presenter?.snackBar(message: "\(String(describing: myTune?.artistName ?? ""))")
             }
+            
         default:
             break
         }
+    }
     }
     
     func addTune(){

@@ -14,14 +14,15 @@ import UIKit
 
 enum MyTunesDetails
 {
-  
+    
     enum Fetch
     {
         struct Response
         {
-       var myTune: Results?
+            var myTune: Results?
+            var tune: Tunes?
         }
-
+        
         struct ViewModel
         {
             var wrapperType : String?

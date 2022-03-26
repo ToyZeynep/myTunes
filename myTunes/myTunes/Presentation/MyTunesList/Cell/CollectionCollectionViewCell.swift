@@ -8,15 +8,15 @@
 import UIKit
 
 class CollectionCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var country: UILabel!
     @IBOutlet weak var wrapperType: UILabel!
     @IBOutlet weak var collectionName: UILabel!
     @IBOutlet weak var collectionImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func layoutSubviews() {
@@ -30,7 +30,7 @@ class CollectionCollectionViewCell: UICollectionViewCell {
         contentView.clipsToBounds = true
         collectionImageView.layer.cornerRadius = 8
     }
-
+    
     func configure(model: MyTunesList.Fetch.ViewModel.MyTunes){
         country.text = model.country
         collectionName.text = model.collectionName

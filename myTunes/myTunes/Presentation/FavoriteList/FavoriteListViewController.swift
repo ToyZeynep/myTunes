@@ -15,6 +15,7 @@ import UIKit
 import Kingfisher
 
 protocol FavoriteListDisplayLogic: AnyObject{
+    func snackBar(message: String)
     func displayFavoriteList(viewModel: FavoriteList.Fetch.ViewModel)
 }
 
@@ -64,17 +65,18 @@ final class FavoriteListViewController: UIViewController {
         let image = UIImage(named: "delete")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image , style: .plain, target: self, action: #selector(removeAll))
         navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 3, left: 3, bottom: -4, right: -3)
-
     }
     
     @objc func removeAll(){
-      
         self.interactor?.removeFavoriteList()
         self.interactor?.fetchFavoriteList()
-        AppSnackBar.make(in: self.view, message: "remove favorite list ", duration: .custom(1.0)).show()
-       
+        let alertAction = UIAlertAction(title: "OK", style: .default) { UIAlertAction in
+           
+            self.router?.popOver()
+        }
+        Alert.alertAction(title: "Clean", message: "Removed Favorite List ", action: alertAction)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor?.fetchFavoriteList()
@@ -86,13 +88,14 @@ final class FavoriteListViewController: UIViewController {
         let nibAr = UINib(nibName: "ArtistCollectionViewCell", bundle: nil)
         favoritesCollectionView.register(nibAr, forCellWithReuseIdentifier: "artistCell")
     }
-   
 }
 
 // MARK: - Display view model from City List Presenter
 
 extension FavoriteListViewController : FavoriteListDisplayLogic{
-    
+    func snackBar(message: String) {
+        AppSnackBar.make(in: self.view, message: message, duration: .custom(1.0)).show()
+    }
     func displayFavoriteList(viewModel: FavoriteList.Fetch.ViewModel) {
         self.viewModel = viewModel
         self.favoritesList = viewModel.favoriteList
@@ -120,7 +123,6 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
             trackCell.favoriteButton.addTapGesture { [weak self] in
                 self?.remove(index: indexPath.row)
                 self?.interactor?.removeFavorite(index: indexPath.item)
-                
             }
             return trackCell
             
@@ -141,6 +143,10 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
         default:
             return trackCell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        router?.routeToDetails(index: indexPath.item)
     }
     
     func remove(index: Int){

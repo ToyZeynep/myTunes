@@ -18,7 +18,7 @@ protocol MyTunesDetailsDisplayLogic: AnyObject
     func displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel)
     func shakeView()
     func snackBar(message: String)
-
+    
 }
 
 final class MyTunesDetailsViewController: UIViewController {
@@ -85,14 +85,16 @@ extension MyTunesDetailsViewController:  MyTunesDetailsDisplayLogic {
     func snackBar(message: String) {
         AppSnackBar.make(in: self.view, message: "\(message) add  to favorites ", duration: .custom(1.0)).show()
     }
-
+    
     func shakeView(){
         view.shake()
     }
+    
     func displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel) {
         self.viewModel = viewModel
         detailsView.dropViewShadow()
         linkLabel.tintColor = .systemMint
+        addToFavorites.layer.cornerRadius = 8
         detailsImageView.layer.cornerRadius = 8
         switch viewModel.wrapperType {
         case WrapperType.artist.rawValue:
@@ -106,7 +108,7 @@ extension MyTunesDetailsViewController:  MyTunesDetailsDisplayLogic {
                     UIApplication.shared.open(url)
                 }
             }
-           
+            
         case WrapperType.collection.rawValue:
             
             nameLabel.text = viewModel.collectionName
