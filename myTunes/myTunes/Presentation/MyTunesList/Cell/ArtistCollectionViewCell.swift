@@ -33,6 +33,13 @@ class ArtistCollectionViewCell: UICollectionViewCell {
        artistNameLabel.text = model.artistName
        primaryGenreName.text = model.primaryGenreName
        wrapperTypeLabel.text = model.wrapperType
+       artistImageVirew.image = UIImage(named: "artist")
+    }
+    
+    func configureFavorites(model: FavoriteList.Fetch.ViewModel.MyTunes){
+        artistNameLabel.text = model.artistName
+        primaryGenreName.text = model.primaryGenreName
+        wrapperTypeLabel.text = model.wrapperType
         artistImageVirew.image = UIImage(named: "artist")
     }
 }

@@ -36,4 +36,12 @@ class CollectionCollectionViewCell: UICollectionViewCell {
         wrapperType.text = model.wrapperType
         collectionImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
     }
+    
+    func configureFavorites(model: FavoriteList.Fetch.ViewModel.MyTunes){
+    
+        country.text = model.country
+        collectionName.text = model.collectionName
+        wrapperType.text = model.wrapperType
+        collectionImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
+    }
 }

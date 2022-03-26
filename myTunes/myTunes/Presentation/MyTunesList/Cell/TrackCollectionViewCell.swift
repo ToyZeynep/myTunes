@@ -33,7 +33,13 @@ class TrackCollectionViewCell: UICollectionViewCell {
         trackName.text = model.trackName
         wrapperType.text = model.wrapperType
         kind.text = model.kind
-        
+        artWorkImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
+    }
+    
+    func configureFavorites(model: FavoriteList.Fetch.ViewModel.MyTunes){
+        trackName.text = model.trackName
+        wrapperType.text = model.wrapperType
+        kind.text = model.kind
         artWorkImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
     }
 }
