@@ -46,6 +46,7 @@ final class FavoriteListInteractor: FavoriteListBusinessLogic, FavoriteListDataS
     
     func removeFavorite(index: Int) {
         worker?.removeFavorite(object: (favoriteList?[index])!)
+        fetchFavoriteList()
     }
     
     func removeFavoriteList(){

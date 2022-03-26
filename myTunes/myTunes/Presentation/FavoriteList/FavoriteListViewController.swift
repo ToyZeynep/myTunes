@@ -57,6 +57,7 @@ final class FavoriteListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        interactor?.fetchFavoriteList()
         self.title = "FavoriteList"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
         self.navigationController?.navigationBar.tintColor = UIColor.systemMint
@@ -115,14 +116,25 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
             
         case WrapperType.track.rawValue:
             trackCell.configureFavorites(model: model)
+            trackCell.favoriteButton.addTapGesture { [weak self] in
+                self?.remove(index: indexPath.row)
+                self?.interactor?.removeFavorite(index: indexPath.item)
+                
+            }
             return trackCell
             
         case WrapperType.artist.rawValue:
             artistCell.configureFavorites(model: model)
+            artistCell.favoriteButton.addTapGesture { [weak self] in
+                self?.interactor?.removeFavorite(index: indexPath.item)
+            }
             return artistCell
             
         case WrapperType.collection.rawValue:
             collectionCell.configureFavorites(model: model)
+            collectionCell.favoriteButton.addTapGesture { [weak self] in
+                self?.interactor?.removeFavorite(index: indexPath.item)
+            }
             return collectionCell
             
         default:
@@ -130,4 +142,8 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
         }
     }
     
+    func remove(index: Int){
+        self.favoritesList.remove(at: index)
+        favoritesCollectionView.reloadData()
+    }
 }
