@@ -12,13 +12,56 @@
         <!--My Tunes List View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="MyTunesListViewController" customModule="myTunes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyTunesList" id="Y6W-OH-hqX" customClass="MyTunesListViewController" customModule="myTunes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmI-Sa-T0K">
+                                <rect key="frame" x="309" y="88" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="axM-LM-yJ4"/>
+                                    <constraint firstAttribute="height" constant="50" id="pw2-6Y-tJa"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="selectKindButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="XaD-YA-LcM"/>
+                                </connections>
+                            </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="K3Q-V8-Ge7">
+                                <rect key="frame" x="0.0" y="88" width="309" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="IRn-i9-kAS"/>
+                                </constraints>
+                                <color key="tintColor" red="0.31308114529999997" green="0.84791415930000003" blue="0.83572602269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Dj8-tu-RlE"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q3z-GV-RKy">
+                                <rect key="frame" x="0.0" y="143" width="414" height="41"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Usr-bu-Jhf"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Track"/>
+                                    <segment title="Artist"/>
+                                    <segment title="Collection"/>
+                                </segments>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" red="0.26853772999999997" green="0.83979541059999996" blue="0.82396727800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="wrapperTypeSegmentedController:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Kng-fR-lsC"/>
+                                </connections>
+                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="56l-OE-aTC">
-                                <rect key="frame" x="0.0" y="85" width="414" height="777"/>
+                                <rect key="frame" x="0.0" y="188" width="414" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gAO-8d-EMt">
                                     <size key="itemSize" width="128" height="128"/>
@@ -41,46 +84,46 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="j69-y7-kja"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmI-Sa-T0K">
-                                <rect key="frame" x="338" y="35" width="76" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJB-HI-nHQ">
+                                <rect key="frame" x="364" y="88" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SJs-R1-5ku"/>
+                                    <constraint firstAttribute="width" constant="50" id="bF2-fs-UqX"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Kind"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart"/>
                                 <connections>
-                                    <action selector="selectKindButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="XaD-YA-LcM"/>
+                                    <action selector="favoritesButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TYc-dL-npc"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="K3Q-V8-Ge7">
-                                <rect key="frame" x="0.0" y="35" width="328" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="4AP-O3-2H4"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Dj8-tu-RlE"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="K3Q-V8-Ge7" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="35" id="3vw-yT-06J"/>
-                            <constraint firstItem="K3Q-V8-Ge7" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-86" id="8xp-fR-2mW"/>
-                            <constraint firstItem="56l-OE-aTC" firstAttribute="top" secondItem="K3Q-V8-Ge7" secondAttribute="bottom" id="Brd-2C-RbX"/>
-                            <constraint firstItem="56l-OE-aTC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Inx-l0-MDQ"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="56l-OE-aTC" secondAttribute="trailing" id="RCq-ql-trY"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="56l-OE-aTC" secondAttribute="bottom" id="VPS-AB-jRB"/>
-                            <constraint firstItem="K3Q-V8-Ge7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eQP-HU-Ufb"/>
-                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="top" secondItem="K3Q-V8-Ge7" secondAttribute="top" id="heW-BK-IwQ"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NmI-Sa-T0K" secondAttribute="trailing" id="kO1-rG-Ufg"/>
-                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="bottom" secondItem="K3Q-V8-Ge7" secondAttribute="bottom" id="tOQ-BX-cEy"/>
-                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="leading" secondItem="K3Q-V8-Ge7" secondAttribute="trailing" constant="10" id="vZ4-WZ-MYq"/>
+                            <constraint firstItem="wJB-HI-nHQ" firstAttribute="leading" secondItem="NmI-Sa-T0K" secondAttribute="trailing" constant="5" id="3iy-a5-wvH"/>
+                            <constraint firstItem="56l-OE-aTC" firstAttribute="top" secondItem="q3z-GV-RKy" secondAttribute="bottom" constant="5" id="5SA-rq-9ic"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wJB-HI-nHQ" secondAttribute="trailing" id="5oP-0l-4De"/>
+                            <constraint firstItem="K3Q-V8-Ge7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="BRK-Hp-ijk"/>
+                            <constraint firstItem="q3z-GV-RKy" firstAttribute="top" secondItem="NmI-Sa-T0K" secondAttribute="bottom" constant="5" id="Fsq-so-fWY"/>
+                            <constraint firstItem="q3z-GV-RKy" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Hmr-ID-CEQ"/>
+                            <constraint firstItem="56l-OE-aTC" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="QAw-9a-MOy"/>
+                            <constraint firstItem="wJB-HI-nHQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="QYk-gG-D6c"/>
+                            <constraint firstItem="56l-OE-aTC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="R0M-VJ-jaE"/>
+                            <constraint firstItem="q3z-GV-RKy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RQr-8e-sJg"/>
+                            <constraint firstItem="K3Q-V8-Ge7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="V4L-I6-5jV"/>
+                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="leading" secondItem="K3Q-V8-Ge7" secondAttribute="trailing" id="gp3-B7-1QJ"/>
+                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="jr5-bb-Zob"/>
+                            <constraint firstItem="56l-OE-aTC" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="tnd-Ru-VPX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="prq-Ep-IDb"/>
                     <connections>
+                        <outlet property="favoritesButton" destination="wJB-HI-nHQ" id="zuq-oS-CDs"/>
                         <outlet property="myTunesCollectionView" destination="56l-OE-aTC" id="8wJ-UN-Imt"/>
                         <outlet property="myTunesSearchBar" destination="K3Q-V8-Ge7" id="kCD-26-kyf"/>
                         <outlet property="selectKindButton" destination="NmI-Sa-T0K" id="Df8-aT-FWF"/>
+                        <outlet property="wrapperTypeSegmentedController" destination="q3z-GV-RKy" id="n6R-aL-qwU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -90,9 +133,10 @@
         <!--Navigation Controller-->
         <scene sceneID="LRa-v1-Nm5">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="hZa-nU-jir" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hZa-nU-jir" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="P8m-O8-H3i">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -106,6 +150,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

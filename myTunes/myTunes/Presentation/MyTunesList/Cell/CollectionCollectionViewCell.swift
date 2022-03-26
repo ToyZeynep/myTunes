@@ -9,7 +9,8 @@ import UIKit
 
 class CollectionCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var viewUrl: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var country: UILabel!
     @IBOutlet weak var wrapperType: UILabel!
     @IBOutlet weak var collectionName: UILabel!
     @IBOutlet weak var collectionImageView: UIImageView!
@@ -24,10 +25,27 @@ class CollectionCollectionViewCell: UICollectionViewCell {
         contentView.frame = contentView.frame.inset(by: margins)
         contentView.layer.cornerRadius = 8
         contentView.backgroundColor = UIColor.white
-        contentView.layer.borderColor = UIColor.gray.cgColor
+        contentView.layer.borderColor = UIColor.systemMint.cgColor
         contentView.layer.borderWidth = 1
         contentView.clipsToBounds = true
-        
+        collectionImageView.layer.cornerRadius = 8
     }
 
+    func configure(model: MyTunesList.Fetch.ViewModel.MyTunes){
+        country.text = model.country
+        collectionName.text = model.collectionName
+        wrapperType.text = model.wrapperType
+        collectionImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
+        favoriteButton.isUserInteractionEnabled = false
+        favoriteButton.isHidden = true
+    }
+    
+    func configureFavorites(model: FavoriteList.Fetch.ViewModel.MyTunes){
+        country.text = model.country
+        collectionName.text = model.collectionName
+        wrapperType.text = model.wrapperType
+        collectionImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
+        favoriteButton.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        favoriteButton.tintColor = .systemRed
+    }
 }

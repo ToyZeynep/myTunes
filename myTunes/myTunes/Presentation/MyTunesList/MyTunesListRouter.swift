@@ -14,6 +14,7 @@ import UIKit
 
 protocol MyTunesListRoutingLogic: AnyObject {
     func routeToDetails(index: Int)
+    func routeToFavorites()
 }
 
 protocol MyTunesListDataPassing: AnyObject {
@@ -29,6 +30,13 @@ final class MyTunesListRouter:  MyTunesListRoutingLogic, MyTunesListDataPassing 
         let destVC: MyTunesDetailsViewController = storyBoard.instantiateViewController(identifier: "MyTunesDetails")
         let myTune = dataStore?.myTunesList?[index]
         destVC.router?.dataStore?.myTune = myTune
+        destVC.modalPresentationStyle = .fullScreen
+        viewController?.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+    func routeToFavorites() {
+        let storyBoard = UIStoryboard(name: "FavoriteList", bundle: nil)
+        let destVC: FavoriteListViewController = storyBoard.instantiateViewController(identifier: "FavoriteList")
         destVC.modalPresentationStyle = .fullScreen
         viewController?.navigationController?.pushViewController(destVC, animated: true)
     }

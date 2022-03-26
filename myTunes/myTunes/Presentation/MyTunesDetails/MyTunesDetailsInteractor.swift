@@ -13,7 +13,9 @@
 import UIKit
 
 protocol MyTunesDetailsBusinessLogic: AnyObject {
-    func fetchMyTunesDetails() 
+    func fetchMyTunesDetails()
+    func addTuneToFavorites()
+    func fetchTunesList()
 }
 
 protocol MyTunesDetailsDataStore:AnyObject {
@@ -22,15 +24,68 @@ protocol MyTunesDetailsDataStore:AnyObject {
 
 final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetailsDataStore {
     var myTune: Results?
-    
+    var tunes : [Tunes] = []
     var presenter: MyTunesDetailsPresentationLogic?
     var worker: MyTunesDetailsWorkingLogic?
-
+    var id: Int16?
     init(worker: MyTunesDetailsWorkingLogic) {
         self.worker = worker
     }
     
     func fetchMyTunesDetails() {
         self.presenter?.presentMyTunesDetails(response:.init(myTune: myTune))
+    }
+    
+    func fetchTunesList() {
+        worker?.getFavoriteTunesList() { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.tunes = response
+            case .failure(let error):
+                print("error: ", error)
+            }
+        }
+    }
+    
+    func addTuneToFavorites() {
+        fetchTunesList()
+        switch myTune?.wrapperType{
+        case WrapperType.track.rawValue:
+            
+            if  tunes.contains(where: {$0.trackId == Int16(truncatingIfNeeded: (myTune?.trackId)!) }){
+                presenter?.shakeView()
+                presenter?.alert(message:  "\(String(describing: myTune?.trackName ?? ""))")
+                
+            }else{
+                addTune()
+                presenter?.snackBar(message: "\(String(describing: myTune?.trackName ?? ""))")
+            }
+        case WrapperType.collection.rawValue:
+            
+            if tunes.contains(where: {$0.collectionId == Int16(truncatingIfNeeded:(myTune?.collectionId)!) }){
+                presenter?.shakeView()
+                presenter?.alert(message:  "\(String(describing: myTune?.collectionName ?? ""))")
+                
+            }else{
+                addTune()
+                presenter?.snackBar(message: "\(String(describing: myTune?.collectionName ?? ""))")
+            }
+            
+        case WrapperType.artist.rawValue:
+            
+            if tunes.contains(where: {$0.artistId == Int16(truncatingIfNeeded:(myTune?.artistId)!) }){
+                presenter?.shakeView()
+                presenter?.alert(message:  "\(String(describing: myTune?.artistName ?? ""))")
+            }else{
+                addTune()
+                presenter?.snackBar(message: "\(String(describing: myTune?.artistName ?? ""))")
+            }
+        default:
+            break
+        }
+    }
+    
+    func addTune(){
+        worker?.addTune(wrapperType: myTune?.wrapperType, artistId : Int16(truncatingIfNeeded: myTune?.artistId ?? 0) , collectionId : Int16(truncatingIfNeeded: myTune?.collectionId ?? 0) , trackId : Int16(truncatingIfNeeded: myTune?.trackId ?? 0) ,  kind: myTune?.kind, artistName: myTune?.artistName, collectionName: myTune?.collectionName, trackName: myTune?.trackName, artworkUrl100: myTune?.artworkUrl100, releaseDate: myTune?.releaseDate, country: myTune?.country, primaryGenreName: myTune?.primaryGenreName, artistViewUrl: myTune?.artistViewUrl, collectionViewUrl: myTune?.collectionViewUrl, trackViewUrl: myTune?.trackViewUrl)
     }
 }

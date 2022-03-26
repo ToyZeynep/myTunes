@@ -17,7 +17,6 @@ enum MyTunesDetails
   
     enum Fetch
     {
-       
         struct Response
         {
        var myTune: Results?
@@ -25,7 +24,6 @@ enum MyTunesDetails
 
         struct ViewModel
         {
-
             var wrapperType : String?
             var kind : String?
             var artistId : Int?

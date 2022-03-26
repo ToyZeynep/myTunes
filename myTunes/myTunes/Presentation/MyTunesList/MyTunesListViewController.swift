@@ -26,19 +26,27 @@ final class MyTunesListViewController: UIViewController {
     var router: ( MyTunesListRoutingLogic & MyTunesListDataPassing)?
     var viewModel: MyTunesList.Fetch.ViewModel?
     var gridFlowLayout = GridFlowLayout()
-    let filter : [String] = [ "movie", "podcast", "music", "musicVideo", "audiobook", "shortFilm", "tvShow" , "software", "ebook", "artist"]
+    let filter : [String] = [Media.movie.rawValue, Media.podcast.rawValue, Media.music.rawValue, Media.musicVideo.rawValue, Media.audiobook.rawValue, Media.shortFilm.rawValue, Media.tvShow.rawValue , Media.software.rawValue, Media.ebook.rawValue, Media.all.rawValue]
+    var trackList = [MyTunesList.Fetch.ViewModel.MyTunes]()
+    var collectionList = [MyTunesList.Fetch.ViewModel.MyTunes]()
+    var artistList = [MyTunesList.Fetch.ViewModel.MyTunes]()
+    var myTunesList : [MyTunesList.Fetch.ViewModel.MyTunes] = []
+    
     @IBOutlet weak var myTunesSearchBar: UISearchBar!
     @IBOutlet weak var myTunesCollectionView: UICollectionView!
     @IBOutlet weak var selectKindButton: UIButton!
-    
+    @IBOutlet weak var wrapperTypeSegmentedController: UISegmentedControl!
+    @IBOutlet weak var favoritesButton: UIButton!
     var params = [String:Any](){
         didSet{
-            interactor?.fetchMyTunesList(params: params)
+            if myTunesSearchBar.text != ""{
+                interactor?.fetchMyTunesList(params: params)
+                wrapperTypeSegmentedController.selectedSegmentIndex = 0
+            }else {
+                
+            }
         }
     }
-    
-    
-    
     
     // MARK: Object lifecycle
     
@@ -69,8 +77,22 @@ final class MyTunesListViewController: UIViewController {
     
     // MARK: - View lifecycle
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        self.title = "MyTunesList"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectKindButton.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        selectKindButton.tintColor = .systemMint
+        favoritesButton.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        favoritesButton.tintColor = .systemMint
         myTunesCollectionView.collectionViewLayout = gridFlowLayout
         let nibTr = UINib(nibName: "TrackCollectionViewCell", bundle: nil)
         myTunesCollectionView.register(nibTr, forCellWithReuseIdentifier: "trackCell")
@@ -80,39 +102,106 @@ final class MyTunesListViewController: UIViewController {
         myTunesCollectionView.register(nibAr, forCellWithReuseIdentifier: "artistCell")
     }
     
+    @IBAction func favoritesButton(_ sender: Any) {
+        router?.routeToFavorites()
+    }
+    
+    @IBAction func wrapperTypeSegmentedController(_ sender: UISegmentedControl) {
+        
+        if self.viewModel?.myTunesList != nil{
+            switch sender.selectedSegmentIndex{
+            case 0:
+                self.myTunesList = self.viewModel!.myTunesList
+                guard let searchText = myTunesSearchBar.text else { return }
+                self.params["term"] = searchText
+                
+            case 1:
+                self.myTunesList = viewModel!.myTunesList
+                var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
+                for tunes in (self.myTunesList) {
+                    let wrapperType = tunes.wrapperType
+                    if wrapperType!.contains(WrapperType.track.rawValue){
+                        filteredData.append(tunes)
+                    }
+                }
+                self.myTunesList.removeAll()
+                self.myTunesList.append(contentsOf: filteredData)
+                self.myTunesCollectionView.reloadData()
+            
+            case 2:
+                self.myTunesList = viewModel!.myTunesList
+                var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
+                for tunes in (self.myTunesList) {
+                    let wrapperType = tunes.wrapperType
+                    if wrapperType!.contains(WrapperType.artist.rawValue){
+                        filteredData.append(tunes)
+                    }
+                }
+                self.myTunesList.removeAll()
+                self.myTunesList.append(contentsOf: filteredData)
+                self.myTunesCollectionView.reloadData()
+                
+                
+            case 3:
+                self.myTunesList = viewModel!.myTunesList
+                var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
+                for tunes in (self.viewModel?.myTunesList)! {
+                    let wrapperType = tunes.wrapperType
+                    if wrapperType!.contains(WrapperType.collection.rawValue){
+                        filteredData.append(tunes)
+                    }
+                }
+                self.myTunesList.removeAll()
+                self.myTunesList.append(contentsOf: filteredData)
+                self.myTunesCollectionView.reloadData()
+               
+            default:
+                break
+            }
+        }else {
+            
+        }
+    }
+    
     @IBAction func selectKindButton(_ sender: Any) {
         showPicker(selectKindButton, list: filter )
     }
+    
     func showPicker(_ sender: UIButton, list: [String]){
         McPicker.showAsPopover(data:[list], fromViewController: self, sourceView: sender, doneHandler:{ [weak self] (selections: [Int : String]) -> Void in
             if let name = selections[0] {
+                
                 switch name {
-                case "movie":
-                    self?.params["entity"] = "album"
-                    
-                case "podcast":
-                    self?.params["entity"] = "podcast"
-                    
-                case "music":
+                                       
+                case  Media.movie.rawValue:
                     self?.params["entity"] = "musicArtist"
+                   
+                case Media.podcast.rawValue:
+                    self?.params["media"] = Media.podcast.rawValue
                     
-                case "musicVideo":
-                    self?.params["entity"] = "musicVideo"
+                case Media.music.rawValue:
+                    self?.params["media"] = Media.music.rawValue
                     
-                case "audiobook":
-                    self?.params["entity"] = "audiobook"
+                case  Media.musicVideo.rawValue:
+                    self?.params["media"] =  Media.musicVideo.rawValue
                     
-                case "shortFilm":
-                    self?.params["entity"] = "shortFilmArtist"
+                case Media.audiobook.rawValue:
+                    self?.params["media"] = Media.audiobook.rawValue
                     
-                case "tvShow":
-                    self?.params["entity"] = "tvShow"
+                case Media.shortFilm.rawValue:
+                    self?.params["media"] = Media.shortFilm.rawValue
                     
-                case "software":
-                    self?.params["entity"] = "software"
+                case Media.tvShow.rawValue:
+                    self?.params["media"] = Media.tvShow.rawValue
                     
-                case "ebook":
-                    self?.params["entity"] = "ebook"
+                case Media.software.rawValue:
+                    self?.params["media"] = Media.software.rawValue
+                    
+                case Media.ebook.rawValue:
+                    self?.params["media"] = Media.ebook.rawValue
+                    
+                case  Media.all.rawValue:
+                    self?.params["media"] =  Media.all.rawValue
                     
                 default:
                     break
@@ -126,15 +215,15 @@ extension MyTunesListViewController: MyTunesListDisplayLogic{
     func displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel)
     {
         self.viewModel = viewModel
+        self.myTunesList = viewModel.myTunesList
         myTunesCollectionView.reloadData()
     }
 }
 
-
 extension MyTunesListViewController: UICollectionViewDataSource , UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.myTunesList.count ?? 0
+        return myTunesList.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -142,38 +231,20 @@ extension MyTunesListViewController: UICollectionViewDataSource , UICollectionVi
         guard let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionCollectionViewCell? else {return UICollectionViewCell()}
         guard let artistCell = collectionView.dequeueReusableCell(withReuseIdentifier: "artistCell", for: indexPath) as! ArtistCollectionViewCell? else {return UICollectionViewCell()}
         
-        let model = self.viewModel?.myTunesList[indexPath.item]
+        let model = self.myTunesList[indexPath.item]
         
-        switch model?.wrapperType {
-        case "track":
-            trackCell.trackViewUrl.text = "View on iTunes Store"
-            trackCell.trackName.text = model?.trackName
-            trackCell.wrapperType.text = model?.wrapperType
-            trackCell.kind.text = model?.kind
-            trackCell.artWorkImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
-            trackCell.trackViewUrl.addTapGesture {
-                if let url = URL(string: (model?.trackViewUrl)!) {
-                    UIApplication.shared.open(url)
-                }
-            }
+        switch model.wrapperType {
+            
+        case WrapperType.track.rawValue:
+            trackCell.configure(model: model)
             return trackCell
-        case "artist":
-            artistCell.artistNameLabel.text = model?.artistName
-            artistCell.artistViewUrl.text = "View on iTunes Store"
-            artistCell.wrapperTypeLabel.text = model?.wrapperType
+            
+        case WrapperType.artist.rawValue:
+            artistCell.configure(model: model)
             return artistCell
             
-        case "collection":
-        
-            collectionCell.viewUrl.text = "View on iTunes Store"
-            collectionCell.collectionName.text = model?.collectionName
-            collectionCell.wrapperType.text = model?.wrapperType
-            collectionCell.collectionImageView.kf.setImage(with: URL(string: (model?.artworkUrl100) ?? ""))
-            collectionCell.viewUrl.addTapGesture {
-                if let url = URL(string: (model?.collectionViewUrl)!) {
-                    UIApplication.shared.open(url)
-                }
-            }
+        case WrapperType.collection.rawValue:
+            collectionCell.configure(model: model)
             return collectionCell
             
         default:
@@ -185,7 +256,6 @@ extension MyTunesListViewController: UICollectionViewDataSource , UICollectionVi
         router?.routeToDetails(index: indexPath.item)
     }
 }
-
 
 // MARK: - SearchBar Delegate
 
@@ -200,6 +270,8 @@ extension MyTunesListViewController : UISearchBarDelegate {
         guard let searchText = myTunesSearchBar.text else { return }
         
         if searchText == "" {
+            params.removeAll()
+            wrapperTypeSegmentedController.selectedSegmentIndex = 0
             self.viewModel?.myTunesList.removeAll()
             myTunesCollectionView.reloadData()
         } else {
@@ -208,8 +280,9 @@ extension MyTunesListViewController : UISearchBarDelegate {
     }
     
     func search(searchText: String){
-        self.params["limit"] = "50"
-        self.params["term"] = searchText
+        params.removeAll()
+        params["limit"] = "25"
+        params["term"] = searchText
         print(params)
     }
 }
