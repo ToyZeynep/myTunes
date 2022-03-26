@@ -15,6 +15,8 @@ import UIKit
 
 protocol FavoriteListBusinessLogic: AnyObject {
     func fetchFavoriteList()
+    func removeFavoriteList()
+    func removeFavorite(index: Int) 
 }
 
 protocol FavoriteListDataStore: AnyObject {

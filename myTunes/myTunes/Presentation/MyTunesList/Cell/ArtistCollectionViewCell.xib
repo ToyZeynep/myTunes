@@ -39,6 +39,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvf-wd-vnb">
+                        <rect key="frame" x="175" y="10" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="3Rb-zQ-Kuv"/>
+                            <constraint firstAttribute="width" constant="30" id="gdO-w8-Pk1"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain"/>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -54,14 +63,17 @@
                 <constraint firstItem="Zxi-ps-vYc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eCy-Xr-BbQ"/>
                 <constraint firstItem="wpb-dZ-KLG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eMK-4P-I7f"/>
                 <constraint firstAttribute="trailing" secondItem="uCu-IW-3xS" secondAttribute="trailing" id="mGT-84-qnt"/>
+                <constraint firstAttribute="trailing" secondItem="zvf-wd-vnb" secondAttribute="trailing" constant="10" id="oiq-MN-8h3"/>
                 <constraint firstItem="wpb-dZ-KLG" firstAttribute="top" secondItem="uCu-IW-3xS" secondAttribute="bottom" constant="20" id="pUB-S1-zFm"/>
                 <constraint firstAttribute="trailing" secondItem="pdh-03-lci" secondAttribute="trailing" id="peo-sA-Xe5"/>
                 <constraint firstItem="Zxi-ps-vYc" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="qcd-Q1-Zu7"/>
+                <constraint firstItem="zvf-wd-vnb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="v6V-PO-Oul"/>
             </constraints>
             <size key="customSize" width="215" height="300"/>
             <connections>
                 <outlet property="artistImageVirew" destination="Zxi-ps-vYc" id="KZX-3a-guZ"/>
                 <outlet property="artistNameLabel" destination="pdh-03-lci" id="Xw6-aR-7rI"/>
+                <outlet property="favoriteButton" destination="zvf-wd-vnb" id="aQE-Mc-7j9"/>
                 <outlet property="primaryGenreName" destination="uCu-IW-3xS" id="ofl-kQ-lvI"/>
                 <outlet property="wrapperTypeLabel" destination="wpb-dZ-KLG" id="kwf-d0-fiD"/>
             </connections>

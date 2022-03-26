@@ -9,6 +9,7 @@ import UIKit
 
 class ArtistCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var artistImageVirew: UIImageView!
     @IBOutlet weak var wrapperTypeLabel: UILabel!
     @IBOutlet weak var primaryGenreName: UILabel!
@@ -34,6 +35,8 @@ class ArtistCollectionViewCell: UICollectionViewCell {
        primaryGenreName.text = model.primaryGenreName
        wrapperTypeLabel.text = model.wrapperType
        artistImageVirew.image = UIImage(named: "artist")
+       favoriteButton.isUserInteractionEnabled = false
+       favoriteButton.isHidden = true
     }
     
     func configureFavorites(model: FavoriteList.Fetch.ViewModel.MyTunes){
@@ -41,5 +44,7 @@ class ArtistCollectionViewCell: UICollectionViewCell {
         primaryGenreName.text = model.primaryGenreName
         wrapperTypeLabel.text = model.wrapperType
         artistImageVirew.image = UIImage(named: "artist")
+        favoriteButton.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        favoriteButton.tintColor = .systemRed
     }
 }

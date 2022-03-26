@@ -8,6 +8,7 @@
 import UIKit
 
 class TrackCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var wrapperType: UILabel!
     @IBOutlet weak var kind: UILabel!
     @IBOutlet weak var trackName: UILabel!
@@ -19,7 +20,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let margins = UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)
+        let margins = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         contentView.frame = contentView.frame.inset(by: margins)
         contentView.layer.cornerRadius = 8
         contentView.backgroundColor = UIColor.white
@@ -34,6 +35,8 @@ class TrackCollectionViewCell: UICollectionViewCell {
         wrapperType.text = model.wrapperType
         kind.text = model.kind
         artWorkImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
+        favoriteButton.isUserInteractionEnabled = false
+        favoriteButton.isHidden = true
     }
     
     func configureFavorites(model: FavoriteList.Fetch.ViewModel.MyTunes){
@@ -41,5 +44,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
         wrapperType.text = model.wrapperType
         kind.text = model.kind
         artWorkImageView.kf.setImage(with: URL(string: (model.artworkUrl100) ?? ""))
+        favoriteButton.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        favoriteButton.tintColor = .systemRed
     }
 }

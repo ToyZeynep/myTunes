@@ -31,11 +31,12 @@ final class MyTunesListViewController: UIViewController {
     var collectionList = [MyTunesList.Fetch.ViewModel.MyTunes]()
     var artistList = [MyTunesList.Fetch.ViewModel.MyTunes]()
     var myTunesList : [MyTunesList.Fetch.ViewModel.MyTunes] = []
+    
     @IBOutlet weak var myTunesSearchBar: UISearchBar!
     @IBOutlet weak var myTunesCollectionView: UICollectionView!
     @IBOutlet weak var selectKindButton: UIButton!
     @IBOutlet weak var wrapperTypeSegmentedController: UISegmentedControl!
-    
+    @IBOutlet weak var favoritesButton: UIButton!
     var params = [String:Any](){
         didSet{
             if myTunesSearchBar.text != ""{
@@ -90,6 +91,8 @@ final class MyTunesListViewController: UIViewController {
         super.viewDidLoad()
         selectKindButton.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysTemplate), for: .normal)
         selectKindButton.tintColor = .systemMint
+        favoritesButton.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        favoritesButton.tintColor = .systemMint
         myTunesCollectionView.collectionViewLayout = gridFlowLayout
         let nibTr = UINib(nibName: "TrackCollectionViewCell", bundle: nil)
         myTunesCollectionView.register(nibTr, forCellWithReuseIdentifier: "trackCell")
@@ -97,6 +100,10 @@ final class MyTunesListViewController: UIViewController {
         myTunesCollectionView.register(nibCl, forCellWithReuseIdentifier: "collectionCell")
         let nibAr = UINib(nibName: "ArtistCollectionViewCell", bundle: nil)
         myTunesCollectionView.register(nibAr, forCellWithReuseIdentifier: "artistCell")
+    }
+    
+    @IBAction func favoritesButton(_ sender: Any) {
+        router?.routeToFavorites()
     }
     
     @IBAction func wrapperTypeSegmentedController(_ sender: UISegmentedControl) {

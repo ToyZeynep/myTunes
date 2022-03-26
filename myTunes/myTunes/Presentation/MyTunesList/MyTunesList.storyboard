@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmI-Sa-T0K">
-                                <rect key="frame" x="364" y="88" width="50" height="50"/>
+                                <rect key="frame" x="309" y="88" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="3pH-5Q-NWu"/>
-                                    <constraint firstAttribute="width" constant="50" id="OkT-oK-ZsS"/>
+                                    <constraint firstAttribute="width" constant="50" id="axM-LM-yJ4"/>
+                                    <constraint firstAttribute="height" constant="50" id="pw2-6Y-tJa"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="K3Q-V8-Ge7">
-                                <rect key="frame" x="0.0" y="88" width="364" height="50"/>
+                                <rect key="frame" x="0.0" y="88" width="309" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="IRn-i9-kAS"/>
                                 </constraints>
@@ -84,26 +84,42 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="j69-y7-kja"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJB-HI-nHQ">
+                                <rect key="frame" x="364" y="88" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SJs-R1-5ku"/>
+                                    <constraint firstAttribute="width" constant="50" id="bF2-fs-UqX"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart"/>
+                                <connections>
+                                    <action selector="favoritesButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TYc-dL-npc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wJB-HI-nHQ" firstAttribute="leading" secondItem="NmI-Sa-T0K" secondAttribute="trailing" constant="5" id="3iy-a5-wvH"/>
                             <constraint firstItem="56l-OE-aTC" firstAttribute="top" secondItem="q3z-GV-RKy" secondAttribute="bottom" constant="5" id="5SA-rq-9ic"/>
-                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="77h-7r-oy6"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wJB-HI-nHQ" secondAttribute="trailing" id="5oP-0l-4De"/>
                             <constraint firstItem="K3Q-V8-Ge7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="BRK-Hp-ijk"/>
+                            <constraint firstItem="q3z-GV-RKy" firstAttribute="top" secondItem="NmI-Sa-T0K" secondAttribute="bottom" constant="5" id="Fsq-so-fWY"/>
                             <constraint firstItem="q3z-GV-RKy" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Hmr-ID-CEQ"/>
-                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="leading" secondItem="K3Q-V8-Ge7" secondAttribute="trailing" id="Mix-uj-yMo"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NmI-Sa-T0K" secondAttribute="trailing" id="NBx-SK-Z0L"/>
                             <constraint firstItem="56l-OE-aTC" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="QAw-9a-MOy"/>
+                            <constraint firstItem="wJB-HI-nHQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="QYk-gG-D6c"/>
                             <constraint firstItem="56l-OE-aTC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="R0M-VJ-jaE"/>
                             <constraint firstItem="q3z-GV-RKy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RQr-8e-sJg"/>
                             <constraint firstItem="K3Q-V8-Ge7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="V4L-I6-5jV"/>
-                            <constraint firstItem="q3z-GV-RKy" firstAttribute="top" secondItem="NmI-Sa-T0K" secondAttribute="bottom" constant="5" id="imZ-Bh-1fZ"/>
+                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="leading" secondItem="K3Q-V8-Ge7" secondAttribute="trailing" id="gp3-B7-1QJ"/>
+                            <constraint firstItem="NmI-Sa-T0K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="jr5-bb-Zob"/>
                             <constraint firstItem="56l-OE-aTC" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="tnd-Ru-VPX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="prq-Ep-IDb"/>
                     <connections>
+                        <outlet property="favoritesButton" destination="wJB-HI-nHQ" id="zuq-oS-CDs"/>
                         <outlet property="myTunesCollectionView" destination="56l-OE-aTC" id="8wJ-UN-Imt"/>
                         <outlet property="myTunesSearchBar" destination="K3Q-V8-Ge7" id="kCD-26-kyf"/>
                         <outlet property="selectKindButton" destination="NmI-Sa-T0K" id="Df8-aT-FWF"/>
@@ -134,6 +150,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

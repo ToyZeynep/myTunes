@@ -58,14 +58,24 @@ final class FavoriteListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "FavoriteList"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.red]
-        self.navigationController?.navigationBar.tintColor = UIColor.red
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
+        self.navigationController?.navigationBar.tintColor = UIColor.systemMint
+        let image = UIImage(named: "delete")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image , style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 3, left: 3, bottom: -4, right: -3)
 
+    }
+    
+    @objc func addTapped(){
+      
+        self.interactor?.removeFavoriteList()
+        self.interactor?.fetchFavoriteList()
+      
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        interactor?.fetchFavoriteList()
         favoritesCollectionView.collectionViewLayout = gridFlowLayout
         let nibTr = UINib(nibName: "TrackCollectionViewCell", bundle: nil)
         favoritesCollectionView.register(nibTr, forCellWithReuseIdentifier: "trackCell")
@@ -83,6 +93,8 @@ extension FavoriteListViewController : FavoriteListDisplayLogic{
     
     func displayFavoriteList(viewModel: FavoriteList.Fetch.ViewModel) {
         self.viewModel = viewModel
+        self.favoritesList = viewModel.favoriteList
+        favoritesCollectionView.reloadData()
     }
 }
 
