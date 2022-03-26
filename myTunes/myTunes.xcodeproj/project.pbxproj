@@ -16,6 +16,8 @@
 		2225360727EED9A80074C8F8 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225360127EED9A80074C8F8 /* FavoriteListViewController.swift */; };
 		2225360827EED9A80074C8F8 /* FavoriteListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225360227EED9A80074C8F8 /* FavoriteListInteractor.swift */; };
 		2225360C27EEDD560074C8F8 /* FavoriteList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2225360B27EEDD560074C8F8 /* FavoriteList.storyboard */; };
+		2225361B27EF49FF0074C8F8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225361A27EF49FF0074C8F8 /* SplashView.swift */; };
+		2225361E27EF4A2D0074C8F8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2225361D27EF4A2D0074C8F8 /* Splash.storyboard */; };
 		2228D89327EB448200AF7FFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D89227EB448200AF7FFC /* AppDelegate.swift */; };
 		2228D89527EB448200AF7FFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D89427EB448200AF7FFC /* SceneDelegate.swift */; };
 		2228D89C27EB448500AF7FFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2228D89B27EB448500AF7FFC /* Assets.xcassets */; };
@@ -65,6 +67,8 @@
 		2225360127EED9A80074C8F8 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		2225360227EED9A80074C8F8 /* FavoriteListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListInteractor.swift; sourceTree = "<group>"; };
 		2225360B27EEDD560074C8F8 /* FavoriteList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteList.storyboard; sourceTree = "<group>"; };
+		2225361A27EF49FF0074C8F8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		2225361D27EF4A2D0074C8F8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		2228D88F27EB448200AF7FFC /* myTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2228D89227EB448200AF7FFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2228D89427EB448200AF7FFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +134,15 @@
 				2225360B27EEDD560074C8F8 /* FavoriteList.storyboard */,
 			);
 			path = FavoriteList;
+			sourceTree = "<group>";
+		};
+		2225361C27EF4A0A0074C8F8 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				2225361A27EF49FF0074C8F8 /* SplashView.swift */,
+				2225361D27EF4A2D0074C8F8 /* Splash.storyboard */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		2228D88627EB448200AF7FFC = {
@@ -205,9 +218,10 @@
 		2228D8B427EB6CD600AF7FFC /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				222535FC27EED9840074C8F8 /* FavoriteList */,
+				2225361C27EF4A0A0074C8F8 /* Splash */,
 				2228D8C227EB6D4A00AF7FFC /* MyTunesList */,
 				2238A60F27EC8CDC00AE4EF0 /* MyTunesDetails */,
+				222535FC27EED9840074C8F8 /* FavoriteList */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -350,6 +364,7 @@
 				2225360C27EEDD560074C8F8 /* FavoriteList.storyboard in Resources */,
 				2228D8D027EB6D9100AF7FFC /* MyTunesList.storyboard in Resources */,
 				22F56D4727EC566F0041891D /* ArtistCollectionViewCell.xib in Resources */,
+				2225361E27EF4A2D0074C8F8 /* Splash.storyboard in Resources */,
 				2228D8D927EB9FD600AF7FFC /* TrackCollectionViewCell.xib in Resources */,
 				2228D89C27EB448500AF7FFC /* Assets.xcassets in Resources */,
 				2238A61D27ECA04900AE4EF0 /* MyTunesDetails.storyboard in Resources */,
@@ -426,6 +441,7 @@
 				2228D8B327EB51BA00AF7FFC /* Results.swift in Sources */,
 				2238A61927EC8D8100AE4EF0 /* MyTunesDetailsModels.swift in Sources */,
 				2228D8AA27EB48AA00AF7FFC /* ApiEndPoints.swift in Sources */,
+				2225361B27EF49FF0074C8F8 /* SplashView.swift in Sources */,
 				222535EE27EED1AA0074C8F8 /* Alert.swift in Sources */,
 				22F56D4627EC566F0041891D /* ArtistCollectionViewCell.swift in Sources */,
 				2228D8B127EB512E00AF7FFC /* ListResponse.swift in Sources */,
@@ -585,9 +601,9 @@
 				DEVELOPMENT_TEAM = 2LVW678G5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myTunes/Info.plist;
-				INFOPLIST_KEY_NSMainNibFile = MyTunesList;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Splash;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -614,9 +630,9 @@
 				DEVELOPMENT_TEAM = 2LVW678G5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myTunes/Info.plist;
-				INFOPLIST_KEY_NSMainNibFile = MyTunesList;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Splash;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
