@@ -82,7 +82,7 @@ final class MyTunesListViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.navigationController?.navigationBar.backgroundColor = .clear
-        self.title = "MyTunesList"
+        self.title = "MyTunes"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
     }
         

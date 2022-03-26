@@ -59,7 +59,7 @@ final class FavoriteListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         interactor?.fetchFavoriteList()
-        self.title = "FavoriteList"
+        self.title = "Favorites"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
         self.navigationController?.navigationBar.tintColor = UIColor.systemMint
         let image = UIImage(named: "delete")
@@ -73,6 +73,7 @@ final class FavoriteListViewController: UIViewController {
         let alertAction = UIAlertAction(title: "OK", style: .default) { UIAlertAction in
            
             self.router?.popOver()
+            
         }
         Alert.alertAction(title: "Clean", message: "Removed Favorite List ", action: alertAction)
     }
@@ -88,6 +89,61 @@ final class FavoriteListViewController: UIViewController {
         let nibAr = UINib(nibName: "ArtistCollectionViewCell", bundle: nil)
         favoritesCollectionView.register(nibAr, forCellWithReuseIdentifier: "artistCell")
     }
+    
+    @IBAction func typeSegmentedController(_ sender: UISegmentedControl) {
+        if self.viewModel?.favoriteList != nil{
+            switch sender.selectedSegmentIndex{
+            case 0:
+                
+                self.favoritesList = (self.viewModel?.favoriteList)!
+                self.favoritesCollectionView.reloadData()
+            case 1:
+                self.favoritesList = (self.viewModel?.favoriteList)!
+                var filteredData = [FavoriteList.Fetch.ViewModel.MyTunes]()
+                for tunes in (self.favoritesList) {
+                    let wrapperType = tunes.wrapperType
+                    if wrapperType!.contains(WrapperType.track.rawValue){
+                        filteredData.append(tunes)
+                    }
+                }
+                self.favoritesList.removeAll()
+                self.favoritesList.append(contentsOf: filteredData)
+                self.favoritesCollectionView.reloadData()
+                
+            case 2:
+                self.favoritesList = (self.viewModel?.favoriteList)!
+                var filteredData = [FavoriteList.Fetch.ViewModel.MyTunes]()
+                for tunes in (self.favoritesList) {
+                    let wrapperType = tunes.wrapperType
+                    if wrapperType!.contains(WrapperType.artist.rawValue){
+                        filteredData.append(tunes)
+                    }
+                }
+                self.favoritesList.removeAll()
+                self.favoritesList.append(contentsOf: filteredData)
+                self.favoritesCollectionView.reloadData()
+                                
+            case 3:
+                self.favoritesList = (self.viewModel?.favoriteList)!
+                var filteredData = [FavoriteList.Fetch.ViewModel.MyTunes]()
+                for tunes in (self.favoritesList) {
+                    let wrapperType = tunes.wrapperType
+                    if wrapperType!.contains(WrapperType.collection.rawValue){
+                        filteredData.append(tunes)
+                    }
+                }
+                self.favoritesList.removeAll()
+                self.favoritesList.append(contentsOf: filteredData)
+                self.favoritesCollectionView.reloadData()
+                
+            default:
+                break
+            }
+        }else {
+            
+        }
+    }
+    
 }
 
 // MARK: - Display view model from City List Presenter

@@ -57,7 +57,9 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
     
     func addTuneToFavorites() {
         if myTune == nil {
+            presenter?.shakeView()
             presenter?.alert(message:  "Already Favorited" , title: "Wait a Second")
+            
         }else{
         fetchTunesList()
         switch myTune?.wrapperType{
