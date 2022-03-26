@@ -15,11 +15,13 @@ import UIKit
 protocol MyTunesDetailsPresentationLogic: AnyObject {
     func presentMyTunesDetails(response: MyTunesDetails.Fetch.Response)
     func shakeView()
+    func snackBar(message: String)
+    func alert(message: String)
 }
 
 final class MyTunesDetailsPresenter: MyTunesDetailsPresentationLogic {
     weak var viewController: MyTunesDetailsDisplayLogic?
-    
+    var alert = Alert()
     
     func presentMyTunesDetails(response: MyTunesDetails.Fetch.Response) {
         
@@ -31,4 +33,11 @@ final class MyTunesDetailsPresenter: MyTunesDetailsPresentationLogic {
         viewController?.shakeView()
     }
 
+    func snackBar(message: String) {
+        viewController?.snackBar(message: message)
+    }
+  
+    func alert(message: String){
+        Alert.alert(title: "wait a second", message: "\(message) is already favorited")
+    }
 }

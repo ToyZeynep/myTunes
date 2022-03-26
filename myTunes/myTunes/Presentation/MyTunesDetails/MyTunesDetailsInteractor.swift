@@ -54,28 +54,32 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
             
             if  tunes.contains(where: {$0.trackId == Int16(truncatingIfNeeded: (myTune?.trackId)!) }){
                 presenter?.shakeView()
-            }else{
+                presenter?.alert(message:  "\(String(describing: myTune?.trackName))")
                 
+            }else{
                 addTune()
+                presenter?.snackBar(message: "\(String(describing: myTune?.trackName))")
             }
         case "collection":
             
             if tunes.contains(where: {$0.collectionId == Int16(truncatingIfNeeded:(myTune?.collectionId)!) }){
-                print("zaten ekli")
-            }else{
+                presenter?.shakeView()
+                presenter?.alert(message:  "\(String(describing: myTune?.collectionName!))")
                 
+            }else{
                 addTune()
+                presenter?.snackBar(message: "\(String(describing: myTune?.collectionName))")
             }
             
         case "artist":
             
             if tunes.contains(where: {$0.artistId == Int16(truncatingIfNeeded:(myTune?.artistId)!) }){
-                print("zaten ekli")
+                presenter?.shakeView()
+                presenter?.alert(message:  "\(String(describing: myTune?.artistName))")
             }else{
-                
                 addTune()
+                presenter?.snackBar(message: "\(String(describing: myTune?.artistName))")
             }
-            
         default:
             break
         }
@@ -84,6 +88,4 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
     func addTune(){
         worker?.addTune(wrapperType: myTune?.wrapperType, artistId : Int16(truncatingIfNeeded: myTune?.artistId ?? 0) , collectionId : Int16(truncatingIfNeeded: myTune?.collectionId ?? 0) , trackId : Int16(truncatingIfNeeded: myTune?.trackId ?? 0) ,  kind: myTune?.kind, artistName: myTune?.artistName, collectionName: myTune?.collectionName, trackName: myTune?.trackName, artworkUrl100: myTune?.artworkUrl100, releaseDate: myTune?.releaseDate, country: myTune?.country, primaryGenreName: myTune?.primaryGenreName, artistViewUrl: myTune?.artistViewUrl, collectionViewUrl: myTune?.collectionViewUrl, trackViewUrl: myTune?.trackViewUrl)
     }
-    
-    
 }

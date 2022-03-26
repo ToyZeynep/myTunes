@@ -17,9 +17,11 @@ protocol MyTunesDetailsDisplayLogic: AnyObject
 {
     func displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel)
     func shakeView()
+    func snackBar(message: String)
+    func message(message: String)
 }
 
-final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDisplayLogic {
+final class MyTunesDetailsViewController: UIViewController {
     var interactor: MyTunesDetailsBusinessLogic?
     var router: ( MyTunesDetailsRoutingLogic & MyTunesDetailsDataPassing)?
     var viewModel: MyTunesDetails.Fetch.ViewModel?
@@ -79,7 +81,15 @@ final class MyTunesDetailsViewController: UIViewController, MyTunesDetailsDispla
 }
 
 // MARK: - display view model from MyTunesDetailsPresenter
-extension MyTunesDetailsViewController{
+extension MyTunesDetailsViewController:  MyTunesDetailsDisplayLogic {
+    func snackBar(message: String) {
+        AppSnackBar.make(in: self.view, message: "\(message) add  to favorites ", duration: .custom(1.0)).show()
+    }
+    
+    func message(message: String) {
+        AppSnackBar.make(in: self.view, message: "\(message) add  to favorites ", duration: .custom(1.0)).show()
+    }
+    
     func shakeView(){
         view.shake()
     }
