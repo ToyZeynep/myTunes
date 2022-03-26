@@ -21,12 +21,12 @@ enum FavoriteList
         
         struct Response
         {
-            var myTunesList: [Results]
+            var favoriteList: [Tunes]
         }
         
         struct ViewModel
         {
-            var myTunesList: [FavoriteList.Fetch.ViewModel.MyTunes]
+            var favoriteList: [FavoriteList.Fetch.ViewModel.MyTunes]
             
             struct MyTunes {
                 

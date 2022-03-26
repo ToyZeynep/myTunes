@@ -24,8 +24,14 @@ final class FavoriteListPresenter: FavoriteListPresentationLogic {
     weak var viewController: FavoriteListDisplayLogic?
    
     func presentFavoriteList(response: FavoriteList.Fetch.Response) {
-       
-    }
+        
+            var favoriteList: [FavoriteList.Fetch.ViewModel.MyTunes] = []
+            response.favoriteList.forEach {
+                favoriteList.append(FavoriteList.Fetch.ViewModel.MyTunes(wrapperType: $0.wrapperType, kind: $0.kind, artistId: Int(truncatingIfNeeded: $0.artistId) , collectionId: Int(truncatingIfNeeded: $0.collectionId), trackId: Int(truncatingIfNeeded: $0.trackId), artistName: $0.artistName, collectionName: $0.collectionName, trackName: $0.trackName,artworkUrl100: $0.artworkUrl100, releaseDate: $0.releaseDate, country: $0.country, primaryGenreName: $0.primaryGenreName , artistViewUrl: $0.artistViewUrl, collectionViewUrl: $0.collectionViewUrl , trackViewUrl: $0.trackViewUrl ))
+            }
+            ///doldurduğumuz listeyi viewController a parametre olarak gönderiyoruz
+            viewController?.displayFavoriteList(viewModel: FavoriteList.Fetch.ViewModel(favoriteList: favoriteList))
+        }
     
     func presentAlert(title: String , message: String){
         Alert.alert(title: title , message: message)
