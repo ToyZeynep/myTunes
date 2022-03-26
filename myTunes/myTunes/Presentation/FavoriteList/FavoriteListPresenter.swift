@@ -14,6 +14,7 @@ import Foundation
 import UIKit
 
 protocol FavoriteListPresentationLogic: AnyObject {
+    func snackBar(message: String)
     func presentFavoriteList(response: FavoriteList.Fetch.Response)
     func presentAlert(title: String , message: String)
     func presentAlertAction(title: String , message: String , action: UIAlertAction)
@@ -39,6 +40,11 @@ final class FavoriteListPresenter: FavoriteListPresentationLogic {
     
     func presentAlertAction(title: String , message: String , action: UIAlertAction) {
         Alert.alertAction(title: title, message: message, action: action)
+    }
+    
+    func snackBar(message: String) {
+        viewController?.snackBar(message: message)
+    
     }
 }
 

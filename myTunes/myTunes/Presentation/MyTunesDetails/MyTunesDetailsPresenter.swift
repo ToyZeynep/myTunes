@@ -16,7 +16,7 @@ protocol MyTunesDetailsPresentationLogic: AnyObject {
     func presentMyTunesDetails(response: MyTunesDetails.Fetch.Response)
     func shakeView()
     func snackBar(message: String)
-    func alert(message: String)
+    func alert(message: String ,title: String)
 }
 
 final class MyTunesDetailsPresenter: MyTunesDetailsPresentationLogic {
@@ -26,18 +26,19 @@ final class MyTunesDetailsPresenter: MyTunesDetailsPresentationLogic {
     func presentMyTunesDetails(response: MyTunesDetails.Fetch.Response) {
         
         viewController?.displayMyTunesDetails(viewModel: MyTunesDetails.Fetch.ViewModel(wrapperType: response.myTune?.wrapperType , kind: response.myTune?.kind, artistName: response.myTune?.artistName, collectionName: response.myTune?.collectionName, trackName: response.myTune?.trackName, artworkUrl100: response.myTune?.artworkUrl100, releaseDate: response.myTune?.releaseDate, country: response.myTune?.country, primaryGenreName: response.myTune?.primaryGenreName, artistViewUrl: response.myTune?.artistViewUrl, collectionViewUrl: response.myTune?.collectionViewUrl, trackViewUrl: response.myTune?.trackViewUrl
-            )
+           )
         )
     }
+    
     func shakeView(){
         viewController?.shakeView()
     }
-
+    
     func snackBar(message: String) {
         viewController?.snackBar(message: message)
     }
-  
-    func alert(message: String){
-        Alert.alert(title: "wait a second", message: "\(message) is already favorited")
+    
+    func alert(message: String ,title: String){
+        Alert.alert(title: title, message: message)
     }
 }

@@ -14,11 +14,8 @@ import UIKit
 
 enum MyTunesList
 {
-    // MARK: Use cases
-    
     enum Fetch
     {
-        
         struct Response
         {
             var myTunesList: [Results]
@@ -47,7 +44,7 @@ enum MyTunesList
                 var artistViewUrl : String?
                 var collectionViewUrl : String?
                 var trackViewUrl : String?
-              
+                
             }
         }
     }

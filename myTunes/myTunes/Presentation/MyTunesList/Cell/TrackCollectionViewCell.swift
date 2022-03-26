@@ -8,16 +8,17 @@
 import UIKit
 
 class TrackCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var wrapperType: UILabel!
     @IBOutlet weak var kind: UILabel!
     @IBOutlet weak var trackName: UILabel!
-     @IBOutlet weak var artWorkImageView: UIImageView!
+    @IBOutlet weak var artWorkImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         let margins = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
@@ -29,7 +30,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
         contentView.clipsToBounds = true
         artWorkImageView.layer.cornerRadius = 8
     }
-   
+    
     func configure(model: MyTunesList.Fetch.ViewModel.MyTunes){
         trackName.text = model.trackName
         wrapperType.text = model.wrapperType

@@ -37,6 +37,7 @@ final class MyTunesListViewController: UIViewController {
     @IBOutlet weak var selectKindButton: UIButton!
     @IBOutlet weak var wrapperTypeSegmentedController: UISegmentedControl!
     @IBOutlet weak var favoritesButton: UIButton!
+    
     var params = [String:Any](){
         didSet{
             if myTunesSearchBar.text != ""{
@@ -77,7 +78,6 @@ final class MyTunesListViewController: UIViewController {
     
     // MARK: - View lifecycle
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -85,8 +85,7 @@ final class MyTunesListViewController: UIViewController {
         self.title = "MyTunesList"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
     }
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         selectKindButton.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -127,7 +126,7 @@ final class MyTunesListViewController: UIViewController {
                 self.myTunesList.removeAll()
                 self.myTunesList.append(contentsOf: filteredData)
                 self.myTunesCollectionView.reloadData()
-            
+                
             case 2:
                 self.myTunesList = viewModel!.myTunesList
                 var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
@@ -140,8 +139,7 @@ final class MyTunesListViewController: UIViewController {
                 self.myTunesList.removeAll()
                 self.myTunesList.append(contentsOf: filteredData)
                 self.myTunesCollectionView.reloadData()
-                
-                
+                                
             case 3:
                 self.myTunesList = viewModel!.myTunesList
                 var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
@@ -154,7 +152,7 @@ final class MyTunesListViewController: UIViewController {
                 self.myTunesList.removeAll()
                 self.myTunesList.append(contentsOf: filteredData)
                 self.myTunesCollectionView.reloadData()
-               
+                
             default:
                 break
             }
@@ -172,10 +170,10 @@ final class MyTunesListViewController: UIViewController {
             if let name = selections[0] {
                 
                 switch name {
-                                       
+                    
                 case  Media.movie.rawValue:
-                    self?.params["entity"] = "musicArtist"
-                   
+                    self?.params["media"] =  Media.movie.rawValue
+                    
                 case Media.podcast.rawValue:
                     self?.params["media"] = Media.podcast.rawValue
                     
@@ -208,7 +206,7 @@ final class MyTunesListViewController: UIViewController {
                 }
             }
         }
-        )}
+    )}
 }
 
 extension MyTunesListViewController: MyTunesListDisplayLogic{

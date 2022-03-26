@@ -14,7 +14,8 @@ import Foundation
 import UIKit
 
 protocol FavoriteListRoutingLogic: AnyObject {
-   
+    func routeToDetails(index: Int)
+    func popOver()
 }
 
 protocol FavoriteListDataPassing: AnyObject {
@@ -25,4 +26,15 @@ class FavoriteListRouter: FavoriteListRoutingLogic, FavoriteListDataPassing {
     weak var viewController: FavoriteListViewController?
     var dataStore: FavoriteListDataStore?
     
+    func routeToDetails(index: Int) {
+        let storyBoard = UIStoryboard(name: "MyTunesDetails", bundle: nil)
+        let destVC: MyTunesDetailsViewController = storyBoard.instantiateViewController(identifier: "MyTunesDetails")
+        let myTune = dataStore?.favoriteList?[index]
+        destVC.modalPresentationStyle = .fullScreen
+        viewController?.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+    func popOver(){
+        viewController?.navigationController?.popViewController(animated: true)
+    }
 }

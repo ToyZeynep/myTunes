@@ -14,7 +14,7 @@ import UIKit
 import CoreData
 
 protocol FavoriteListWorkingLogic: AnyObject {
-    func removeFavoriteList() 
+    func removeFavoriteList()
     func removeFavorite(object: Tunes)
     func getFavoriteTunesList(completion: @escaping ((Result<[Tunes], Error>) -> Void))
 }
@@ -30,7 +30,7 @@ final class FavoriteListWorker: FavoriteListWorkingLogic {
             print("error")
         }
     }
-
+    
     func getFavoriteTunesList(completion: @escaping ((Result<[Tunes], Error>) -> Void)) {
         
         do {
