@@ -84,6 +84,7 @@ final class MyTunesListViewController: UIViewController {
         self.navigationController?.navigationBar.backgroundColor = .clear
         self.title = "MyTunes"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
+        myTunesCollectionView.reloadData()
     }
         
     override func viewDidLoad() {
@@ -172,7 +173,7 @@ final class MyTunesListViewController: UIViewController {
                 switch name {
                     
                 case  Media.movie.rawValue:
-                    self?.params["media"] =  Media.movie.rawValue
+                    self?.params["entity"] =  "album"
                     
                 case Media.podcast.rawValue:
                     self?.params["media"] = Media.podcast.rawValue

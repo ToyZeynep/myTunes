@@ -72,6 +72,7 @@
                     </view>
                     <connections>
                         <outlet property="favoritesCollectionView" destination="ouo-gA-UyP" id="3HS-e3-9kS"/>
+                        <outlet property="typeSegmentController" destination="fN6-yz-oXt" id="Kvb-NU-u5a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

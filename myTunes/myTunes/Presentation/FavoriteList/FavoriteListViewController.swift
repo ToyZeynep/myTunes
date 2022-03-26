@@ -26,6 +26,8 @@ final class FavoriteListViewController: UIViewController {
     var viewModel: FavoriteList.Fetch.ViewModel?
     var gridFlowLayout = GridFlowLayout()
     var favoritesList : [FavoriteList.Fetch.ViewModel.MyTunes] = []
+    
+    @IBOutlet weak var typeSegmentController: UISegmentedControl!
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
     // MARK: Object lifecycle
     
@@ -65,6 +67,7 @@ final class FavoriteListViewController: UIViewController {
         let image = UIImage(named: "delete")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image , style: .plain, target: self, action: #selector(removeAll))
         navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 3, left: 3, bottom: -4, right: -3)
+        typeSegmentController.selectedSegmentIndex = 0
     }
     
     @objc func removeAll(){
