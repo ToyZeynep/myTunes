@@ -72,7 +72,7 @@ final class MyTunesDetailsViewController: UIViewController {
         super.viewDidLoad()
         interactor?.fetchTunesList()
         interactor?.fetchMyTunesDetails()
-        self.title = "MyTunesDetails"
+        self.title = "Details"
     }
     
     @IBAction func addToFavoritesButton(_ sender: Any) {
