@@ -74,9 +74,7 @@ final class FavoriteListViewController: UIViewController {
         self.interactor?.removeFavoriteList()
         self.interactor?.fetchFavoriteList()
         let alertAction = UIAlertAction(title: "OK", style: .default) { UIAlertAction in
-           
             self.router?.popOver()
-            
         }
         Alert.alertAction(title: "Clean", message: "Removed Favorite List ", action: alertAction)
     }
@@ -84,6 +82,11 @@ final class FavoriteListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor?.fetchFavoriteList()
+        registerCollectionView()
+    }
+    
+    
+    func registerCollectionView(){
         favoritesCollectionView.collectionViewLayout = gridFlowLayout
         let nibTr = UINib(nibName: "TrackCollectionViewCell", bundle: nil)
         favoritesCollectionView.register(nibTr, forCellWithReuseIdentifier: "trackCell")
@@ -97,9 +100,9 @@ final class FavoriteListViewController: UIViewController {
         if self.viewModel?.favoriteList != nil{
             switch sender.selectedSegmentIndex{
             case 0:
-                
                 self.favoritesList = (self.viewModel?.favoriteList)!
                 self.favoritesCollectionView.reloadData()
+                
             case 1:
                 self.favoritesList = (self.viewModel?.favoriteList)!
                 var filteredData = [FavoriteList.Fetch.ViewModel.MyTunes]()
@@ -125,7 +128,7 @@ final class FavoriteListViewController: UIViewController {
                 self.favoritesList.removeAll()
                 self.favoritesList.append(contentsOf: filteredData)
                 self.favoritesCollectionView.reloadData()
-                                
+                
             case 3:
                 self.favoritesList = (self.viewModel?.favoriteList)!
                 var filteredData = [FavoriteList.Fetch.ViewModel.MyTunes]()

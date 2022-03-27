@@ -91,6 +91,7 @@ final class MyTunesListViewController: UIViewController {
         super.viewDidLoad()
         setImageButton()
         registerCollectionView()
+        self.hideKeyboardWhenTappedAround()
     }
     
     func registerCollectionView(){

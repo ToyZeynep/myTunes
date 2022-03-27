@@ -38,8 +38,6 @@ enum FavoriteList
                 var artistName : String?
                 var collectionName : String?
                 var trackName : String?
-                var artworkUrl30 : String?
-                var artworkUrl60 : String?
                 var artworkUrl100 : String?
                 var releaseDate : String?
                 var country : String?
