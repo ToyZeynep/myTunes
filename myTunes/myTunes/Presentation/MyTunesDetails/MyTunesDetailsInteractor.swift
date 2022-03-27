@@ -50,7 +50,7 @@ final class MyTunesDetailsInteractor: MyTunesDetailsBusinessLogic, MyTunesDetail
             case .success(let response):
                 self?.tunes = response
             case .failure(let error):
-                print("error: ", error)
+                self?.presenter?.alert(message: "Error", title: "\(error)")
             }
         }
     }

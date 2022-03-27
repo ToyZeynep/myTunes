@@ -16,7 +16,7 @@
 		2225360727EED9A80074C8F8 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225360127EED9A80074C8F8 /* FavoriteListViewController.swift */; };
 		2225360827EED9A80074C8F8 /* FavoriteListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225360227EED9A80074C8F8 /* FavoriteListInteractor.swift */; };
 		2225360C27EEDD560074C8F8 /* FavoriteList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2225360B27EEDD560074C8F8 /* FavoriteList.storyboard */; };
-		2225361B27EF49FF0074C8F8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225361A27EF49FF0074C8F8 /* SplashView.swift */; };
+		2225361B27EF49FF0074C8F8 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225361A27EF49FF0074C8F8 /* SplashViewController.swift */; };
 		2225361E27EF4A2D0074C8F8 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2225361D27EF4A2D0074C8F8 /* Splash.storyboard */; };
 		2228D89327EB448200AF7FFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D89227EB448200AF7FFC /* AppDelegate.swift */; };
 		2228D89527EB448200AF7FFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228D89427EB448200AF7FFC /* SceneDelegate.swift */; };
@@ -46,6 +46,7 @@
 		2238A61F27ECD00100AE4EF0 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A61E27ECD00100AE4EF0 /* DateExtension.swift */; };
 		2238A62127ECF42B00AE4EF0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238A62027ECF42B00AE4EF0 /* Constants.swift */; };
 		22E6A92027F04E9900014B65 /* ViewControllerExrension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6A91F27F04E9900014B65 /* ViewControllerExrension.swift */; };
+		22E6A92227F05CDA00014B65 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6A92127F05CDA00014B65 /* SplashRouter.swift */; };
 		22F56D4227EC565F0041891D /* CollectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F56D4027EC565F0041891D /* CollectionCollectionViewCell.swift */; };
 		22F56D4327EC565F0041891D /* CollectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22F56D4127EC565F0041891D /* CollectionCollectionViewCell.xib */; };
 		22F56D4627EC566F0041891D /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F56D4427EC566F0041891D /* ArtistCollectionViewCell.swift */; };
@@ -66,7 +67,7 @@
 		2225360127EED9A80074C8F8 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		2225360227EED9A80074C8F8 /* FavoriteListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListInteractor.swift; sourceTree = "<group>"; };
 		2225360B27EEDD560074C8F8 /* FavoriteList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteList.storyboard; sourceTree = "<group>"; };
-		2225361A27EF49FF0074C8F8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		2225361A27EF49FF0074C8F8 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2225361D27EF4A2D0074C8F8 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		2228D88F27EB448200AF7FFC /* myTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2228D89227EB448200AF7FFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		2238A61E27ECD00100AE4EF0 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		2238A62027ECF42B00AE4EF0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		22E6A91F27F04E9900014B65 /* ViewControllerExrension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExrension.swift; sourceTree = "<group>"; };
+		22E6A92127F05CDA00014B65 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
 		22F56D4027EC565F0041891D /* CollectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		22F56D4127EC565F0041891D /* CollectionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionCollectionViewCell.xib; sourceTree = "<group>"; };
 		22F56D4427EC566F0041891D /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -137,7 +139,8 @@
 		2225361C27EF4A0A0074C8F8 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				2225361A27EF49FF0074C8F8 /* SplashView.swift */,
+				2225361A27EF49FF0074C8F8 /* SplashViewController.swift */,
+				22E6A92127F05CDA00014B65 /* SplashRouter.swift */,
 				2225361D27EF4A2D0074C8F8 /* Splash.storyboard */,
 			);
 			path = Splash;
@@ -228,11 +231,11 @@
 			children = (
 				2228D8D127EB994800AF7FFC /* Cell */,
 				2228D8C727EB6D7200AF7FFC /* MyTunesListViewController.swift */,
+				2228D8C827EB6D7200AF7FFC /* MyTunesListInteractor.swift */,
 				2228D8C327EB6D7200AF7FFC /* MyTunesListPresenter.swift */,
 				2228D8C427EB6D7200AF7FFC /* MyTunesListWorker.swift */,
 				2228D8C527EB6D7200AF7FFC /* MyTunesListRouter.swift */,
 				2228D8C627EB6D7200AF7FFC /* MyTunesListModels.swift */,
-				2228D8C827EB6D7200AF7FFC /* MyTunesListInteractor.swift */,
 				2228D8CF27EB6D9100AF7FFC /* MyTunesList.storyboard */,
 			);
 			path = MyTunesList;
@@ -419,6 +422,7 @@
 				22F56D4927EC62680041891D /* ViewExtension.swift in Sources */,
 				22F56D4227EC565F0041891D /* CollectionCollectionViewCell.swift in Sources */,
 				2238A61827EC8D8100AE4EF0 /* MyTunesDetailsRouter.swift in Sources */,
+				22E6A92227F05CDA00014B65 /* SplashRouter.swift in Sources */,
 				2228D8D827EB9FD600AF7FFC /* TrackCollectionViewCell.swift in Sources */,
 				2228D89327EB448200AF7FFC /* AppDelegate.swift in Sources */,
 				2228D89527EB448200AF7FFC /* SceneDelegate.swift in Sources */,
@@ -436,7 +440,7 @@
 				2228D8B327EB51BA00AF7FFC /* Results.swift in Sources */,
 				2238A61927EC8D8100AE4EF0 /* MyTunesDetailsModels.swift in Sources */,
 				2228D8AA27EB48AA00AF7FFC /* ApiEndPoints.swift in Sources */,
-				2225361B27EF49FF0074C8F8 /* SplashView.swift in Sources */,
+				2225361B27EF49FF0074C8F8 /* SplashViewController.swift in Sources */,
 				222535EE27EED1AA0074C8F8 /* AlertHelper.swift in Sources */,
 				22F56D4627EC566F0041891D /* ArtistCollectionViewCell.swift in Sources */,
 				2228D8B127EB512E00AF7FFC /* ListResponse.swift in Sources */,

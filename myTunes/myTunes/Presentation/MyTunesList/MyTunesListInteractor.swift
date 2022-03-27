@@ -36,7 +36,7 @@ final class MyTunesListInteractor: MyTunesListBusinessLogic, MyTunesListDataStor
                 guard let myTunesList = self?.myTunesList else { return }
                 self?.presenter?.presentMyTunesList(response:  MyTunesList.Fetch.Response( myTunesList: myTunesList))
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.presenter?.alert(message: "Error", title: "\(error)")
             }
         }
     }
