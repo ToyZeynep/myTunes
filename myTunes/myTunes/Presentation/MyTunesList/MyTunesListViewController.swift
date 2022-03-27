@@ -327,7 +327,6 @@ extension MyTunesListViewController : UISearchBarDelegate {
         params.removeAll()
         params["limit"] = "25"
         params["term"] = searchText
-        print(params)
     }
 }
 
