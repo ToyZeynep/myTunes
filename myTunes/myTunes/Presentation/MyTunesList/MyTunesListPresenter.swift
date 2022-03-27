@@ -14,6 +14,7 @@ import UIKit
 
 protocol MyTunesListPresentationLogic: AnyObject {
     func presentMyTunesList(response: MyTunesList.Fetch.Response)
+    func alert(message: String ,title: String)
 }
 
 final class MyTunesListPresenter: MyTunesListPresentationLogic {
@@ -26,5 +27,9 @@ final class MyTunesListPresenter: MyTunesListPresentationLogic {
         }
 
         viewController?.displayMyTunes(viewModel: MyTunesList.Fetch.ViewModel(myTunesList: myTunesList))
+    }
+    
+    func alert(message: String ,title: String){
+        Alert.alert(title: title, message: message)
     }
 }

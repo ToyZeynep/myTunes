@@ -26,7 +26,7 @@ final class MyTunesListViewController: UIViewController {
     var router: ( MyTunesListRoutingLogic & MyTunesListDataPassing)?
     var viewModel: MyTunesList.Fetch.ViewModel?
     var gridFlowLayout = GridFlowLayout()
-    let filter : [String] = [Media.movie.rawValue, Media.podcast.rawValue, Media.music.rawValue, Media.musicVideo.rawValue, Media.audiobook.rawValue, Media.shortFilm.rawValue, Media.tvShow.rawValue , Media.software.rawValue, Media.ebook.rawValue, Media.all.rawValue]
+    let filter: [String] = [ Media.media.rawValue , Entity.entity.rawValue]
     var trackList = [MyTunesList.Fetch.ViewModel.MyTunes]()
     var collectionList = [MyTunesList.Fetch.ViewModel.MyTunes]()
     var artistList = [MyTunesList.Fetch.ViewModel.MyTunes]()
@@ -89,10 +89,12 @@ final class MyTunesListViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectKindButton.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        selectKindButton.tintColor = .systemMint
-        favoritesButton.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        favoritesButton.tintColor = .systemMint
+        setImageButton()
+        registerCollectionView()
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    func registerCollectionView(){
         myTunesCollectionView.collectionViewLayout = gridFlowLayout
         let nibTr = UINib(nibName: "TrackCollectionViewCell", bundle: nil)
         myTunesCollectionView.register(nibTr, forCellWithReuseIdentifier: "trackCell")
@@ -100,6 +102,13 @@ final class MyTunesListViewController: UIViewController {
         myTunesCollectionView.register(nibCl, forCellWithReuseIdentifier: "collectionCell")
         let nibAr = UINib(nibName: "ArtistCollectionViewCell", bundle: nil)
         myTunesCollectionView.register(nibAr, forCellWithReuseIdentifier: "artistCell")
+    }
+    
+    func setImageButton(){
+        selectKindButton.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        selectKindButton.tintColor = .systemMint
+        favoritesButton.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        favoritesButton.tintColor = .systemMint
     }
     
     @IBAction func favoritesButton(_ sender: Any) {
@@ -172,8 +181,44 @@ final class MyTunesListViewController: UIViewController {
                 
                 switch name {
                     
+                case "media" :
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        let media : [String] = [Media.movie.rawValue, Media.podcast.rawValue, Media.music.rawValue, Media.musicVideo.rawValue, Media.audiobook.rawValue, Media.shortFilm.rawValue, Media.tvShow.rawValue , Media.software.rawValue, Media.ebook.rawValue, Media.all.rawValue]
+                        self!.showPicker(sender, list: media)
+                    }
+                case "entity":
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+   
+                        let entity: [String] = [Entity.musicVideo.rawValue , Entity.podcast.rawValue , Entity.allArtist.rawValue , Entity.album.rawValue , Entity.mix.rawValue , Entity.audiobook.rawValue , Entity.tvSeason.rawValue , Entity.allTrack.rawValue]
+                    self!.showPicker(sender, list: entity)
+                    }
+                    
+                case  Entity.musicVideo.rawValue:
+                    self?.params["entity"] = Entity.musicVideo.rawValue
+                    
+                case Entity.podcast.rawValue:
+                    self?.params["entity"] = Entity.podcast.rawValue
+                    
+                case Entity.allArtist.rawValue:
+                    self?.params["entity"] = Entity.allArtist.rawValue
+                    
+                case Entity.album.rawValue:
+                    self?.params["entity"] = Entity.album.rawValue
+                    
+                case Entity.mix.rawValue:
+                    self?.params["entity"] = Entity.mix.rawValue
+                    
+                case Entity.audiobook.rawValue:
+                    self?.params["entity"] = Entity.audiobook.rawValue
+                    
+                case Entity.tvSeason.rawValue:
+                    self?.params["entity"] = Entity.tvSeason.rawValue
+                    
+                case Entity.allTrack.rawValue:
+                    self?.params["entity"] = Entity.allTrack.rawValue
+                    
                 case  Media.movie.rawValue:
-                    self?.params["entity"] =  "album"
+                    self?.params["media"] =  Media.movie.rawValue
                     
                 case Media.podcast.rawValue:
                     self?.params["media"] = Media.podcast.rawValue
@@ -282,7 +327,6 @@ extension MyTunesListViewController : UISearchBarDelegate {
         params.removeAll()
         params["limit"] = "25"
         params["term"] = searchText
-        print(params)
     }
 }
 

@@ -51,7 +51,6 @@ final class MyTunesDetailsWorker: MyTunesDetailsWorkingLogic {
     
     func removeTune(object: Tunes) {
         let  managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        print(object.primaryGenreName as Any)
         managedContext.delete(object)
         do {
             try managedContext.save()
