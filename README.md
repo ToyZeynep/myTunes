@@ -87,3 +87,4 @@ Versions I use:
 - [GitHub](https://github.com/SaniyeToy)
 - [Linkedln](https://www.linkedin.com/in/saniye-toy/)
 
+For the version of the same project I wrote using the MVVM architecture and the Rx library -> https://github.com/SaniyeToy/myTunesMVVM
