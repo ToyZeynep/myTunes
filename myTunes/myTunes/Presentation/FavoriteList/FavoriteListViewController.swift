@@ -185,6 +185,8 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
             trackCell.favoriteButton.addTapGesture { [unowned self] in
                 if typeSegmentController.selectedSegmentIndex == 0{
                 self.remove(index: indexPath.row)
+                }else{
+                    interactor?.snackBar(str: "you can delete only on All segment")
                 }
             }
             return trackCell
@@ -194,6 +196,8 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
             artistCell.favoriteButton.addTapGesture { [unowned self] in
                 if typeSegmentController.selectedSegmentIndex == 0{
                 self.remove(index: indexPath.row)
+                }else{
+                    interactor?.snackBar(str: "you can delete only on All segment")
                 }
             }
             return artistCell
@@ -203,6 +207,8 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
             collectionCell.favoriteButton.addTapGesture { [unowned self] in
                 if typeSegmentController.selectedSegmentIndex == 0{
                 self.remove(index: indexPath.row)
+                }else{
+                    interactor?.snackBar(str: "You can delete tune only on All segment")
                 }
             }
             return collectionCell

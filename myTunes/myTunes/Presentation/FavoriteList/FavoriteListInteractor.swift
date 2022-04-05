@@ -16,7 +16,8 @@ import UIKit
 protocol FavoriteListBusinessLogic: AnyObject {
     func fetchFavoriteList()
     func removeFavoriteList()
-    func removeFavorite(index: Int) 
+    func removeFavorite(index: Int)
+    func snackBar(str: String)
 }
 
 protocol FavoriteListDataStore: AnyObject {
@@ -52,6 +53,10 @@ final class FavoriteListInteractor: FavoriteListBusinessLogic, FavoriteListDataS
     
     func removeFavoriteList(){
         worker?.removeFavoriteList()
+    }
+    
+    func snackBar(str: String){
+        presenter?.snackBar(message: str)
     }
     
     func favoriteName(index: Int) {
