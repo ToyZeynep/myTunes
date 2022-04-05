@@ -26,7 +26,7 @@ final class MyTunesListViewController: UIViewController {
     var router: ( MyTunesListRoutingLogic & MyTunesListDataPassing)?
     var viewModel: MyTunesList.Fetch.ViewModel?
     var gridFlowLayout = GridFlowLayout()
-    let filter : [String] = [Media.movie.rawValue, Media.podcast.rawValue, Media.music.rawValue, Media.musicVideo.rawValue, Media.audiobook.rawValue, Media.shortFilm.rawValue, Media.tvShow.rawValue , Media.software.rawValue, Media.ebook.rawValue, Media.all.rawValue]
+    let filter: [String] = [ Media.media.rawValue , Entity.entity.rawValue]
     var trackList = [MyTunesList.Fetch.ViewModel.MyTunes]()
     var collectionList = [MyTunesList.Fetch.ViewModel.MyTunes]()
     var artistList = [MyTunesList.Fetch.ViewModel.MyTunes]()
@@ -89,10 +89,12 @@ final class MyTunesListViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectKindButton.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        selectKindButton.tintColor = .systemMint
-        favoritesButton.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        favoritesButton.tintColor = .systemMint
+        setImageButton()
+        registerCollectionView()
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    func registerCollectionView(){
         myTunesCollectionView.collectionViewLayout = gridFlowLayout
         let nibTr = UINib(nibName: "TrackCollectionViewCell", bundle: nil)
         myTunesCollectionView.register(nibTr, forCellWithReuseIdentifier: "trackCell")
@@ -100,6 +102,13 @@ final class MyTunesListViewController: UIViewController {
         myTunesCollectionView.register(nibCl, forCellWithReuseIdentifier: "collectionCell")
         let nibAr = UINib(nibName: "ArtistCollectionViewCell", bundle: nil)
         myTunesCollectionView.register(nibAr, forCellWithReuseIdentifier: "artistCell")
+    }
+    
+    func setImageButton(){
+        selectKindButton.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        selectKindButton.tintColor = .systemMint
+        favoritesButton.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        favoritesButton.tintColor = .systemMint
     }
     
     @IBAction func favoritesButton(_ sender: Any) {
@@ -172,35 +181,76 @@ final class MyTunesListViewController: UIViewController {
                 
                 switch name {
                     
-                case  Media.movie.rawValue:
-                    self?.params["entity"] =  "album"
+                case "media" :
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        let media : [String] = [Media.movie.rawValue, Media.podcast.rawValue, Media.music.rawValue, Media.musicVideo.rawValue, Media.audiobook.rawValue, Media.shortFilm.rawValue, Media.tvShow.rawValue , Media.software.rawValue, Media.ebook.rawValue, Media.all.rawValue]
+                        self!.showPicker(sender, list: media)
+                    }
+                case "entity":
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+   
+                        let entity: [String] = [Entity.musicVideo.rawValue , Entity.podcast.rawValue , Entity.allArtist.rawValue , Entity.album.rawValue , Entity.mix.rawValue , Entity.audiobook.rawValue , Entity.tvSeason.rawValue , Entity.allTrack.rawValue]
+                    self!.showPicker(sender, list: entity)
+                    }
                     
+                case  Entity.musicVideo.rawValue:
+                    self?.paramsFilter(param: "entity", value:  Entity.musicVideo.rawValue)
+                    
+                    
+                case Entity.podcast.rawValue:
+                    self?.paramsFilter(param: "entity", value:  Entity.podcast.rawValue)
+                    
+                case Entity.allArtist.rawValue:
+                    self?.paramsFilter(param: "entity", value:  Entity.allArtist.rawValue)
+                    
+                    
+                case Entity.album.rawValue:
+                    self?.paramsFilter(param: "entity", value:  Entity.album.rawValue)
+                    
+                case Entity.mix.rawValue:
+                    self?.paramsFilter(param: "entity", value:  Entity.mix.rawValue)
+                   
+                    
+                case Entity.audiobook.rawValue:
+                    self?.paramsFilter(param: "entity", value:  Entity.musicVideo.rawValue)
+                 
+                    
+                case Entity.tvSeason.rawValue:
+                    self?.paramsFilter(param: "entity", value:  Entity.tvSeason.rawValue)
+                    self?.params["entity"] = Entity.tvSeason.rawValue
+                    
+                case Entity.allTrack.rawValue:
+                    self?.paramsFilter(param: "entity", value:  Entity.allTrack.rawValue)
+                  
+                case  Media.movie.rawValue:
+                    self?.paramsFilter(param: "media", value:  Media.movie.rawValue)
+                  
                 case Media.podcast.rawValue:
-                    self?.params["media"] = Media.podcast.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.podcast.rawValue)
                     
                 case Media.music.rawValue:
-                    self?.params["media"] = Media.music.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.music.rawValue)
                     
                 case  Media.musicVideo.rawValue:
-                    self?.params["media"] =  Media.musicVideo.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.musicVideo.rawValue)
                     
                 case Media.audiobook.rawValue:
-                    self?.params["media"] = Media.audiobook.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.audiobook.rawValue)
                     
                 case Media.shortFilm.rawValue:
-                    self?.params["media"] = Media.shortFilm.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.shortFilm.rawValue)
                     
                 case Media.tvShow.rawValue:
-                    self?.params["media"] = Media.tvShow.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.tvShow.rawValue)
                     
                 case Media.software.rawValue:
-                    self?.params["media"] = Media.software.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.software.rawValue)
                     
                 case Media.ebook.rawValue:
-                    self?.params["media"] = Media.ebook.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.ebook.rawValue)
                     
                 case  Media.all.rawValue:
-                    self?.params["media"] =  Media.all.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.all.rawValue)
                     
                 default:
                     break
@@ -208,6 +258,10 @@ final class MyTunesListViewController: UIViewController {
             }
         }
     )}
+    
+    func paramsFilter(param: String , value: String){
+        self.params[param] = value
+    }
 }
 
 extension MyTunesListViewController: MyTunesListDisplayLogic{
@@ -282,7 +336,6 @@ extension MyTunesListViewController : UISearchBarDelegate {
         params.removeAll()
         params["limit"] = "25"
         params["term"] = searchText
-        print(params)
     }
 }
 

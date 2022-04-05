@@ -8,6 +8,7 @@
 import Foundation
 
 enum Media: String {
+    case media = "media"
     case movie = "movie"
     case podcast = "podcast"
     case music = "music"
@@ -24,4 +25,16 @@ enum WrapperType: String {
     case track = "track"
     case artist = "artist"
     case collection = "collection"
+}
+
+enum Entity: String {
+    case entity = "entity"
+    case musicVideo = "musicVideo"
+    case podcast = "podcast"
+    case allArtist = "allArtist"
+    case album = "album"
+    case mix = "mix"
+    case audiobook = "audiobook"
+    case tvSeason = "tvSeason"
+    case allTrack = "allTrack"
 }

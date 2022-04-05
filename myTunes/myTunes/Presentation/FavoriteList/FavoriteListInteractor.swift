@@ -52,7 +52,6 @@ final class FavoriteListInteractor: FavoriteListBusinessLogic, FavoriteListDataS
     
     func removeFavoriteList(){
         worker?.removeFavoriteList()
-        
     }
     
     func favoriteName(index: Int) {
@@ -60,15 +59,12 @@ final class FavoriteListInteractor: FavoriteListBusinessLogic, FavoriteListDataS
         switch favoriteList?[index].wrapperType{
             
         case WrapperType.track.rawValue:
-            
             presenter?.snackBar(message: "\(String(describing: favoriteList?[index].trackName ?? "")) remove from Favorites")
             
         case WrapperType.collection.rawValue:
-            
             presenter?.snackBar(message: "\(String(describing: favoriteList?[index].collectionName ?? ""))")
-          
-        case WrapperType.artist.rawValue:
             
+        case WrapperType.artist.rawValue:
             presenter?.snackBar(message: "\(String(describing: favoriteList?[index].artistName ?? ""))")
         default:
             break

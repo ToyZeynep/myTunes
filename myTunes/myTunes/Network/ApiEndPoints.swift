@@ -37,10 +37,8 @@ enum ApiEndPoint: APIConfiguration {
         //: https://itunes.apple.com/search?term=jack+johnson&limit=25
         let url = try "https://itunes.apple.com/".asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        print(urlRequest)
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
-        
         // Parameters
         let encoding: ParameterEncoding = {
             switch method {
