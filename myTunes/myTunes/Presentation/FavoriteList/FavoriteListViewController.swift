@@ -191,6 +191,7 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
         case WrapperType.artist.rawValue:
             artistCell.configureFavorites(model: model)
             artistCell.favoriteButton.addTapGesture { [weak self] in
+                self?.remove(index: indexPath.row)
                 self?.interactor?.removeFavorite(index: indexPath.item)
             }
             return artistCell
@@ -198,6 +199,7 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
         case WrapperType.collection.rawValue:
             collectionCell.configureFavorites(model: model)
             collectionCell.favoriteButton.addTapGesture { [weak self] in
+                self?.remove(index: indexPath.row)
                 self?.interactor?.removeFavorite(index: indexPath.item)
             }
             return collectionCell

@@ -186,6 +186,7 @@ final class MyTunesListViewController: UIViewController {
                         let media : [String] = [Media.movie.rawValue, Media.podcast.rawValue, Media.music.rawValue, Media.musicVideo.rawValue, Media.audiobook.rawValue, Media.shortFilm.rawValue, Media.tvShow.rawValue , Media.software.rawValue, Media.ebook.rawValue, Media.all.rawValue]
                         self!.showPicker(sender, list: media)
                     }
+                    
                 case "entity":
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
    
@@ -217,7 +218,7 @@ final class MyTunesListViewController: UIViewController {
                     
                 case Entity.tvSeason.rawValue:
                     self?.paramsFilter(param: "entity", value:  Entity.tvSeason.rawValue)
-                    self?.params["entity"] = Entity.tvSeason.rawValue
+                    
                     
                 case Entity.allTrack.rawValue:
                     self?.paramsFilter(param: "entity", value:  Entity.allTrack.rawValue)
