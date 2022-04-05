@@ -182,25 +182,28 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
             
         case WrapperType.track.rawValue:
             trackCell.configureFavorites(model: model)
-            trackCell.favoriteButton.addTapGesture { [weak self] in
-                self?.remove(index: indexPath.row)
-                self?.interactor?.removeFavorite(index: indexPath.item)
+            trackCell.favoriteButton.addTapGesture { [unowned self] in
+                if typeSegmentController.selectedSegmentIndex == 0{
+                self.remove(index: indexPath.row)
+                }
             }
             return trackCell
             
         case WrapperType.artist.rawValue:
             artistCell.configureFavorites(model: model)
-            artistCell.favoriteButton.addTapGesture { [weak self] in
-                self?.remove(index: indexPath.row)
-                self?.interactor?.removeFavorite(index: indexPath.item)
+            artistCell.favoriteButton.addTapGesture { [unowned self] in
+                if typeSegmentController.selectedSegmentIndex == 0{
+                self.remove(index: indexPath.row)
+                }
             }
             return artistCell
             
         case WrapperType.collection.rawValue:
             collectionCell.configureFavorites(model: model)
-            collectionCell.favoriteButton.addTapGesture { [weak self] in
-                self?.remove(index: indexPath.row)
-                self?.interactor?.removeFavorite(index: indexPath.item)
+            collectionCell.favoriteButton.addTapGesture { [unowned self] in
+                if typeSegmentController.selectedSegmentIndex == 0{
+                self.remove(index: indexPath.row)
+                }
             }
             return collectionCell
             
@@ -215,6 +218,8 @@ extension FavoriteListViewController: UICollectionViewDataSource , UICollectionV
     
     func remove(index: Int){
         self.favoritesList.remove(at: index)
+        self.interactor?.removeFavorite(index: index)
         favoritesCollectionView.reloadData()
+        self.typeSegmentController.selectedSegmentIndex = 0
     }
 }
