@@ -194,58 +194,63 @@ final class MyTunesListViewController: UIViewController {
                     }
                     
                 case  Entity.musicVideo.rawValue:
-                    self?.params["entity"] = Entity.musicVideo.rawValue
+                    self?.paramsFilter(param: "entity", value:  Entity.musicVideo.rawValue)
+                    
                     
                 case Entity.podcast.rawValue:
-                    self?.params["entity"] = Entity.podcast.rawValue
+                    self?.paramsFilter(param: "entity", value:  Entity.podcast.rawValue)
                     
                 case Entity.allArtist.rawValue:
-                    self?.params["entity"] = Entity.allArtist.rawValue
+                    self?.paramsFilter(param: "entity", value:  Entity.allArtist.rawValue)
+                    
                     
                 case Entity.album.rawValue:
-                    self?.params["entity"] = Entity.album.rawValue
+                    self?.paramsFilter(param: "entity", value:  Entity.album.rawValue)
                     
                 case Entity.mix.rawValue:
-                    self?.params["entity"] = Entity.mix.rawValue
+                    self?.paramsFilter(param: "entity", value:  Entity.mix.rawValue)
+                   
                     
                 case Entity.audiobook.rawValue:
-                    self?.params["entity"] = Entity.audiobook.rawValue
+                    self?.paramsFilter(param: "entity", value:  Entity.musicVideo.rawValue)
+                 
                     
                 case Entity.tvSeason.rawValue:
+                    self?.paramsFilter(param: "entity", value:  Entity.tvSeason.rawValue)
                     self?.params["entity"] = Entity.tvSeason.rawValue
                     
                 case Entity.allTrack.rawValue:
-                    self?.params["entity"] = Entity.allTrack.rawValue
-                    
+                    self?.paramsFilter(param: "entity", value:  Entity.allTrack.rawValue)
+                  
                 case  Media.movie.rawValue:
-                    self?.params["media"] =  Media.movie.rawValue
-                    
+                    self?.paramsFilter(param: "media", value:  Media.movie.rawValue)
+                  
                 case Media.podcast.rawValue:
-                    self?.params["media"] = Media.podcast.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.podcast.rawValue)
                     
                 case Media.music.rawValue:
-                    self?.params["media"] = Media.music.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.music.rawValue)
                     
                 case  Media.musicVideo.rawValue:
-                    self?.params["media"] =  Media.musicVideo.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.musicVideo.rawValue)
                     
                 case Media.audiobook.rawValue:
-                    self?.params["media"] = Media.audiobook.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.audiobook.rawValue)
                     
                 case Media.shortFilm.rawValue:
-                    self?.params["media"] = Media.shortFilm.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.shortFilm.rawValue)
                     
                 case Media.tvShow.rawValue:
-                    self?.params["media"] = Media.tvShow.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.tvShow.rawValue)
                     
                 case Media.software.rawValue:
-                    self?.params["media"] = Media.software.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.software.rawValue)
                     
                 case Media.ebook.rawValue:
-                    self?.params["media"] = Media.ebook.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.ebook.rawValue)
                     
                 case  Media.all.rawValue:
-                    self?.params["media"] =  Media.all.rawValue
+                    self?.paramsFilter(param: "media", value:  Media.all.rawValue)
                     
                 default:
                     break
@@ -253,6 +258,10 @@ final class MyTunesListViewController: UIViewController {
             }
         }
     )}
+    
+    func paramsFilter(param: String , value: String){
+        self.params[param] = value
+    }
 }
 
 extension MyTunesListViewController: MyTunesListDisplayLogic{
