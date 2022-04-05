@@ -62,10 +62,10 @@ final class FavoriteListInteractor: FavoriteListBusinessLogic, FavoriteListDataS
             presenter?.snackBar(message: "\(String(describing: favoriteList?[index].trackName ?? "")) remove from Favorites")
             
         case WrapperType.collection.rawValue:
-            presenter?.snackBar(message: "\(String(describing: favoriteList?[index].collectionName ?? ""))")
+            presenter?.snackBar(message: "\(String(describing: favoriteList?[index].collectionName ?? ""))remove from Favorites")
             
         case WrapperType.artist.rawValue:
-            presenter?.snackBar(message: "\(String(describing: favoriteList?[index].artistName ?? ""))")
+            presenter?.snackBar(message: "\(String(describing: favoriteList?[index].artistName ?? ""))remove from Favorites")
         default:
             break
         }
