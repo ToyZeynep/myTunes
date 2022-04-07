@@ -21,7 +21,7 @@ protocol FavoriteListBusinessLogic: AnyObject {
 }
 
 protocol FavoriteListDataStore: AnyObject {
-    var favoriteList:[Tunes]? { get set }
+    var favoriteList: [Tunes]? { get set }
 }
 
 final class FavoriteListInteractor: FavoriteListBusinessLogic, FavoriteListDataStore{

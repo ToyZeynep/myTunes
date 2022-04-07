@@ -125,43 +125,13 @@ final class MyTunesListViewController: UIViewController {
                 self.params["term"] = searchText
                 
             case 1:
-                self.myTunesList = viewModel!.myTunesList
-                var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
-                for tunes in (self.myTunesList) {
-                    let wrapperType = tunes.wrapperType
-                    if wrapperType!.contains(WrapperType.track.rawValue){
-                        filteredData.append(tunes)
-                    }
-                }
-                self.myTunesList.removeAll()
-                self.myTunesList.append(contentsOf: filteredData)
-                self.myTunesCollectionView.reloadData()
+                self.filterWrapperType(WrapperType.track.rawValue)
                 
             case 2:
-                self.myTunesList = viewModel!.myTunesList
-                var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
-                for tunes in (self.myTunesList) {
-                    let wrapperType = tunes.wrapperType
-                    if wrapperType!.contains(WrapperType.artist.rawValue){
-                        filteredData.append(tunes)
-                    }
-                }
-                self.myTunesList.removeAll()
-                self.myTunesList.append(contentsOf: filteredData)
-                self.myTunesCollectionView.reloadData()
+                self.filterWrapperType(WrapperType.artist.rawValue)
                                 
             case 3:
-                self.myTunesList = viewModel!.myTunesList
-                var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
-                for tunes in (self.viewModel?.myTunesList)! {
-                    let wrapperType = tunes.wrapperType
-                    if wrapperType!.contains(WrapperType.collection.rawValue){
-                        filteredData.append(tunes)
-                    }
-                }
-                self.myTunesList.removeAll()
-                self.myTunesList.append(contentsOf: filteredData)
-                self.myTunesCollectionView.reloadData()
+                self.filterWrapperType(WrapperType.collection.rawValue)
                 
             default:
                 break
@@ -169,6 +139,20 @@ final class MyTunesListViewController: UIViewController {
         }else {
             
         }
+    }
+    
+    func filterWrapperType(_ wrapper: String ){
+        self.myTunesList = viewModel!.myTunesList
+        var filteredData = [MyTunesList.Fetch.ViewModel.MyTunes]()
+        for tunes in (self.myTunesList) {
+            let wrapperType = tunes.wrapperType
+            if wrapperType!.contains(wrapper){
+                filteredData.append(tunes)
+            }
+        }
+        self.myTunesList.removeAll()
+        self.myTunesList.append(contentsOf: filteredData)
+        self.myTunesCollectionView.reloadData()
     }
     
     @IBAction func selectKindButton(_ sender: Any) {
